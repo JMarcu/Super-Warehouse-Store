@@ -1,6 +1,6 @@
 #include "Items.h"
 
-Items::Item()
+Item::Item()
 {
 	itemName = " ";
 
@@ -10,14 +10,14 @@ Items::Item()
 }
 
 
-Items::Item(string name, int amountz, double money)
+Item::Item(string name, int amountz, double money)
 {
 	itemName = name;
 	quantity = amountz;
 	price = money;
 }
 
-Items::~Item()
+Item::~Item()
 {
 
 }
@@ -26,7 +26,7 @@ void Item::SetItem(string name)
 {
 	itemName = name;
 }
-void SetItemProfile(string name, int amountz, double money)
+void Item::SetItemProfile(string name, int amountz, double money)
 {
 	itemName = name;
 	quantity = amountz;
@@ -41,13 +41,6 @@ void Item::SetAmount(int amountz)
 
 void Item::SetPrice(double money)
 {
-	price = money;
-}
-
-void Item::SetItemAll(string name, int amountz, double money)
-{
-	itemName = name;
-	quantity = amountz;
 	price = money;
 }
 

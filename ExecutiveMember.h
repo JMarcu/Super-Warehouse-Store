@@ -8,7 +8,7 @@
 #ifndef EXECUTIVEMEMBER_H_
 #define EXECUTIVEMEMBER_H_
 
-#include <RegularMember.h>
+#include "RegularMember.h"
 
 class ExecutiveMember : public RegularMember
 {

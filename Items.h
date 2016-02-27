@@ -2,17 +2,17 @@
 #define ITEMS_H_
 
 
-#include <iostream>
 #include <string>
+using namespace std;
 
 class Item
 {
 	public:
 	
 	// Constructors/Destructors
-	Items();
-	Items(string name, int amountz, double money);
-	~Items();
+	Item();
+	Item(string name, int amounts, double money);
+	~Item();
 
 //   Methods(Mutators)
 //   -----------------
@@ -35,16 +35,12 @@ class Item
 	double GetPrice(); 
 
 	
-	private:
-	
+private:
 //  Data members(variables)
 // -------------------------
-
-	string itemName;
-
-	int quantity;
-
-	double price;	
-}
+    string itemName;
+    int quantity;
+    double price;	
+};
 
 #endif

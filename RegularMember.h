@@ -5,11 +5,9 @@
 #ifndef REGULARMEMBER_H_
 #define REGULARMEMBER_H_
 
-#include <Date.h>
+#include "Date.h"
 
-
-
-class RegularMember : public Date
+class RegularMember
 {
 public:
 
