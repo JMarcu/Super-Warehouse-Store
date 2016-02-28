@@ -15,10 +15,12 @@ class ExecutiveMember : public RegularMember
 public:
 	ExecutiveMember();
 	ExecutiveMember(string newName,
-			  int 	 newNumber,
-			  Date   newDate,
-			  double newTotal,
-			  int newRebate);
+	      	        int    newNumber,
+	  	        int    newMonth,
+		        int    newDay,
+		        int    newYear,
+	  	        double newTotal,
+	  	        int    newRebate);
 	virtual ~ExecutiveMember();
 
 	int GetRebate() const;

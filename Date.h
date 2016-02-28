@@ -13,26 +13,25 @@
 using namespace std;
 
 class Date {
-public:
+	public:
 
-	Date();
-	Date(int monthIn, int dayIn, int yeaerIn);
+		Date();
+		Date(int monthIn, int dayIn, int yeaerIn);
 
-	virtual ~Date();
+		virtual ~Date();
 
-	void UpdateDate(int newMonth, int newDay, int newYear);
-	void PrintDate() const;
-	int GetMonth() const;
-	int GetDay() const;
-	int Getyear() const;
-
-
+		void UpdateDate(int newMonth, int newDay, int newYear);
+		void PrintDate() const;
+		int GetMonth() const;
+		int GetDay() const;
+		int Getyear() const;
 
 
-private:
-	int month;
-	int day;
-	int year;
+
+	private:
+		int month;
+		int day;
+		int year;
 };
 
 #endif /* DATE_H_ */

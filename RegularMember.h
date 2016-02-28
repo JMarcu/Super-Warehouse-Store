@@ -28,9 +28,11 @@ public:
 	 * the arguments passed in
 	 **********************************************************************/
 	RegularMember(string newName,
-				  int 	 newNumber,
-				  Date   newDate,
-				  double newTotal);
+		      int    newNumber,
+		      double newTotal,
+		      int    newMonth,
+		      int    newDay,
+	              int    newYear);
 
 	/*********************************************************************
 	 * ~RegularMember()
@@ -47,8 +49,8 @@ public:
 	 * Updates the expiration date with the month, day, and year passed in
 	 **********************************************************************/
 	void   UpdateExpirationDate(int newMonth,
-								int newDay,
-								int newYear);
+				    int newDay,
+				    int newYear);
 
 	/*********************************************************************
 	 * SetMember(string newName,
@@ -60,23 +62,25 @@ public:
 	 * passed in
 	 **********************************************************************/
 	void   SetMember(string newName,
-				   	 int    newNumber,
-				     Date   newDate,
-				     double newTotal);
+		         int    newNumber,
+			 int    newMonth,
+			 int    newDay,
+			 int    newYear,
+			 double newTotal);
 
 	/*********************************************************************
 	 * PrintMember()
 	 * -------------------------------------------------------------------
 	 * Prints the variables for the member
 	 **********************************************************************/
-	void   PrintMember() const;
+	void PrintMember() const;
 
 	/*********************************************************************
 	 * GetRenewalAmount() const
 	 * -------------------------------------------------------------------
 	 * Returns the renewal amount for the next year
 	 **********************************************************************/
-	int    GetRenewalAmount() const;
+	float GetRenewalAmount() const;
 
 	/*********************************************************************
 	 * GetMember() const
