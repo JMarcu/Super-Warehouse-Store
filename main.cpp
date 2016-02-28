@@ -20,7 +20,8 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-    Database db;
+    Database db("WarehouseDB.db3");
+    db.AddMember();
     
     
     return 0;

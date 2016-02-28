@@ -8,12 +8,11 @@
 #ifndef DATABASE_H_
 #define DATABASE_H_
 
-#include <string>
-#include <list>
 #include "RegularMember.h"
 #include "ExecutiveMember.h"
 #include "Date.h"
 #include "Items.h"
+#include <list>
 #include <sqlite3.h>
 using namespace std;
 
@@ -22,7 +21,8 @@ private:
     sqlite3* db;
    
 public:
-    Database();
+    Database(string dbname);
+    ~Database();
     
 	//Reports
 //	DailySalesReport getDailySalesReport(Date day) const;
@@ -37,7 +37,7 @@ public:
 //	ExecutiveConversionReport getExecutiveConversionReport() const;
 
 	//Modifiers
-	void AddMember(const RegularMember& member);
+	void AddMember();
 	void DeleteMember(const RegularMember& member);
 	void AddItem(const Item& item);
 	void DeleteItem(const Item& item);
