@@ -37,7 +37,7 @@ class Item
 	
 // Overloading Operators
 // ---------------------
-	Item operator+ (const Item&) const;
+	double operator+ (const Item& I) const;
 
 	
 private:
