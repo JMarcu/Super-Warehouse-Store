@@ -60,3 +60,8 @@ double Item::GetPrice()
 {
 	return price;
 }
+
+double operator+ (const Item& I) const
+{
+	return price + I.price;
+}
