@@ -33,6 +33,11 @@ class Item
 	int GetAmount();
 
 	double GetPrice(); 
+	
+	
+// Overloading Operators
+// ---------------------
+	Item operator+ (const Item&) const;
 
 	
 private:
