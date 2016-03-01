@@ -92,17 +92,3 @@ public:
 
 };//end Employees class
 
-
-int main()
-{
-
-
-
-
-
-
-
-	return 0;
-}
-
-
