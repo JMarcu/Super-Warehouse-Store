@@ -34,10 +34,6 @@ class Item
 
 	double GetPrice(); 
 	
-	
-// Overloading Operators
-// ---------------------
-	double operator+ (const Item& I) const;
 
 	
 private:
