@@ -7,6 +7,7 @@
 
 #include "Date.h"
 
+
 class RegularMember
 {
 public:
@@ -28,11 +29,12 @@ public:
 	 * the arguments passed in
 	 **********************************************************************/
 	RegularMember(string newName,
-		      int    newNumber,
-		      double newTotal,
-		      int    newMonth,
-		      int    newDay,
-	              int    newYear);
+				  int 	 newNumber,
+				  double newTotal,
+				  int 	 newMonth,
+				  int 	 newDay,
+				  int 	 newYear);
+
 
 	/*********************************************************************
 	 * ~RegularMember()
@@ -48,9 +50,9 @@ public:
 	 * -------------------------------------------------------------------
 	 * Updates the expiration date with the month, day, and year passed in
 	 **********************************************************************/
-	void   UpdateExpirationDate(int newMonth,
-				    int newDay,
-				    int newYear);
+	void UpdateExpirationDate(int newMonth,
+								int newDay,
+								int newYear);
 
 	/*********************************************************************
 	 * SetMember(string newName,
@@ -61,19 +63,12 @@ public:
 	 * Changes the variables for the regular member with the variables
 	 * passed in
 	 **********************************************************************/
-	void   SetMember(string newName,
-		         int    newNumber,
-			 int    newMonth,
-			 int    newDay,
-			 int    newYear,
-			 double newTotal);
-
-	/*********************************************************************
-	 * PrintMember()
-	 * -------------------------------------------------------------------
-	 * Prints the variables for the member
-	 **********************************************************************/
-	void PrintMember() const;
+	void SetMember(string newName,
+				   	 int    newNumber,
+				   	 int    newMonth,
+					 int    newDay,
+					 int    newYear,
+				     double newTotal);
 
 	/*********************************************************************
 	 * GetRenewalAmount() const
@@ -94,7 +89,7 @@ public:
 	 * -------------------------------------------------------------------
 	 * Returns members id Number that calls this function
 	 **********************************************************************/
-	int    GetNumber() const;
+	int GetNumber() const;
 
 	/*********************************************************************
 	 * ShouldConvertMembership()
@@ -103,14 +98,41 @@ public:
 	 * how much they spend during the year
 	 * 	returns a bool true or false
 	 **********************************************************************/
-	bool   ShouldConvertMembership();
+	bool ShouldConvertMembership();
 
 	/*********************************************************************
 	 * ConvertMembership()
 	 * -------------------------------------------------------------------
 	 * Converts the membership to executive or regular
 	 **********************************************************************/
-	void   ConvertMembership();
+	void ConvertMembership();
+
+	/*********************************************************************
+	 * GettMembership()
+	 * -------------------------------------------------------------------
+	 * returns the type of membership user has
+	 * 	-returns regular
+	 **********************************************************************/
+	string GetMembership();
+
+	/*********************************************************************
+	 * GetDate()
+	 * -------------------------------------------------------------------
+	 * Returns the the date that the membership expires.
+	 * 	returns Date class
+	 **********************************************************************/
+	Date GetDate() const;
+
+
+	/*********************************************************************
+	 * GetTotalSpent()
+	 * -------------------------------------------------------------------
+	 * Returns the total amount the user spent
+	 **********************************************************************/
+	double GetTotalSpent() const;
+
+
+
 
 
 private:

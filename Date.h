@@ -20,11 +20,13 @@ class Date {
 
 		virtual ~Date();
 
-		void UpdateDate(int newMonth, int newDay, int newYear);
+		void UpdateDate(int newMonth,
+						int newDay,
+						int newYear);
 		void PrintDate() const;
 		int GetMonth() const;
 		int GetDay() const;
-		int Getyear() const;
+		int GetYear() const;
 
 
 
