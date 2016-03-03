@@ -23,6 +23,9 @@ class Item
 	void SetAmount(int amountz);
 
 	void SetPrice(double money);
+	
+	Item *PointAt(Item *ptr);
+	
 
 	
 
@@ -33,6 +36,7 @@ class Item
 	int GetAmount();
 
 	double GetPrice(); 
+	
 	
 
 	
