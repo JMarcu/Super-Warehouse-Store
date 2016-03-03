@@ -16,7 +16,6 @@ Database::~Database(){
 
 void Database::AddMember(){
     char* errMsg;
-    int test;
     string sqlCmmd = "INSERT INTO Members (id, name, expiration, total_spent) "
                      "VALUES (" + member.GetNumber() + ", " +
                                   member.GetMember() + ", " + 
