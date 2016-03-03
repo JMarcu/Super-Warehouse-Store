@@ -27,70 +27,29 @@ class Sales
 public:
 
 	//constructors
-	Sales() //default constructor
-{
-		item = "X";
-		itemCost = 0.0;
-		totalItems = 0;
-		totalCost = 0.0;
-}
+	Sales(); //default constructor
 
-	Sales (string itemF, float itemCostF)
-	{
-		item = itemF;
-		itemCost = itemCostF;
-	}
+	Sales (string itemF, float itemCostF);
 
-	Sales (string itemF, float itemCostF, int totalItemsF, float totalCostF)
-	{
-		item = itemF;
-		itemCost = itemCostF;
-		totalItems = totalItemsF;
-		totalCost = totalCostF;
-	}
-
+	Sales (string itemF, float itemCostF, int totalItemsF, float totalCostF);
 
 	//d-constructor
-	//~Sales();
+	~Sales();
 
 	//Methods
-	void ChangeItem(string itemF)
-	{
-		item = itemF;
-	}
+	void ChangeItem(string itemF);
 
-	void ChangeCost(float itemCostF)
-	{
-		itemCost = itemCostF;
-	}
+	void ChangeCost(float itemCostF);
 
 	void ChangeAll(string itemF, float itemCostF, int totalItemsF,
-			float totalCostF)
-	{
-		item = itemF;
-		itemCost = itemCostF;
-		totalItems = totalItemsF;
-		totalCost = totalCostF;
-	}
+			float totalCostF);
 
-	int GetTotalItems(int totalItemsF)
-	{
-		return totalItemsF;
-	}
+	int GetTotalItems(int totalItemsF);
 
-	float GetTotalCost (int totalItemsF, float itemCostF)
-	{
-		totalCost+= itemCostF;
-		return totalCost;
+	float GetTotalCost (int totalItemsF, float itemCostF);
+	
 
-	}
-
-	void Print() const
-	{
-		cout << "Item: " << item << endl << "Item Cost: " << itemCost
-				<< endl << "Total Items: " <<  totalItems << endl
-				<< "Total Cost: " << totalCost << endl << endl;
-	}
+//	void Print() const;       *Don't quite need when using GUI*
 
 };//end Sales class
 
