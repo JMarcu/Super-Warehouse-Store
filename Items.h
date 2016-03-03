@@ -37,7 +37,7 @@ class Item
 
 	double GetPrice(); 
 	
-	
+	Item *GoNext(Item *ptr);
 
 	
 private:
@@ -45,7 +45,8 @@ private:
 // -------------------------
     string itemName;
     int quantity;
-    double price;	
+    double price;
+    Item *next;
 };
 
 #endif
