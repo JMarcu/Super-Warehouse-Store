@@ -24,7 +24,7 @@ class Item
 
 	void SetPrice(double money);
 	
-	Item *PointAt(Item *ptr);
+	Item *PointAt(Item *head, Item *perPtr);
 	
 
 	
