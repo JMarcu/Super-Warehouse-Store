@@ -12,8 +12,10 @@
 #include "ExecutiveMember.h"
 #include "Date.h"
 #include "Items.h"
+#include <sstream>
 #include <list>
-#include <sqlite3.h>
+#include "sqlite3.h"
+
 using namespace std;
 
 class Database{
@@ -37,7 +39,7 @@ public:
 //	ExecutiveConversionReport getExecutiveConversionReport() const;
 
 	//Modifiers
-	void AddMember();
+	void AddMember(const RegularMember& member);
 	void DeleteMember(const RegularMember& member);
 	void AddItem(const Item& item);
 	void DeleteItem(const Item& item);

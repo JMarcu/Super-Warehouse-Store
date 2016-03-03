@@ -14,16 +14,16 @@ Database::~Database(){
     sqlite3_close(db);
 }
 
-void Database::AddMember(){
+void Database::AddMember(const RegularMember& member){
     char* errMsg;
-    string sqlCmmd = "INSERT INTO Members (id, name, expiration, total_spent) "
-                     "VALUES (" + member.GetNumber() + ", " +
-                                  member.GetMember() + ", " + 
-                                  member.GetExpiration() + ", " + 
-                                  member.GetTotalSpent();
-                            ");";
+    ostringstream sqlCmmd;
+    sqlCmmd << "INSERT INTO Members (id, name, expiration, total_spent) "
+            << "VALUES (" << member.GetNumber() << ", "
+                          << member.GetMember() << ", "
+                          << member.GetExpiration() << ", "
+                          << member.GetTotalSpent() << ");";
 
-    sqlite3_exec(db, sqlCmmd.c_str(), NULL, 0, &errMsg);
+    sqlite3_exec(db, sqlCmmd.str().c_str(), NULL, 0, &errMsg);
     
     if(errMsg != NULL){
         cerr << errMsg;
@@ -32,9 +32,10 @@ void Database::AddMember(){
 
 void Database::DeleteMember(const RegularMember& member){
     char* errMsg;
-    string sqlCmmd = "DELETE FROM Members WHERE (rowid = " + member.GetNumber() + ")";
+    ostringstream sqlCmmd;
+    sqlCmmd << "DELETE FROM Members WHERE (rowid = " << member.GetNumber() << ")";
     
-    sqlite3_exec(db, sqlCmmd.c_str(), NULL, 0, &errMsg);
+    sqlite3_exec(db, sqlCmmd.str().c_str(), NULL, 0, &errMsg);
     
     if(errMsg != NULL){
         cerr << errMsg;
