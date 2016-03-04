@@ -1,0 +1,74 @@
+// This file contains pieces of code that provides, records, and store items and item reports.  This file will show how the objects
+// will be manipulated to calculate and output the items stored and/or purchased.  However, this file will be updated progressively, and
+// once all the codes are all optimised and tested, they can be added to any implementing files.
+
+
+// Object Declarations or needed to be passed into methods
+// _________________________________________________________
+    Item *reportH = NULL;
+    Item *rptr = NULL;
+
+    Item *soldH = NULL;
+    Item *sptr = NULL;
+    Item *check = NULL;
+    
+//  <Variables needed>
+    string itemName;
+    int quantity;
+    double value;
+    
+    double totalPurchase;
+    
+    ifstream iFile;
+    ofstream oFile;
+    
+    string fileName
+    string date;
+    int ID;
+//__________________________________________________________
+
+// Reading in report from file and storing the total sold items in memory 
+// (please notify or update how to use alternative file to read in data besides txt files)
+//_________________________________________________________________________________________
+
+  iFile.open(fileName.c_str())  // OR iFile.open("textFilename.txt")
+  
+  while(iFile)
+  {
+      getline(iFile, date);
+      iFile << ID;
+      iFile.ignore(numeric_limits<streamsize>::max(), '\n');
+      getline(iFile, itemName);
+      iFile << value;
+      inFile.ignore(numeric_limits<streamsize>::max(), '\n');
+      iFile << quantity;
+      inFile.ignore(numeric_limits<streamsize>::max(), '\n');
+      
+      rptr = new Item(itemName, quantity, value);
+      sptr = rptr;
+      
+      reportH = reportH -> AddNode(reportH, rptr);
+      
+      check = soldH;
+      do
+      {
+          if(check-> GetItem() == sptr -> GetItem())
+          {
+              sptr -> SetItem(sptr -> GetItem() + quantity);
+          }
+          else
+          {
+              check = check -> GoNext(check);
+          }
+          
+      }while(check != NULL)
+      
+      
+  }
+  
+  iFile.close();
+
+//_________________________________________________________________________________________
+
+
+//
