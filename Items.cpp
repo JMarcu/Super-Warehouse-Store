@@ -48,12 +48,11 @@ void Item::SetPrice(double money)
 	price = money;
 }
 
-Item *PointAt(Item *head, Item *perPtr)
+Item *AddNode(Item *head, Item *perPtr)
 {
-	if(head != NULL)
-	{
-		perPtr -> next = head;
-	}
+	perPtr -> next = head;
+	head = perPtr;
+	
 	return head;
 }
 
