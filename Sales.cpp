@@ -21,17 +21,19 @@ class Sales
 	float itemCost;
 	int totalItems;
 	float totalCost;
+	Sales *next;
 
 public:
 
 	//constructors
 	Sales() //default constructor
-{
+	{
 		item = "X";
 		itemCost = 0.0;
 		totalItems = 0;
 		totalCost = 0.0;
-}
+		next = NULL;
+	}
 
 	Sales (string itemF, float itemCostF)
 	{
@@ -39,12 +41,13 @@ public:
 		itemCost = itemCostF;
 	}
 
-	Sales (string itemF, float itemCostF, int totalItemsF, float totalCostF)
+	Sales (string itemF, float ItemCostF, int totalItemsF)
 	{
 		item = itemF;
-		itemCost = itemCostF;
+		itemCost = ItemCostF;
 		totalItems = totalItemsF;
-		totalCost = totalCostF;
+		totalCost = itemCost * totalItems;
+		next = NULL;
 	}
 
 
@@ -71,11 +74,21 @@ public:
 		totalCost = totalCostF;
 	}
 
+	string GetItemName()
+	{
+		return item;
+	}
+
 	int GetTotalItems(int totalItemsF)
 	{
 		return totalItemsF;
 	}
 
+	float GetItemCost()
+	{
+		return itemCost;
+	}
+	
 	float GetTotalCost (int totalItemsF, float itemCostF)
 	{
 		totalCost+= itemCostF;
@@ -88,6 +101,21 @@ public:
 		cout << "Item: " << item << endl << "Item Cost: " << itemCost
 				<< endl << "Total Items: " <<  totalItems << endl
 				<< "Total Cost: " << totalCost << endl << endl;
+	}
+	
+	Sales *AddObject(Sales *head, Sales *ptr)
+	{
+		ptr -> next = head;
+		head = ptr;
+		
+		return head;
+	}
+	
+	Sales *PointNext(Sales *ptr)
+	{
+		ptr = ptr -> next;
+		
+		return ptr;
 	}
 
 };//end Employees class
