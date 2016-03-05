@@ -5,19 +5,41 @@
 
 // Object Declarations or needed to be passed into methods
 // _________________________________________________________
-    Item *reportH = NULL;
-    Item *rptr = NULL;
+
+/*----------------------------Objects that are within scope of a database method-------------------------------*/
+
+    Sales *reportH = NULL;   // Object that carries a list of items reported to be sold
+    Sales *rptr = NULL;      // A pointer that accesses each item in the link list
+
+/***Still deciding weather or not these objects should be within local scope a method or not***/
 
     Item *soldH = NULL;
     Item *sptr = NULL;
     Item *check = NULL;
+    
+/*********************************************************************************************/    
+    
+    Item *iptr = NULL;
+/*------------------------------------------------------------------------------------------------------------*/
+
+
+/*-----------------------------Object that is passed by reference(item inventory)-----------------------------*/
+
+    Item *inventory;         // Store item inventory, passed by reference
+    
+    RegularMember memberR;   // Object representing regular member
+    
+    ExecutiveMember memberE; // Object representing excecutive member
+
+/*------------------------------------------------------------------------------------------------------------*/
     
 //  <Variables needed>
     string itemName;
     int quantity;
     double value;
     
-    double totalPurchase;
+    unsigned double totalPurchase;      // Total items purchased from an Item report
+    double itemPurchase = 0;            // Total purchase of each item;
     
     ifstream iFile;
     ofstream oFile;
@@ -28,8 +50,8 @@
 //__________________________________________________________
 
 // Reading in report from file and storing the total sold items in memory 
-// (please notify or update how to use alternative file to read in data besides txt files)
-//_________________________________________________________________________________________
+// (please notify or update how to use alternative file to read in data besides txt files if neccessary)
+//______________________________________________________________________________________________________
 
   iFile.open(fileName.c_str())  // OR iFile.open("textFilename.txt")
   
@@ -68,7 +90,38 @@
   
   iFile.close();
 
-//_________________________________________________________________________________________
+//_____________________________________________________________________________________________________
 
 
-//
+// Calculating total Price of all items purchased in one report
+//_____________________________________________________________
+    
+    rptr = reportH;
+    
+    while(rptr != NULL)
+    {
+        totalPurchase += rptr -> GetPrice();
+        rptr -> GoNext(rptr);
+    }
+//_____________________________________________________________
+
+
+
+// Calculating total Price of each item purchased in one report
+//_____________________________________________________________
+
+  // After user string input to search for.
+  
+  sptr = soldH;
+  
+  while(sptr != NULL && sptr != itemName)
+  {
+        sptr -> GoNext(sptr);
+  }
+  
+  if(sptr -> GetItem() == itemName)
+  {
+        // Output data of the item, amount sold, and total purchase of the item.
+        
+        itemPurchase = sptr -> GetPrice() * sptr -> GetAmount(); 
+  }
