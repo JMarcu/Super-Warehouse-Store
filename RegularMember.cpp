@@ -193,6 +193,9 @@ double RegularMember::GetTotalSpent() const
 	return totalSpent;
 }
 
+Date RegularMember::GetExpiration() const{
+    return expiration;
+}
 
 
 

@@ -24,10 +24,6 @@ class Item
 
 	void SetPrice(double money);
 	
-	Item *AddNode(Item *head, Item *perPtr);
-	
-
-	
 
 //  Accessors
 // --------------
@@ -36,8 +32,6 @@ class Item
 	int GetAmount();
 
 	double GetPrice(); 
-	
-	Item *GoNext(Item *ptr);
 
 	
 private:
@@ -46,7 +40,6 @@ private:
     string itemName;
     int quantity;
     double price;
-    Item *next;
 };
 
 #endif

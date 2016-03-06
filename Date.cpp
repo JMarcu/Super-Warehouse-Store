@@ -63,6 +63,39 @@ int Date::GetYear() const
 	return year;
 }
 
+string Date::toString() const{
+    ostringstream oss;
+    
+    if(year < 1000){
+        oss << 0;
+        if(year < 100){
+            oss << 0;
+            if(year < 10){
+                oss << 0;
+            }
+        }
+    }
+    
+    oss << year << "/";
+    
+    if(month < 10){
+        oss << 0;
+    }
+    
+    oss << month << "/";
+    
+    if(day < 10){
+        oss < 0;
+    }
+    
+    oss << day;
+    
+    return oss.str();
+}
+
+ostream& operator>> (ostream &output, Date &date){
+    output << date.toString();
+}
 
 
 

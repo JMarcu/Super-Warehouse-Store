@@ -20,7 +20,7 @@ void Database::AddMember(const RegularMember& member){
     sqlCmmd << "INSERT INTO Members (id, name, expiration, total_spent) "
             << "VALUES (" << member.GetNumber() << ", "
                           << member.GetMember() << ", "
-                          << member.GetExpiration() << ", "
+                          << member.GetExpiration().toString() << ", "
                           << member.GetTotalSpent() << ");";
 
     sqlite3_exec(db, sqlCmmd.str().c_str(), NULL, 0, &errMsg);

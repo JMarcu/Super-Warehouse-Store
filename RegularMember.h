@@ -131,9 +131,7 @@ public:
 	 **********************************************************************/
 	double GetTotalSpent() const;
 
-
-
-
+        Date GetExpiration() const;
 
 private:
 	string 	name;		// Members Name

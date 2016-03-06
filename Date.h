@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 using namespace std;
 
 class Date {
@@ -28,7 +29,9 @@ class Date {
 		int GetDay() const;
 		int GetYear() const;
 
-
+                string toString() const;
+                
+                friend ostream &operator>> (ostream &output, Date &date);
 
 	private:
 		int month;
