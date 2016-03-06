@@ -27,11 +27,11 @@ class Item
 
 //  Accessors
 // --------------
-	string GetItem();
+	string GetItem() const;
 
-	int GetAmount();
+	int GetAmount() const;
 
-	double GetPrice(); 
+	double GetPrice() const; 
 
 	
 private:

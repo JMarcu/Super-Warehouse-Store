@@ -12,6 +12,7 @@
 #include "ExecutiveMember.h"
 #include "Date.h"
 #include "Items.h"
+#include "Sale.h"
 #include <sstream>
 #include <list>
 #include "sqlite3.h"
@@ -40,11 +41,13 @@ public:
 
 	//Modifiers
 	void AddMember(const RegularMember& member);
+        void AddMember(const ExecutiveMember& member);
 	void DeleteMember(const RegularMember& member);
+        void DeleteMember(const ExecutiveMember& member);
 	void AddItem(const Item& item);
 	void DeleteItem(const Item& item);
-//	void AddSale(const Sale& sale);
-//	void DeleteSale(const Sale& sale);
+	void AddSale(const Sale& sale);
+	void DeleteSale(const Sale& sale);
 };
 
 

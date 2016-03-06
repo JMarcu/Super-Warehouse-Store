@@ -21,6 +21,8 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     Database db("WarehouseDB.db3");
+    ExecutiveMember memE("John", 123, 1, 1, 1990, 1000, 300);
+    RegularMember memR("Jack", 234, 4000, 2, 2, 1995);
     
     
     return 0;

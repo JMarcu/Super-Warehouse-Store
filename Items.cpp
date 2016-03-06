@@ -44,17 +44,17 @@ void Item::SetPrice(double money)
 	price = money;
 }
 
-string Item::GetItem()
+string Item::GetItem() const
 {
 	return itemName;
 }
 
-int Item::GetAmount()
+int Item::GetAmount() const
 {
 	return quantity;
 }
 
-double Item::GetPrice()
+double Item::GetPrice() const
 {
 	return price;
 }
