@@ -29,7 +29,7 @@ DailySalesReport::DailySalesReport( list<Sale> 			  salesListIn,
 	//				the lists passed in
 	list<RegularMember>::iterator   regular   = regularMembersIn.begin();
 	list<ExecutiveMember>::iterator executive = execMembersIn.begin();
-	list<Sale>::iterator 			sales     = salesList.begin();
+	list<Sale>::iterator 			sales     = salesListIn.begin();
 
 
 	//PROCESSING - pushes an executive member or regular member to the
