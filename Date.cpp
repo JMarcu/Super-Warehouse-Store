@@ -6,6 +6,8 @@
  */
 
 #include "Date.h"
+#include <stdlib.h>
+using namespace std;
 
 Date::Date()
 {
@@ -22,6 +24,12 @@ Date::Date(int monthIn,
 	month = monthIn;
 	day   = dayIn;
 	year  = yearIn;
+}
+
+Date::Date(string dateString){
+    year  = atoi(dateString.substr(0, 4).c_str());
+    month = atoi(dateString.substr(5, 2).c_str());
+    day   = atoi(dateString.substr(8, 2).c_str());
 }
 
 Date::~Date()

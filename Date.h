@@ -18,6 +18,7 @@ class Date {
 
 		Date();
 		Date(int monthIn, int dayIn, int yeaerIn);
+                Date(string dateString);
 
 		virtual ~Date();
 

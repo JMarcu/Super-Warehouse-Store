@@ -83,7 +83,7 @@ MemberPurchaseReport::~MemberPurchaseReport()
 
 
 
-MemberPurchaseReport MemberPurchaseReport::GetSales() const
+list<Sale> MemberPurchaseReport::GetSales() const
 {
 	return memberSales;
 }

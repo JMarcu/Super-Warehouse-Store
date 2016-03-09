@@ -7,8 +7,8 @@
  * DUE DATE       :
  *************************************************************************/
 
-#ifndef SALES_H_
-#define SALES_H_
+#ifndef SALE_H_
+#define SALE_H_
 
 #include <string>
 #include "Date.h"
@@ -30,19 +30,19 @@ public:
 	Sale(int id, string n, int q, float c, Date d);
 
 	//Methods
-        int    GetMemberID();
+        int    GetMemberID() const;
         
-	string GetItemName();
+	string GetItemName() const;
         
-        int    GetQuantityPurchased();
+        int    GetQuantityPurchased() const;
 
-	float  GetTotalCost();
+	float  GetTotalCost() const;
         
-        Date   GetOrderDate();
+        Date   GetOrderDate() const;
         
 
 };//end Sales class
 
 
 
-#endif /* SALES_H_ */
+#endif /* SALE_H_ */

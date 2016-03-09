@@ -32,7 +32,7 @@ public:
 
 	virtual ~MemberPurchaseReport();
 
-	MemberPurchaseReport GetSales() const;
+	list<Sale> GetSales() const;
 
 	list<Sale> 			memberSales;
 

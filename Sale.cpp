@@ -8,6 +8,7 @@
  *************************************************************************/
 
 #include "Sale.h"
+using namespace std;
 
 //constructors
 Sale::Sale() //default constructor
@@ -16,7 +17,7 @@ Sale::Sale() //default constructor
     itemName = "";
     quantityPurchased = 0;
     totalCost = 0.0;
-    orderDate = new Date();
+    orderDate = *(new Date());
 }
 
 Sale::Sale (int id, string n, int q, float c, Date d)
@@ -29,26 +30,26 @@ Sale::Sale (int id, string n, int q, float c, Date d)
 }
 
 //Methods
-int Sale::GetMemberID(){
+int Sale::GetMemberID() const{
     return memberID;
 }
 
-string Sale::GetItemName()
+string Sale::GetItemName() const
 {
     return itemName;
 }
 
-int Sale::GetQuantityPurchased()
+int Sale::GetQuantityPurchased() const
 {
     return quantityPurchased;
 }
 
-float Sale::GetTotalCost ()
+float Sale::GetTotalCost () const
 {
     return totalCost;
 }
 
-Date Sale::GetOrderDate(){
+Date Sale::GetOrderDate() const{
     return orderDate;
 }
 
