@@ -16,15 +16,19 @@ public:
     ~MainWindow();
 
 
+// Methods that are executed when "clicked on" by the user using the user interface
 
 private slots:
-    void on_sort_ItemName_clicked();
 
-    void on_sort_ItemAmount_clicked();
+/*-------Buttons that sort the list of items in the store's inventory--------*/
+    void on_sort_ItemName_clicked();    // Sorts list my name
 
-    void on_sort_ItemPrice_clicked();
+    void on_sort_ItemAmount_clicked();  // Sorts list by amount
 
-    void on_push_Report_clicked();
+    void on_sort_ItemPrice_clicked();   // Sorts list by price
+/*---------------------------------------------------------------------------*/
+
+    
 
     void on_push_AddItem_clicked();
 
@@ -35,6 +39,7 @@ private slots:
     void on_report_SetAuto_stateChanged(int arg1);
 
     void on_report_SetManual_stateChanged(int arg1);
+    
 
 
 
