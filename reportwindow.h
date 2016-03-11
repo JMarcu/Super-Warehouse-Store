@@ -3,6 +3,15 @@
 
 #include <QMainWindow>
 
+/***********************************************************************
+ * reportWindow
+ *    
+ *    This class is a sub menu for item reporting.
+ *    As of right now, this sub menu is not ready to be used and is
+ *    undergoing a full implementation for the program.  For now, this
+ *    is used for a test.
+ ***********************************************************************/
+ 
 namespace Ui {
 class reportWindow;
 }
