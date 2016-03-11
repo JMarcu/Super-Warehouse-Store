@@ -1,7 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-
+/******************************************************************************************************
+*    NOTICE:
+*           Most of the definitions here are not fully implemented yet, and most requires a database
+*           class object.  This file will be updated after tests with the GUI files.
+*
+******************************************************************************************************/
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
