@@ -8,7 +8,7 @@
 #include "Member.h"
 
 /*********************************************************************
- * RegularMember( string newName,
+ * RegularMember( QString newName,
  *				  int 	 newNumber,
  *				  double newTotal,
  *				  int 	 newMonth,
@@ -18,7 +18,7 @@
  * Non - default constructor for RegularMember.
  * Sets variables with members passed in
  **********************************************************************/
-Member::Member( string n, int id, double t, Date exp, bool isEx)
+Member::Member( QString n, int id, double t, Date exp, bool isEx)
 {
 	name       = n;
 	number     = id;
@@ -54,7 +54,7 @@ float Member::GetRenewalAmount() const
  * -------------------------------------------------------------------
  * Returns the member's name that calls this function
  **********************************************************************/
-string Member::GetName() const
+QString Member::GetName() const
 {
     return name;
 }
