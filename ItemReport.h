@@ -25,7 +25,7 @@ public:
 	ItemReport();
 
 	ItemReport(list<Sale> item,
-			   string itemName);
+			   QString itemName);
 
 	virtual ~ItemReport();
 
