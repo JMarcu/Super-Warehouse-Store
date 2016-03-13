@@ -2,7 +2,7 @@
 #define ITEMS_H_
 
 #include <iostream>
-#include <string>
+#include <QString>
 using namespace std;
 
 class Item
@@ -11,14 +11,14 @@ class Item
 	
 	// Constructors/Destructors
 	Item();
-	Item(string name, int amounts, double money);
+	Item(QString name, int amounts, double money);
 	~Item();
 
 //   Methods(Mutators)
 //   -----------------
-	void SetItem(string name);
+	void SetItem(QString name);
 
-	void SetItemProfile(string name, int amountz, double money);
+	void SetItemProfile(QString name, int amountz, double money);
 
 	void SetAmount(int amountz);
 
@@ -27,7 +27,7 @@ class Item
 
 //  Accessors
 // --------------
-	string GetItem() const;
+	QString GetItem() const;
 
 	int GetAmount() const;
 
@@ -37,7 +37,7 @@ class Item
 private:
 //  Data members(variables)
 // -------------------------
-    string itemName;
+    QString itemName;
     int quantity;
     double price;
 };
