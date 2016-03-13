@@ -9,7 +9,7 @@
 #define DATE_H_
 
 #include <iostream>
-#include <string>
+#include <QString>
 #include <sstream>
 using namespace std;
 
@@ -18,7 +18,7 @@ class Date {
 
 		Date();
 		Date(int monthIn, int dayIn, int yeaerIn);
-                Date(string dateString);
+                Date(QString dateString);
 
 		virtual ~Date();
 
@@ -30,7 +30,7 @@ class Date {
 		int GetDay() const;
 		int GetYear() const;
 
-                string toString() const;
+                QString toString() const;
                 
                 friend ostream &operator>> (ostream &output, Date &date);
 
