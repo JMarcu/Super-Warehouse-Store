@@ -10,14 +10,14 @@
 #ifndef SALE_H_
 #define SALE_H_
 
-#include <string>
+#include <QString>
 #include "Date.h"
 using namespace std;
 
 class Sale
 {
     int    memberID;
-    string itemName;
+    QString itemName;
     int    quantityPurchased;
     float  totalCost;
     Date   orderDate;
@@ -32,7 +32,7 @@ public:
 	//Methods
         int    GetMemberID() const;
         
-	string GetItemName() const;
+	QString GetItemName() const;
         
         int    GetQuantityPurchased() const;
 
