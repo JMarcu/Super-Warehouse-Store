@@ -20,7 +20,7 @@ Sale::Sale() //default constructor
     orderDate = *(new Date());
 }
 
-Sale::Sale (int id, string n, int q, float c, Date d)
+Sale::Sale (int id, QString n, int q, float c, Date d)
 {
     memberID = id;
     itemName = n;
@@ -34,7 +34,7 @@ int Sale::GetMemberID() const{
     return memberID;
 }
 
-string Sale::GetItemName() const
+QString Sale::GetItemName() const
 {
     return itemName;
 }
