@@ -10,7 +10,7 @@ Item::Item()
 }
 
 
-Item::Item(string name, int amountz, double money)
+Item::Item(QString name, int amountz, double money)
 {
 	itemName = name;
 	quantity = amountz;
@@ -22,11 +22,11 @@ Item::~Item()
 
 }
 
-void Item::SetItem(string name)
+void Item::SetItem(QString name)
 {
 	itemName = name;
 }
-void Item::SetItemProfile(string name, int amountz, double money)
+void Item::SetItemProfile(QString name, int amountz, double money)
 {
 	itemName = name;
 	quantity = amountz;
