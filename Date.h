@@ -31,8 +31,6 @@ class Date {
 		int GetYear() const;
 
                 QString toString() const;
-                
-                friend ostream &operator>> (ostream &output, Date &date);
 
 	private:
 		int month;

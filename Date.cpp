@@ -26,10 +26,10 @@ Date::Date(int monthIn,
 	year  = yearIn;
 }
 
-Date::Date(string dateString){
-    year  = atoi(dateString.substr(0, 4).c_str());
-    month = atoi(dateString.substr(5, 2).c_str());
-    day   = atoi(dateString.substr(8, 2).c_str());
+Date::Date(QString dateString){
+    year  = dateString.left(4).toInt();
+    month = dateString.mid(5, 2).toInt();
+    day   = dateString.right(2).toInt();
 }
 
 Date::~Date()
@@ -46,13 +46,6 @@ void Date::UpdateDate(int newMonth, int newDay, int newYear)
 	day   = newDay;
 	year  = newYear;
 }
-
-
-void Date::PrintDate() const
-{
-
-}
-
 
 int Date::GetMonth() const
 {
@@ -71,7 +64,7 @@ int Date::GetYear() const
 	return year;
 }
 
-string Date::toString() const{
+QString Date::toString() const{
     ostringstream oss;
     
     if(year < 1000){
@@ -98,14 +91,5 @@ string Date::toString() const{
     
     oss << day;
     
-    return oss.str();
+    return QString(oss.str().c_str());
 }
-
-ostream& operator>> (ostream &output, Date &date){
-    output << date.toString();
-}
-
-
-
-
-
