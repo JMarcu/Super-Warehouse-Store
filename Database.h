@@ -18,6 +18,8 @@
 #include <list>
 #include "sqlite3.h"
 
+#include "DailySalesReport.h"
+
 using namespace std;
 
 class Database{
@@ -27,22 +29,10 @@ private:
 public:
     Database(string dbname);
     ~Database();
-    
-//    Reports
-//    DailySalesReport getDailySalesReport(Date day) const;
-//    TotalPurchaseReport getTotalPurchaseReport() const;
-//    TotalItemReport getTotalItemReport() const;
-//    RebateReport getRebateReport() const;
-//    ExpirationReport getExpirationReport(Date month) const;
-//    ItemReport getItemReport(const Item& item) const;
-//    MemberPurchaseReport getMemberPurchaseReport(int memberID) const;
-//    MemberPurchaseReport getMemberPurchaseReport(string memberName) const;
-//    RegularConversionReport getRegularConversionReport() const;
-//    ExecutiveConversionReport getExecutiveConversionReport() const;
 
     //Accessors
-    Member& getMember(int id);
-    
+    Member& GetMember(int id) const;
+    list<Sale>& GetAllSales() const; 
 
     //Modifiers
     void AddMember(const RegularMember& member);
@@ -53,6 +43,18 @@ public:
     void DeleteItem(const Item& item);
     void AddSale(const Sale& sale);
     void DeleteSale(const Sale& sale);
+    
+    //Report Builders
+    DailySalesReport GetDailySalesReport(Date day) const;
+//    TotalPurchaseReport getTotalPurchaseReport() const;
+//    TotalItemReport getTotalItemReport() const;
+//    RebateReport getRebateReport() const;
+//    ExpirationReport getExpirationReport(Date month) const;
+//    ItemReport getItemReport(const Item& item) const;
+//    MemberPurchaseReport getMemberPurchaseReport(int memberID) const;
+//    MemberPurchaseReport getMemberPurchaseReport(string memberName) const;
+//    RegularConversionReport getRegularConversionReport() const;
+//    ExecutiveConversionReport getExecutiveConversionReport() const;
 };
 
 //Callback Functions

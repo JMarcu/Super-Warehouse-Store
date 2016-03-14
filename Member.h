@@ -21,7 +21,7 @@ class Member
 {
 public:
 
-	Member(QString n, int id, double t, Date exp, bool isEx);
+	Member(string n, int id, double t, Date exp, bool isEx);
 
 	/*********************************************************************
 	 * UpdateExpirationDate(int newMonth,
@@ -44,7 +44,7 @@ public:
 	 * -------------------------------------------------------------------
 	 * Returns the member's name that calls this function
 	 **********************************************************************/
-	QString GetName() const;
+	string GetName() const;
 
 	/*********************************************************************
 	 * GetNumber() const
@@ -60,7 +60,7 @@ public:
 	 * how much they spend during the year
 	 * 	returns a bool true or false
 	 **********************************************************************/
-	bool ShouldConvertMembership();
+	bool ShouldConvertMembership() const;
 
 	/*********************************************************************
 	 * ConvertMembership()
@@ -75,7 +75,7 @@ public:
 	 * returns the type of membership user has
 	 * 	-returns regular
 	 **********************************************************************/
-	bool IsExecutive();
+	bool IsExecutive() const;
 
 	/*********************************************************************
 	 * GetDate()
@@ -98,7 +98,7 @@ public:
         double GetRebate() const;
 
 private:
-	QString	name;		// Members Name
+	string 	name;		// Members Name
 	int 	number;		// Membership id member
 	Date 	expiration;	// Membership expiration date
 	double 	totalSpent;	// Total member spent

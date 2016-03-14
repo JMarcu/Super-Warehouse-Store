@@ -7,74 +7,50 @@
 
 #include "DailySalesReport.h"
 
-DailySalesReport::DailySalesReport()
-{
-	salesList.clear();
-	allMembers.clear();
-}
-
 DailySalesReport::~DailySalesReport()
 {
 	salesList.clear();
-	allMembers.clear();
+	members.clear();
 }
 
 
 
-DailySalesReport::DailySalesReport( list<Sale> 			  salesListIn,
-								    list<RegularMember>   regularMembersIn,
-								    list<ExecutiveMember> execMembersIn)
+DailySalesReport::DailySalesReport(const list<Sale>&   salesListIn,
+                                   const list<Member>& mems)
 {
-	//PROCESSING - creates list iterators to access the information in
-	//				the lists passed in
-	list<RegularMember>::iterator   regular   = regularMembersIn.begin();
-	list<ExecutiveMember>::iterator executive = execMembersIn.begin();
-	list<Sale>::iterator 			sales     = salesListIn.begin();
+    members   = mems;
+    salesList = salesListIn;
+    
+    list<Member>::const_iterator it = mems.begin();
+    while(it != mems.end())
+    {
+        if(it->IsExecutive()){
+            execCount++;
+        }
+        else{
+            regCount++;
+        }
+    }
+}
 
-
-	//PROCESSING - pushes an executive member or regular member to the
-	//				all members lists in alphabetical order
-	while(regular != regularMembersIn.end() || executive != execMembersIn.end())
-	{
-		//PROCESSING - checks to see which member should be added to the list
-		//				in alphabetical order
-		if(regular->GetMember().compare(executive->GetMember())  < 0)
-		{
-			allMembers.push_back(*regular);
-			regular++;
-		}
-		else
-		{
-			allMembers.push_back((RegularMember)*executive);
-			executive++;
-		}
-
-	}//END - while(regular != regularMembers.end() || executive != execMembers.end())
-
-
-	salesList = salesListIn;
-
-}//END - DailySalesReport
-
-
-list<Sale> DailySalesReport::GetDailySales() const
+const list<Sale>& DailySalesReport::GetDailySales() const
 {
 	return salesList;
 }
 
-list<RegularMember> DailySalesReport::GetAllMembers() const
+const list<Member>& DailySalesReport::GetAllMembers() const
 {
-	return allMembers;
+	return members;
 }
 
-int DailySalesReport::GetRegularCount(list<RegularMember> regularMembers) const
+int DailySalesReport::GetRegularCount() const
 {
-	return regularMembers.size();
+	return regCount;
 }
 
-int DailySalesReport::GetExecutiveCount(list<ExecutiveMember> execMembers) const
+int DailySalesReport::GetExecutiveCount() const
 {
-	return execMembers.size();
+	return execCount;
 }
 
 

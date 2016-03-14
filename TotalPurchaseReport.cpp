@@ -10,7 +10,7 @@ TotalPurchaseReport::TotalPurchaseReport(list<Sale> sales){
     list<Sale>::iterator it = sales.begin();
     
     while(it != sales.end()){
-        allMembers.push_back(it->GetMemberID()))
+        
     }
 }
 

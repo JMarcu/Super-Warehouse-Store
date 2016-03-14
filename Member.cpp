@@ -8,7 +8,7 @@
 #include "Member.h"
 
 /*********************************************************************
- * RegularMember( QString newName,
+ * RegularMember( string newName,
  *				  int 	 newNumber,
  *				  double newTotal,
  *				  int 	 newMonth,
@@ -18,7 +18,7 @@
  * Non - default constructor for RegularMember.
  * Sets variables with members passed in
  **********************************************************************/
-Member::Member( QString n, int id, double t, Date exp, bool isEx)
+Member::Member( string n, int id, double t, Date exp, bool isEx)
 {
 	name       = n;
 	number     = id;
@@ -54,7 +54,7 @@ float Member::GetRenewalAmount() const
  * -------------------------------------------------------------------
  * Returns the member's name that calls this function
  **********************************************************************/
-QString Member::GetName() const
+string Member::GetName() const
 {
     return name;
 }
@@ -76,7 +76,7 @@ int Member::GetID() const
  * how much they spend during the year
  * 	returns a bool true or false
  **********************************************************************/
-bool Member::ShouldConvertMembership()
+bool Member::ShouldConvertMembership() const
 {
 	bool convert;
 
@@ -110,7 +110,7 @@ void Member::ConvertMembership()
  * returns the type of membership user has
  * 	-returns regular
  **********************************************************************/
-bool Member::IsExecutive()
+bool Member::IsExecutive() const
 {
 	return isExecutive;
 }

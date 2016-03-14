@@ -27,7 +27,7 @@ public:
 	//constructors
 	Sale(); //default constructor
 
-	Sale(int id, string n, int q, float c, Date d);
+	Sale(int id, QString n, int q, float c, Date d);
 
 	//Methods
         int    GetMemberID() const;

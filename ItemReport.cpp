@@ -12,7 +12,7 @@ ItemReport::ItemReport()
 	totalSales.clear();
 }
 
-ItemReport::ItemReport(list<Sale> item, string itemName)
+ItemReport::ItemReport(list<Sale> item, QString itemName)
 {
 	list<Sale>::iterator sales = item.begin();
 

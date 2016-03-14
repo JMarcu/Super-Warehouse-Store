@@ -16,9 +16,8 @@ Database::~Database(){
     sqlite3_close(db);
 }
 
-Member& Database::getMember(int id){
+Member& Database::GetMember(int id) const{
     Member* mem;
-    int (*callback) (void*, int, char**, char**) = &getMemberCallback;
     
     ostringstream sqlCmmd;
     sqlCmmd << "SELECT * FROM Members WHERE id=?;";
@@ -31,25 +30,25 @@ Member& Database::getMember(int id){
     
     string name = string(static_cast<const char*>(sqlite3_column_blob(stmt, 1)),
                          sqlite3_column_bytes(stmt, 1));
-    int test = sqlite3_column_int(stmt, 0);
     double tot = sqlite3_column_double(stmt, 3);
-    Date exp(string(static_cast<const char*>(sqlite3_column_blob(stmt, 2)),
-                    sqlite3_column_bytes(stmt, 2)
-                   )
-            ); 
+    Date exp(QString(static_cast<const char*>(sqlite3_column_blob(stmt, 2)))); 
     bool isEx = sqlite3_column_int (stmt, 4);
     
     mem = new Member(name, id, tot, exp, isEx);
     
-    cout << endl;
-    cout << mem->GetName() << endl;
-    cout << mem->GetID() << endl;
-    cout << mem->GetExpiration().toString() << endl;
-    cout << mem->GetTotalSpent() << endl;
-    cout << mem->GetRebate() << endl;
-    
     return *mem;
 }
+//
+//list<Sale>& Database::GetAllSales() const{
+//    list<Sale> sales;
+//    
+//    ostringstream sqlCmmd;
+//    sqlCmmd << "SELECT * FROM Sales";
+//    sqlite3_stmt* stmt;
+//    int rc = sqlite3_prepare_v2(db, sqlCmmd.str().c_str(), -1, &stmt, NULL);
+//    
+//    
+//}
 
 void Database::AddMember(const RegularMember& member){
     char* errMsg;
@@ -57,7 +56,7 @@ void Database::AddMember(const RegularMember& member){
     sqlCmmd << "INSERT INTO Members (id, name, expiration, total_spent, is_executive) "
             << "VALUES (" << member.GetNumber()                << ", "
                           << "'" << member.GetMember() << "'"  << ", "
-                          << "'" << member.GetExpiration().toString() << "'" << ", "
+                          << "'" << member.GetExpiration().toString().toStdString() << "'" << ", "
                           << member.GetTotalSpent()            << ", " 
                           << "'false'"
             << ");";
@@ -106,7 +105,7 @@ void Database::AddItem(const Item& item){
     char* errMsg;
     ostringstream sqlCmmd;
     sqlCmmd << "INSERT INTO Items (name, price, quantity) "
-            << "VALUES (" << "'" << item.GetItem()   << "', "
+            << "VALUES (" << "'" << item.GetItem().toStdString() << "', "
                           <<        item.GetPrice()  << ", "
                           <<        item.GetAmount() 
             << ");";
@@ -121,7 +120,7 @@ void Database::AddItem(const Item& item){
 void Database::DeleteItem(const Item& item){
     char* errMsg;
     ostringstream sqlCmmd;
-    sqlCmmd << "DELETE FROM Items WHERE (name = " << item.GetItem() << ")";
+    sqlCmmd << "DELETE FROM Items WHERE (name = " << item.GetItem().toStdString() << ")";
     
     sqlite3_exec(db, sqlCmmd.str().c_str(), NULL, 0, &errMsg);
     
@@ -135,10 +134,10 @@ void Database::AddSale(const Sale& sale){
     ostringstream sqlCmmd;
     sqlCmmd << "INSERT INTO Sales (member_id, item_name, quantity_purchased, total_cost, order_date) "
             << "VALUES (" << sale.GetMemberID() << ", "
-                          << "'" << sale.GetItemName() << "', "
+                          << "'" << sale.GetItemName().toStdString() << "', "
                           << sale.GetQuantityPurchased() << ", "
                           << sale.GetTotalCost() << ", "
-                          << "'" << sale.GetOrderDate().toString() << "'" 
+                          << "'" << sale.GetOrderDate().toString().toStdString() << "'" 
             << ");";
 
     sqlite3_exec(db, sqlCmmd.str().c_str(), NULL, 0, &errMsg);

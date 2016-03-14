@@ -44,7 +44,7 @@ void Item::SetPrice(double money)
 	price = money;
 }
 
-string Item::GetItem() const
+QString Item::GetItem() const
 {
 	return itemName;
 }

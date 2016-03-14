@@ -8,40 +8,27 @@
 #ifndef DAILYSALESREPORT_H
 #define DAILYSALESREPORT_H
 
-#include "ExecutiveMember.h"
-#include "Database.h"
 #include "Sale.h"
 #include "Items.h"
-#include <sstream>
+#include "Member.h"
 #include <list>
-#include "sqlite3.h"
-
-
 
 class DailySalesReport {
 public:
-	DailySalesReport();
-	virtual ~DailySalesReport();
+	DailySalesReport (const list<Sale>&   salesListIn,
+                          const list<Member>& mems);
+        ~DailySalesReport();
 
-	DailySalesReport ( list<Sale> 		     salesListIn,
-					   list<RegularMember>   regularMembersIn,
-					   list<ExecutiveMember> execMembersIn);
-
-	list<Sale> GetDailySales() const;
-
-	list<RegularMember> GetAllMembers() const;
-
-	int GetRegularCount(list<RegularMember>   regularMembers) const;
-
-	int GetExecutiveCount(list<ExecutiveMember> execMembers) const;
-
-
-
-
+	const list<Sale>& GetDailySales() const;
+	const list<Member>& GetAllMembers() const;
+	int GetRegularCount() const;
+	int GetExecutiveCount() const;
 
 private:
-	list<Sale>   		  salesList;
-	list<RegularMember>   allMembers;
+	list<Sale> salesList;
+	list<Member> members;
+        int regCount;
+        int execCount;
 
 
 };
