@@ -9,8 +9,11 @@
 
 DailySalesReport::~DailySalesReport()
 {
-	salesList.clear();
-	members.clear();
+    salesList.clear();
+    members.clear();
+    
+    delete &salesList;
+    delete &members;
 }
 
 
@@ -30,6 +33,8 @@ DailySalesReport::DailySalesReport(const list<Sale>&   salesListIn,
         else{
             regCount++;
         }
+        
+        it++;
     }
 }
 

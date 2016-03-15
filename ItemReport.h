@@ -8,36 +8,24 @@
 #ifndef ITEMREPORT_H_
 #define ITEMREPORT_H_
 
-#include "ExecutiveMember.h"
-#include "Database.h"
 #include "Sale.h"
 #include "Items.h"
 #include <sstream>
 #include <list>
-#include "sqlite3.h"
-
-
-
 
 class ItemReport
 {
 public:
-	ItemReport();
+    ItemReport(const list<Sale>& sales, const Item& i);
 
-	ItemReport(list<Sale> item,
-	           QString itemName);
-
-	virtual ~ItemReport();
-
-	list<Sale> GetTotalSales() const;
-
-
-
+    const Item& GetItem()     const;
+    int     GetQuantitySold() const;
+    double  GetTotalRevenue() const;
 
 private:
-	list<Sale> totalSales;
-
-
+    Item   item;
+    int    quantity;
+    double revenue;
 };
 
 #endif /* ITEMREPORT_H_ */

@@ -16,7 +16,7 @@ Sale::Sale() //default constructor
     memberID = 0;
     itemName = "";
     quantityPurchased = 0;
-    totalCost = 0.0;
+    subtotal = 0.0;
     orderDate = *(new Date());
 }
 
@@ -25,7 +25,7 @@ Sale::Sale (int id, QString n, int q, float c, Date d)
     memberID = id;
     itemName = n;
     quantityPurchased = q;
-    totalCost = c;
+    subtotal = c;
     orderDate = d;
 }
 
@@ -44,9 +44,9 @@ int Sale::GetQuantityPurchased() const
     return quantityPurchased;
 }
 
-float Sale::GetTotalCost () const
+float Sale::GetSubtotal () const
 {
-    return totalCost;
+    return subtotal;
 }
 
 Date Sale::GetOrderDate() const{

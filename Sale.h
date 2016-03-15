@@ -19,7 +19,7 @@ class Sale
     int    memberID;
     QString itemName;
     int    quantityPurchased;
-    float  totalCost;
+    float  subtotal;
     Date   orderDate;
 
 public:
@@ -36,7 +36,7 @@ public:
         
         int    GetQuantityPurchased() const;
 
-	float  GetTotalCost() const;
+	float  GetSubtotal() const;
         
         Date   GetOrderDate() const;
         

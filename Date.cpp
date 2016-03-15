@@ -77,16 +77,16 @@ QString Date::toString() const{
         }
     }
     
-    oss << year << "/";
+    oss << year << "-";
     
     if(month < 10){
         oss << 0;
     }
     
-    oss << month << "/";
-    
+    oss << month << "-";
+
     if(day < 10){
-        oss < 0;
+        oss << 0;
     }
     
     oss << day;

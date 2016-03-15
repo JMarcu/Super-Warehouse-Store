@@ -19,6 +19,7 @@
 #include "sqlite3.h"
 
 #include "DailySalesReport.h"
+#include "ItemReport.h"
 
 using namespace std;
 
@@ -32,6 +33,8 @@ public:
 
     //Accessors
     Member& GetMember(int id) const;
+    list<Sale>* GetSales(Date day) const;
+    list<Sale>* GetSales(const Item& item) const;
     list<Sale>& GetAllSales() const; 
 
     //Modifiers
@@ -45,12 +48,12 @@ public:
     void DeleteSale(const Sale& sale);
     
     //Report Builders
-    DailySalesReport GetDailySalesReport(Date day) const;
+    const DailySalesReport* GetDailySalesReport(Date day) const;
 //    TotalPurchaseReport getTotalPurchaseReport() const;
 //    TotalItemReport getTotalItemReport() const;
 //    RebateReport getRebateReport() const;
 //    ExpirationReport getExpirationReport(Date month) const;
-//    ItemReport getItemReport(const Item& item) const;
+    const ItemReport* GetItemReport(const Item& item) const;
 //    MemberPurchaseReport getMemberPurchaseReport(int memberID) const;
 //    MemberPurchaseReport getMemberPurchaseReport(string memberName) const;
 //    RegularConversionReport getRegularConversionReport() const;

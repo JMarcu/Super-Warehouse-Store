@@ -17,7 +17,7 @@ class Date {
 	public:
 
 		Date();
-		Date(int monthIn, int dayIn, int yeaerIn);
+		Date(int monthIn, int dayIn, int yearIn);
                 Date(QString dateString);
 
 		virtual ~Date();

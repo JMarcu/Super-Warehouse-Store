@@ -21,7 +21,7 @@ class Member
 {
 public:
 
-	Member(string n, int id, double t, Date exp, bool isEx);
+	Member(QString n, int id, double t, Date exp, bool isEx);
 
 	/*********************************************************************
 	 * UpdateExpirationDate(int newMonth,
@@ -44,7 +44,7 @@ public:
 	 * -------------------------------------------------------------------
 	 * Returns the member's name that calls this function
 	 **********************************************************************/
-	string GetName() const;
+	QString GetName() const;
 
 	/*********************************************************************
 	 * GetNumber() const
@@ -98,7 +98,7 @@ public:
         double GetRebate() const;
 
 private:
-	string 	name;		// Members Name
+	QString name;		// Members Name
 	int 	number;		// Membership id member
 	Date 	expiration;	// Membership expiration date
 	double 	totalSpent;	// Total member spent
