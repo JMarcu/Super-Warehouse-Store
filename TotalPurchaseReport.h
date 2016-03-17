@@ -24,16 +24,17 @@ using namespace std;
 
 class TotalPurchaseReport{
 private: 
-    vector<Member>      allMembers;
+    vector<Member>      members;
     vector<list<Sale> > purchases;
     vector<double>      totals;
 
 public:
-    TotalPurchaseReport(list<Sale> sales);
+    TotalPurchaseReport(const list<Member>* memList,
+                        const list<Sale>*   saleList);
     
-    Member     getMember    (int index);
-    list<Sale> getPurchases (int index);
-    double     getGrandTotal(int index);
+    const Member& GetMember    (int index);
+    const list<Sale>& GetPurchases (int index);
+    double GetGrandTotal(int index);
 };
     
 

@@ -7,34 +7,19 @@
 
 #include "ExpirationReport.h"
 
-ExpirationReport::ExpirationReport()
-{
-	expiredAccounts.clear();
+ExpirationReport::ExpirationReport(Date month, list<Member>* members){
+    expirationMonth = month;
+    expiredAccounts = *members;
 }
 
-ExpirationReport::~ExpirationReport()
-{
-	expiredAccounts.clear();
+ExpirationReport::~ExpirationReport(){
+    expiredAccounts.clear();
 }
 
-ExpirationReport::ExpirationReport(list<ExecutiveMember> membersIn,
-								   Date 				 expirationDate)
-{
-	list<ExecutiveMember>::iterator executive = membersIn.begin();
-
-	while(executive != membersIn.end())
-	{
-		if(executive->GetExpiration().GetMonth() == expirationDate.GetMonth())
-		{
-			expiredAccounts.push_back(*executive);
-		}
-
-		executive++;
-
-	}//END - (executive != membersIn.end())
+const list<Member>& ExpirationReport::GetExpiredAccounts() const{
+    return expiredAccounts;
 }
 
-list<ExecutiveMember> ExpirationReport::GetExpiredAccounts() const
-{
-	return expiredAccounts;
+const Date& ExpirationReport::GetExpirationMonth() const{
+    return expirationMonth;
 }

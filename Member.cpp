@@ -46,7 +46,7 @@ void Member::SetExpiration( int newMonth, int newDay, int newYear)
  **********************************************************************/
 float Member::GetRenewalAmount() const
 {
-	return 45.0;
+    return (isExecutive ? 125 : 45);
 }
 
 /*********************************************************************
@@ -78,18 +78,16 @@ int Member::GetID() const
  **********************************************************************/
 bool Member::ShouldConvertMembership() const
 {
-	bool convert;
+    bool convert;
 
-	if( (totalSpent * .035) >= 45.0)
-	{
-		convert = true;
-	}
-	else
-	{
-		convert = false;
-	}
-
-	return convert;
+    if(isExecutive){
+        convert = GetRenewalAmount() > GetRebate();
+    }
+    else{
+        convert = GetRenewalAmount() < totalSpent * 0.035;
+    }
+    
+    return convert;
 }
 
 /*********************************************************************
@@ -101,8 +99,6 @@ void Member::ConvertMembership()
 {
     isExecutive = !isExecutive;
 }
-
-
 
 /*********************************************************************
  * GettMembership()

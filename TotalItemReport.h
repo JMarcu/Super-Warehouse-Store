@@ -8,28 +8,27 @@
 #ifndef TOTALITEMREPORT_H_
 #define TOTALITEMREPORT_H_
 
-
-#include "ExecutiveMember.h"
-#include "Database.h"
 #include "Sale.h"
 #include "Items.h"
-#include <sstream>
 #include <list>
-#include "sqlite3.h"
+#include <vector>
 
 class TotalItemReport
 {
 public:
-	TotalItemReport();
+	TotalItemReport(const list<Item>* i,
+                        const list<Sale>* sales);
 
-	TotalItemReport(list<Sale> soldIn);
+	~TotalItemReport();
 
-	virtual ~TotalItemReport();
-
-
-
+        const Item& GetItem(int index) const;
+        int         GetQuantitySold(int index) const;
+        double      GetRevenue(int index) const;
+        
 private:
-	list<Sale> sales;
+    vector<Item>   items;
+    vector<int>    quantitiesSold;
+    vector<double> revenues;
 
 };
 

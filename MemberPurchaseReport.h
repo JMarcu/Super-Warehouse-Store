@@ -8,34 +8,24 @@
 #ifndef MEMBERPURCHASEREPORT_H_
 #define MEMBERPURCHASEREPORT_H_
 
-
-#include "ExecutiveMember.h"
-#include "Database.h"
 #include "Sale.h"
-#include "Items.h"
-#include <sstream>
+#include "Member.h"
 #include <list>
-#include "sqlite3.h"
 
 class MemberPurchaseReport
 {
 public:
-	MemberPurchaseReport();
+	MemberPurchaseReport(const Member*     member,
+                             const list<Sale>* sales);
 
-	MemberPurchaseReport(list<RegularMember>   regularIn,
-					     list<ExecutiveMember> executiveIn,
-					     list<Sale> 		   salesIn,
-					     string    			   memberName);
+	~MemberPurchaseReport();
 
-	MemberPurchaseReport(list<Sale> 		     salesIn,
-						 int				     idIn);
-
-	virtual ~MemberPurchaseReport();
-
-	list<Sale> GetSales() const;
-
-	list<Sale> 			memberSales;
-
+	const list<Sale>& GetSales()  const;
+        const Member&     GetMember() const;
+        
+private:
+    const list<Sale>* sales;
+    const Member*     member;
 };
 
 #endif /* MEMBERPURCHASEREPORT_H_ */

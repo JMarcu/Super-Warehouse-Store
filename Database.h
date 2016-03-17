@@ -20,6 +20,13 @@
 
 #include "DailySalesReport.h"
 #include "ItemReport.h"
+#include "MemberPurchaseReport.h"
+#include "TotalItemReport.h"
+#include "RebatesReport.h"
+#include "TotalPurchaseReport.h"
+#include "ExpirationReport.h"
+#include "RegularConversionReport.h"
+#include "ExecutiveConversionReport.h"
 
 using namespace std;
 
@@ -32,10 +39,16 @@ public:
     ~Database();
 
     //Accessors
-    Member& GetMember(int id) const;
+    Member* GetMember(int id) const;
+    Member* GetMember(QString name) const;
+    list<Member>* GetAllMembers() const;
+    list<Member>* GetRegularMembers() const;
+    list<Member>* GetExecutiveMembers() const;
     list<Sale>* GetSales(Date day) const;
     list<Sale>* GetSales(const Item& item) const;
-    list<Sale>& GetAllSales() const; 
+    list<Sale>* GetSales(const Member& member) const;
+    list<Sale>* GetAllSales() const;
+    list<Item>* GetAllItems() const;
 
     //Modifiers
     void AddMember(const RegularMember& member);
@@ -49,15 +62,15 @@ public:
     
     //Report Builders
     const DailySalesReport* GetDailySalesReport(Date day) const;
-//    TotalPurchaseReport getTotalPurchaseReport() const;
-//    TotalItemReport getTotalItemReport() const;
-//    RebateReport getRebateReport() const;
-//    ExpirationReport getExpirationReport(Date month) const;
+    const TotalPurchaseReport* GetTotalPurchaseReport() const;
+    const TotalItemReport* GetTotalItemReport() const;
+    const RebatesReport* GetRebatesReport() const;
+    const ExpirationReport* GetExpirationReport(Date month) const;
     const ItemReport* GetItemReport(const Item& item) const;
-//    MemberPurchaseReport getMemberPurchaseReport(int memberID) const;
-//    MemberPurchaseReport getMemberPurchaseReport(string memberName) const;
-//    RegularConversionReport getRegularConversionReport() const;
-//    ExecutiveConversionReport getExecutiveConversionReport() const;
+    const MemberPurchaseReport* GetMemberPurchaseReport(int id) const;
+    const MemberPurchaseReport* GetMemberPurchaseReport(QString name) const;
+    const RegularConversionReport* GetRegularConversionReport() const;
+    const ExecutiveConversionReport* GetExecutiveConversionReport() const;
 };
 
 //Callback Functions

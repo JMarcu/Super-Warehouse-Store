@@ -8,27 +8,21 @@
 #ifndef EXPIRATIONREPORT_H_
 #define EXPIRATIONREPORT_H_
 
-#include "ExecutiveMember.h"
-#include "Database.h"
-#include "Sale.h"
-#include "Items.h"
-#include <sstream>
+#include "Member.h"
 #include <list>
-#include "sqlite3.h"
 
 class ExpirationReport {
 
 public:
-	ExpirationReport();
-	virtual ~ExpirationReport();
+    ExpirationReport(Date month, list<Member>* members);
+    ~ExpirationReport();
 
-	ExpirationReport(list<ExecutiveMember> membersIn, Date expirationDate);
-
-	list<ExecutiveMember> GetExpiredAccounts() const;
-
+    const list<Member>& GetExpiredAccounts() const;
+    const Date& GetExpirationMonth() const;
 
 private:
-	list<ExecutiveMember> expiredAccounts;
+    list<Member> expiredAccounts;
+    Date expirationMonth;
 };
 
 #endif /* EXPIRATIONREPORT_H_ */

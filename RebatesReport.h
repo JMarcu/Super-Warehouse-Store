@@ -8,29 +8,20 @@
 #ifndef REBATESREPORT_H_
 #define REBATESREPORT_H_
 
-
-#include "ExecutiveMember.h"
-#include "Database.h"
-#include "Sale.h"
-#include "Items.h"
-#include <sstream>
+#include "Member.h"
 #include <list>
-#include "sqlite3.h"
 
 class RebatesReport
 {
 public:
-	RebatesReport();
+    RebatesReport(list<Member>* membersIn);
 
-	RebatesReport(list<ExecutiveMember> membersIn);
+    ~RebatesReport();
 
-	virtual ~RebatesReport();
-
-	list<ExecutiveMember> GetRebatesReport() const;
-
+    const list<Member>& GetExecutiveMembers() const;
 
 private:
-	list<ExecutiveMember> rebates;
+    list<Member>* rebates;
 };
 
 #endif /* REBATESREPORT_H_ */

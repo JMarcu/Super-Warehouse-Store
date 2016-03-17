@@ -7,28 +7,15 @@
 
 #include "RebatesReport.h"
 
-RebatesReport::RebatesReport()
-{
-	rebates.clear();
+RebatesReport::RebatesReport(list<Member>* membersIn){
+    rebates = membersIn;
 }
 
-RebatesReport::RebatesReport(list<ExecutiveMember> membersIn)
-{
-	list<ExecutiveMember>::iterator executive = membersIn.begin();
-
-	while(executive != membersIn.end())
-	{
-		rebates.push_back(*executive);
-		executive++;
-	}
+RebatesReport::~RebatesReport(){
+    rebates->clear();
+    delete rebates;
 }
 
-RebatesReport::~RebatesReport()
-{
-	rebates.clear();
-}
-
-list<ExecutiveMember> RebatesReport::GetRebatesReport() const
-{
-	return rebates;
+const list<Member>& RebatesReport::GetExecutiveMembers() const{
+    return *rebates;
 }

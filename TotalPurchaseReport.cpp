@@ -6,14 +6,37 @@
 
 #include "TotalPurchaseReport.h"
 
-TotalPurchaseReport::TotalPurchaseReport(list<Sale> sales){
-    list<Sale>::iterator it = sales.begin();
+TotalPurchaseReport::TotalPurchaseReport(const list<Member>* memList,
+                                         const list<Sale>*   saleList){
+    list<Member>::const_iterator memIt  = memList->begin();
+    list<Sale>::const_iterator   saleIt = saleList->begin();
+    int index;
     
-    while(it != sales.end()){
+    index = 0;
+    while(memIt != memList->end()){
+        members[index] = *memIt;
+        totals[index] = 0;
         
+        while(memIt->GetID() == saleIt->GetMemberID()){
+            purchases[index].push_back(*saleIt);
+            totals[index] += saleIt->GetSubtotal();
+            
+            saleIt++;
+        }
+        
+        memIt++;
+        index++;
     }
 }
 
-Member     getMember    (int index);
-list<Sale> getPurchases (int index);
-double     getGrandTotal(int index);
+const Member& TotalPurchaseReport::GetMember (int index){
+    return members[index];
+}
+
+const list<Sale>& TotalPurchaseReport::GetPurchases(int index){
+    return purchases[index];
+}
+
+double TotalPurchaseReport::GetGrandTotal(int index){
+    return totals[index];
+}
