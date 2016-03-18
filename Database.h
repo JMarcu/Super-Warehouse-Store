@@ -8,8 +8,6 @@
 #ifndef DATABASE_H_
 #define DATABASE_H_
 
-#include "RegularMember.h"
-#include "ExecutiveMember.h"
 #include "Member.h"
 #include "Date.h"
 #include "Items.h"
@@ -51,10 +49,8 @@ public:
     list<Item>* GetAllItems() const;
 
     //Modifiers
-    void AddMember(const RegularMember& member);
-    void AddMember(const ExecutiveMember& member);
-    void DeleteMember(const RegularMember& member);
-    void DeleteMember(const ExecutiveMember& member);
+    void AddMember(const Member& member);
+    void DeleteMember(const Member& member);
     void AddItem(const Item& item);
     void DeleteItem(const Item& item);
     void AddSale(const Sale& sale);

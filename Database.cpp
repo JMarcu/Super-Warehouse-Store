@@ -272,15 +272,15 @@ list<Item>* Database::GetAllItems() const{
     return items;
 }
 
-void Database::AddMember(const RegularMember& member){
+void Database::AddMember(const Member& member){
     char* errMsg;
     ostringstream sqlCmmd;
     sqlCmmd << "INSERT INTO Members (id, name, expiration, total_spent, is_executive) "
-            << "VALUES (" << member.GetNumber()                << ", "
-                          << "'" << member.GetMember() << "'"  << ", "
+            << "VALUES (" << member.GetID() << ", "
+                          << "'" << member.GetName().toStdString() << "'"  << ", "
                           << "'" << member.GetExpiration().toString().toStdString() << "'" << ", "
-                          << member.GetTotalSpent()            << ", " 
-                          << "'false'"
+                          << member.GetTotalSpent() << ", " 
+                          << member.IsExecutive() 
             << ");";
 
     sqlite3_exec(db, sqlCmmd.str().c_str(), NULL, 0, &errMsg);
@@ -290,37 +290,16 @@ void Database::AddMember(const RegularMember& member){
     }
 }
 
-void Database::AddMember(const ExecutiveMember& member){
-    const RegularMember* mem = &member;
-    AddMember(*mem);
-    
+void Database::DeleteMember(const Member& member){
     char* errMsg;
     ostringstream sqlCmmd;
-    sqlCmmd << "UPDATE Members SET is_executive='true', "
-                               << "rebate = " << member.GetRebate() << " "
-            << "WHERE id=" << member.GetNumber();
-    sqlite3_exec(db, sqlCmmd.str().c_str(), NULL, 0, &errMsg);
-    
-    if(errMsg != NULL){
-        cerr << errMsg << endl;
-    }
-}
-
-void Database::DeleteMember(const RegularMember& member){
-    char* errMsg;
-    ostringstream sqlCmmd;
-    sqlCmmd << "DELETE FROM Members WHERE (rowid = " << member.GetNumber() << ")";
+    sqlCmmd << "DELETE FROM Members WHERE (id = " << member.GetID() << ")";
     
     sqlite3_exec(db, sqlCmmd.str().c_str(), NULL, 0, &errMsg);
     
     if(errMsg != NULL){
         cerr << errMsg;
     }
-}
-
-void Database::DeleteMember(const ExecutiveMember& member){
-    const RegularMember* mem = &member;
-    DeleteMember(*mem);
 }
 
 void Database::AddItem(const Item& item){

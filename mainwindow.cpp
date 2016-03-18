@@ -75,7 +75,7 @@ void MainWindow::on_tableWidget_itemlist_cellClicked(int row, int column)
     }
 }
 
-void on_tableWidget_memberlist_cellClicked(int row, int column)
+void MainWindow::on_tableWidget_memberlist_cellClicked(int row, int column)
 {
     switch(column)
     {
