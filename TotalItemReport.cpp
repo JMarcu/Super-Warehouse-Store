@@ -7,20 +7,27 @@
 
 #include "TotalItemReport.h"
 
-TotalItemReport::TotalItemReport(const list<Item>* i,
-                                 const list<Sale>* sales){
+TotalItemReport::TotalItemReport(list<Item>* i,
+                                 list<Sale>* sales){
+    items.resize(i->size());
+    quantitiesSold.resize(i->size());
+    revenues.resize(i->size());
+    
     list<Item>::const_iterator itemIt = i->begin();
-    list<Sale>::const_iterator saleIt = sales->begin();
+    list<Sale>::const_iterator saleIt;
     int index = 0;
     
     while(itemIt != i->end()){
-        items.push_back(*itemIt);
-        
+        items[index] = *itemIt;
         quantitiesSold[index] = 0;
-        revenues[index] = 0;
-        while(saleIt->GetItemName() == itemIt->GetItem()){
-            quantitiesSold[index] += saleIt->GetQuantityPurchased();
-            revenues[index] += saleIt->GetSubtotal();
+        revenues[index]       = 0;
+        saleIt = sales->begin();
+        
+        while(saleIt != sales->end()){
+            if(saleIt->GetItemName() == itemIt->GetItem()){
+                quantitiesSold[index] += saleIt->GetQuantityPurchased();
+                revenues[index] += saleIt->GetSubtotal();               
+            }
             
             saleIt++;
         }
@@ -28,6 +35,11 @@ TotalItemReport::TotalItemReport(const list<Item>* i,
         itemIt++;
         index++;
     }
+    
+    i->clear();
+    sales->clear();
+    delete i;
+    delete sales;
 }
 
 TotalItemReport::~TotalItemReport(){
@@ -37,14 +49,32 @@ TotalItemReport::~TotalItemReport(){
 }
 
 const Item& TotalItemReport::GetItem(int index) const{
-    return items[index];
+    if(index < ItemCount()){
+        return items[index];
+    }
+    else{
+        throw new out_of_range("Index out of range when accessing TotalItemReport.");
+    }
 }
 
 int TotalItemReport::GetQuantitySold(int index) const{
-    return quantitiesSold[index];
+    if(index < ItemCount()){
+        return quantitiesSold[index];
+    }
+    else{
+        throw new out_of_range("Index out of range when accessing TotalItemReport.");
+    }
 }
 
 double TotalItemReport::GetRevenue(int index) const{
-    return revenues[index];
+    if(index < ItemCount()){
+        return revenues[index];
+    }
+    else{
+        throw new out_of_range("Index out of range when accessing TotalItemReport.");
+    }
 }
 
+int TotalItemReport::ItemCount() const{
+    return items.size();
+}

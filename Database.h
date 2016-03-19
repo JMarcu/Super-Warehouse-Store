@@ -51,17 +51,21 @@ public:
     //Modifiers
     void AddMember(const Member& member);
     void DeleteMember(const Member& member);
+    void UpdateMember(const Member& member);
     void AddItem(const Item& item);
     void DeleteItem(const Item& item);
     void AddSale(const Sale& sale);
     void DeleteSale(const Sale& sale);
     
-    //Report Builders
-    const DailySalesReport* GetDailySalesReport(Date day) const;
+    /**************************************************************************
+     * REPORT BUILDERS - These will generate pointers to reports. For 
+     * information on what the reports contain, see their documentation.
+     **************************************************************************/
+    const DailySalesReport* GetDailySalesReport(Date day, int memType=0) const;
     const TotalPurchaseReport* GetTotalPurchaseReport() const;
     const TotalItemReport* GetTotalItemReport() const;
     const RebatesReport* GetRebatesReport() const;
-    const ExpirationReport* GetExpirationReport(Date month) const;
+    const ExpirationReport* GetExpirationReport(const Date& month) const;
     const ItemReport* GetItemReport(const Item& item) const;
     const MemberPurchaseReport* GetMemberPurchaseReport(int id) const;
     const MemberPurchaseReport* GetMemberPurchaseReport(QString name) const;

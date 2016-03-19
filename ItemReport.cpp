@@ -7,18 +7,23 @@
 
 #include "ItemReport.h"
 
-ItemReport::ItemReport(const list<Sale>& sales, const Item& i){
+ItemReport::ItemReport(list<Sale>* sales, const Item& i){
     item = i;
     
     quantity = 0;
     revenue  = 0;
         
-    list<Sale>::const_iterator it = sales.begin();
-    while(it != sales.end())
+    list<Sale>::iterator it = sales->begin();
+    while(it != sales->end())
     {
-        quantity++;
-        revenue += it->GetSubtotal();
+        quantity += it->GetQuantityPurchased();
+        revenue  += it->GetSubtotal();
+        
+        it++;
     }//END - (sales != item.begin())
+    
+    sales->clear();
+    delete sales;
 }
 
 const Item& ItemReport::GetItem() const

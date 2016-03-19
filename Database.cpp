@@ -37,11 +37,10 @@ Member* Database::GetMember(int id) const{
 
 Member* Database::GetMember(QString name) const{
     ostringstream sqlCmmd;
-    sqlCmmd << "SELECT * FROM Members WHERE name=?;";
+    sqlCmmd << "SELECT * FROM Members WHERE name='"
+            << name.toStdString() << "';";
     sqlite3_stmt* stmt;
     int rc = sqlite3_prepare_v2(db, sqlCmmd.str().c_str(), -1, &stmt, NULL);
-    
-    rc = sqlite3_bind_text(stmt, 1, name.toStdString().c_str(), strlen(name.toStdString().c_str()), NULL);
     
     rc = sqlite3_step(stmt);
     
@@ -103,6 +102,7 @@ list<Member>* Database::GetRegularMembers() const{
 
 list<Member>* Database::GetExecutiveMembers() const{
     list<Member>* members = new list<Member>;
+    Member* memPtr;
     
     ostringstream sqlCmmd;
     sqlCmmd << "SELECT * FROM Members WHERE is_executive=1 ORDER BY id;";
@@ -111,13 +111,16 @@ list<Member>* Database::GetExecutiveMembers() const{
     
     rc = sqlite3_step(stmt);
     while(rc != SQLITE_DONE){
-        members->push_back(Member(
+        memPtr = new Member(
                 QString(static_cast<const char*>(sqlite3_column_blob(stmt, 1))),
                 sqlite3_column_int(stmt, 0),
                 sqlite3_column_double(stmt, 3),
                 Date(QString(static_cast<const char*>(sqlite3_column_blob(stmt, 2)))),
                 sqlite3_column_int (stmt, 4)
-                ));
+            );
+        
+        members->push_back(*memPtr);
+        delete memPtr;
         
         rc = sqlite3_step(stmt);
     }
@@ -128,18 +131,16 @@ list<Member>* Database::GetExecutiveMembers() const{
 list<Sale>* Database::GetSales(Date day) const{
     list<Sale>* sales = new list<Sale>;
     Sale* salePtr;
-    
-    ostringstream sqlCmmd;
-    sqlCmmd << "SELECT * FROM Sales WHERE order_date=?;";
-    sqlite3_stmt* stmt;
-    int rc = sqlite3_prepare_v2(db, sqlCmmd.str().c_str(), -1, &stmt, NULL);
 
-    const char* dayStr = day.toString().toStdString().c_str();
-    
-    rc = sqlite3_bind_text(stmt, 1, dayStr, strlen(dayStr), NULL);
+    ostringstream sqlCmmd;
+    sqlCmmd << "SELECT * FROM Sales WHERE order_date='"
+            << day.toString().toStdString() 
+            << "' ORDER BY member_id, item_name;";
+    sqlite3_stmt* stmt;
+    cout << sqlCmmd.str() << endl;
+    int rc = sqlite3_prepare_v2(db, sqlCmmd.str().c_str(), -1, &stmt, NULL);
     
     rc = sqlite3_step(stmt);
-    
     while(rc != SQLITE_DONE){
         
         salePtr = new Sale(
@@ -163,16 +164,13 @@ list<Sale>* Database::GetSales(const Item& item) const{
     Sale* salePtr;
     
     ostringstream sqlCmmd;
-    sqlCmmd << "SELECT * FROM Sales WHERE item_name=?;";
+    sqlCmmd << "SELECT * FROM Sales WHERE item_name='"
+            << item.GetItem().toStdString() << "';";
     sqlite3_stmt* stmt;
     int rc = sqlite3_prepare_v2(db, sqlCmmd.str().c_str(), -1, &stmt, NULL);
-
-    const char* dayStr = item.GetItem().toStdString().c_str();
-    
-    rc = sqlite3_bind_text(stmt, 1, dayStr, strlen(dayStr), NULL);
     
     rc = sqlite3_step(stmt);
-    
+ 
     while(rc != SQLITE_DONE){
         
         salePtr = new Sale(
@@ -184,6 +182,7 @@ list<Sale>* Database::GetSales(const Item& item) const{
         );
         
         sales->push_back(*salePtr);
+        delete salePtr;
         
         rc = sqlite3_step(stmt);
     }
@@ -196,7 +195,7 @@ list<Sale>* Database::GetSales(const Member& member) const{
     Sale* salePtr;
     
     ostringstream sqlCmmd;
-    sqlCmmd << "SELECT * FROM Sales WHERE member_id=?;";
+    sqlCmmd << "SELECT * FROM Sales WHERE member_id=? ORDER BY item_name;";
     sqlite3_stmt* stmt;
     int rc = sqlite3_prepare_v2(db, sqlCmmd.str().c_str(), -1, &stmt, NULL);
     
@@ -227,7 +226,7 @@ list<Sale>* Database::GetAllSales() const{
     Sale* salePtr;
     
     ostringstream sqlCmmd;
-    sqlCmmd << "SELECT * FROM Sales";
+    sqlCmmd << "SELECT * FROM Sales ORDER BY member_id";
     sqlite3_stmt* stmt;
     int rc = sqlite3_prepare_v2(db, sqlCmmd.str().c_str(), -1, &stmt, NULL);
     
@@ -235,23 +234,25 @@ list<Sale>* Database::GetAllSales() const{
     
     while(rc != SQLITE_DONE){
         salePtr = new Sale(
-            sqlite3_column_int(stmt, 1),
-            QString(static_cast<const char*>(sqlite3_column_blob(stmt, 2))),
-            sqlite3_column_int(stmt, 3),
-            sqlite3_column_double(stmt, 4),
-            Date(QString(static_cast<const char*>(sqlite3_column_blob(stmt, 5))))
+            sqlite3_column_int(stmt, 0),
+            QString(static_cast<const char*>(sqlite3_column_blob(stmt, 1))),
+            sqlite3_column_int(stmt, 2),
+            sqlite3_column_double(stmt, 3),
+            Date(QString(static_cast<const char*>(sqlite3_column_blob(stmt, 4))))
         );
-        
+
         sales->push_back(*salePtr);
-        
+        delete salePtr;
+     
         rc = sqlite3_step(stmt);
     }
-    
+
     return sales;
 }
 
 list<Item>* Database::GetAllItems() const{
     list<Item>* items = new list<Item>;
+    Item* itemPtr;
     
     ostringstream sqlCmmd;
     sqlCmmd << "SELECT * FROM Items ORDER BY name";
@@ -261,10 +262,11 @@ list<Item>* Database::GetAllItems() const{
     rc = sqlite3_step(stmt);
     
     while(rc != SQLITE_DONE){
-        items->push_back(Item(QString::fromStdString(string(static_cast<const char*>(sqlite3_column_blob(stmt, 0)), sqlite3_column_bytes(stmt, 0))),
-                sqlite3_column_double(stmt, 1),
-                sqlite3_column_int(stmt, 2)
-                ));
+        itemPtr = new Item(QString::fromStdString(string(static_cast<const char*>(sqlite3_column_blob(stmt, 0)), sqlite3_column_bytes(stmt, 0))),
+            sqlite3_column_double(stmt, 1));
+        
+        items->push_back(*itemPtr);
+        delete itemPtr;
         
         rc = sqlite3_step(stmt);
     }
@@ -302,13 +304,29 @@ void Database::DeleteMember(const Member& member){
     }
 }
 
+void Database::UpdateMember(const Member& member){
+    char* errMsg;
+    ostringstream sqlCmmd;
+    sqlCmmd << "UPDATE Members SET "
+                << "name='" << member.GetName().toStdString() << "', "
+                << "expiration='" << member.GetExpiration().toString().toStdString().c_str() << "', "
+                << "total_spent=" << member.GetTotalSpent() << ", "
+                << "is_executive=" << (member.IsExecutive() ? 1 : 0) << " "
+            << "WHERE id = " << member.GetID() << ";";
+    
+    sqlite3_exec(db, sqlCmmd.str().c_str(), NULL, 0, &errMsg);
+    
+    if(errMsg != NULL){
+        cerr << errMsg;
+    }
+}
+
 void Database::AddItem(const Item& item){
     char* errMsg;
     ostringstream sqlCmmd;
     sqlCmmd << "INSERT INTO Items (name, price, quantity) "
             << "VALUES (" << "'" << item.GetItem().toStdString() << "', "
-                          <<        item.GetPrice()  << ", "
-                          <<        item.GetAmount() 
+                          <<        item.GetPrice()
             << ");";
 
     sqlite3_exec(db, sqlCmmd.str().c_str(), NULL, 0, &errMsg);
@@ -348,20 +366,30 @@ void Database::AddSale(const Sale& sale){
     }
 }
 
-const DailySalesReport* Database::GetDailySalesReport(Date day) const{
+const DailySalesReport* Database::GetDailySalesReport(Date day, int memType) const{
     list<Sale>*   sales;
     sales = GetSales(day);
-    list<Member> members;
+
+    list<Member>* members = new list<Member>;
     Member* mem;
     
     list<Sale>::iterator it = sales->begin();
     while(it != sales->end()){
         mem = GetMember(it->GetMemberID());
-        members.push_back(*mem);
+
+        if( memType == 0                         ||
+           (memType >  0 &&  mem->IsExecutive()) || 
+           (memType <  0 && !mem->IsExecutive()) 
+          ){
+            members->push_back(*mem);
+        }
+        
+        members->unique();
+        delete mem;
         it++;
     }
     
-    return new DailySalesReport(*sales, members);
+    return new DailySalesReport(sales, members);
 }
 
 const TotalPurchaseReport* Database::GetTotalPurchaseReport() const{
@@ -382,7 +410,7 @@ const RebatesReport* Database::GetRebatesReport() const{
     return new RebatesReport(GetExecutiveMembers());
 }
 
-const ExpirationReport* Database::GetExpirationReport(Date month) const{
+const ExpirationReport* Database::GetExpirationReport(const Date& month) const{
     list<Member>* members = new list<Member>;
     
     ostringstream sqlCmmd;
@@ -411,9 +439,7 @@ const ExpirationReport* Database::GetExpirationReport(Date month) const{
 }
 
 const ItemReport* Database::GetItemReport(const Item& item) const{
-    list<Sale>* sales;
-    sales = GetSales(item);
-    return new ItemReport(*sales, item);
+    return new ItemReport(GetSales(item), item);
 }
 
 const MemberPurchaseReport* Database::GetMemberPurchaseReport(int id) const{

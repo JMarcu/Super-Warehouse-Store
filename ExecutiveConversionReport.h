@@ -17,9 +17,12 @@
 #include "Member.h"
 #include <list>
 
+/* Determine if any Executive customer should convert their membership to 
+ * Regular status.
+ */
 class ExecutiveConversionReport{
 private:
-    list<Member> membersToConvert;
+    list<Member>* membersToConvert;
     
 public:
     ExecutiveConversionReport(list<Member>* allExecMembers);

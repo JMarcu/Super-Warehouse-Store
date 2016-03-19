@@ -11,6 +11,9 @@
 #include "Member.h"
 #include <list>
 
+/*A report that prints out the rebate of all the Executive members sorted by 
+ * membership number.
+ */
 class RebatesReport
 {
 public:

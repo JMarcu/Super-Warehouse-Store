@@ -12,11 +12,14 @@
 #include "Member.h"
 #include <list>
 
+/* A user of your program should be able to enter a membership number or name 
+ * and get a list of the total purchases per that member.
+ */
 class MemberPurchaseReport
 {
 public:
-	MemberPurchaseReport(const Member*     member,
-                             const list<Sale>* sales);
+	MemberPurchaseReport(Member*     member,
+                             list<Sale>* sales);
 
 	~MemberPurchaseReport();
 
@@ -24,8 +27,8 @@ public:
         const Member&     GetMember() const;
         
 private:
-    const list<Sale>* sales;
-    const Member*     member;
+    list<Sale>* sales;
+    Member*     member;
 };
 
 #endif /* MEMBERPURCHASEREPORT_H_ */

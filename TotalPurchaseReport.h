@@ -22,19 +22,23 @@
 
 using namespace std;
 
+/*A report that prints the total purchases for all members sorted
+by membership number. It should also include a grand total of
+the purchases.*/
 class TotalPurchaseReport{
 private: 
     vector<Member>      members;
-    vector<list<Sale> > purchases;
+    list<list<Sale> > purchases;
     vector<double>      totals;
 
 public:
-    TotalPurchaseReport(const list<Member>* memList,
-                        const list<Sale>*   saleList);
+    TotalPurchaseReport(list<Member>* memList,
+                        list<Sale>*   saleList);
     
-    const Member& GetMember    (int index);
-    const list<Sale>& GetPurchases (int index);
-    double GetGrandTotal(int index);
+    const Member& GetMember (int index) const;
+    const list<Sale>& GetPurchases (int index) const;
+    double GetGrandTotal(int index) const;
+    int GetMaxIndex() const;
 };
     
 

@@ -1,7 +1,7 @@
 #include "MemberPurchaseReport.h"
 
-MemberPurchaseReport::MemberPurchaseReport(const Member*     mem,
-                                           const list<Sale>* saleList)
+MemberPurchaseReport::MemberPurchaseReport(Member*     mem,
+                                           list<Sale>* saleList)
 {
     member = mem;
     sales  = saleList;
@@ -9,6 +9,8 @@ MemberPurchaseReport::MemberPurchaseReport(const Member*     mem,
 
 MemberPurchaseReport::~MemberPurchaseReport()
 {
+    sales->clear();
+    
     delete sales;
     delete member;
 }

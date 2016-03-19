@@ -7,25 +7,20 @@
 
 #include "DailySalesReport.h"
 
-DailySalesReport::~DailySalesReport()
-{
-    salesList.clear();
-    members.clear();
-    
-    delete &salesList;
-    delete &members;
-}
-
-
-
-DailySalesReport::DailySalesReport(const list<Sale>&   salesListIn,
-                                   const list<Member>& mems)
+/* Constructor - Reads in pointers to the lists of sales and members. Calculates
+ * the regular and executive member counts from these lists.
+ */
+DailySalesReport::DailySalesReport(list<Sale>*   salesListIn,
+                                   list<Member>* mems)
 {
     members   = mems;
     salesList = salesListIn;
     
-    list<Member>::const_iterator it = mems.begin();
-    while(it != mems.end())
+    execCount = 0;
+    regCount = 0;
+    
+    list<Member>::iterator it = mems->begin();
+    while(it != mems->end())
     {
         if(it->IsExecutive()){
             execCount++;
@@ -33,19 +28,29 @@ DailySalesReport::DailySalesReport(const list<Sale>&   salesListIn,
         else{
             regCount++;
         }
-        
+
         it++;
     }
 }
 
+//Destructor - Clears and deletes the lists.
+DailySalesReport::~DailySalesReport()
+{
+    salesList->clear();
+    members->clear();
+    
+    delete salesList;
+    delete members;
+}
+
 const list<Sale>& DailySalesReport::GetDailySales() const
 {
-	return salesList;
+	return *salesList;
 }
 
 const list<Member>& DailySalesReport::GetAllMembers() const
 {
-	return members;
+	return *members;
 }
 
 int DailySalesReport::GetRegularCount() const

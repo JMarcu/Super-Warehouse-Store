@@ -11,16 +11,11 @@ class Item
 	
 	// Constructors/Destructors
 	Item();
-	Item(QString name, int amounts, double money);
-	~Item();
+	Item(QString name, double money);
 
 //   Methods(Mutators)
 //   -----------------
 	void SetItem(QString name);
-
-	void SetItemProfile(QString name, int amountz, double money);
-
-	void SetAmount(int amountz);
 
 	void SetPrice(double money);
 	
@@ -29,8 +24,6 @@ class Item
 // --------------
 	QString GetItem() const;
 
-	int GetAmount() const;
-
 	double GetPrice() const; 
 
 	
@@ -38,7 +31,6 @@ private:
 //  Data members(variables)
 // -------------------------
     QString itemName;
-    int quantity;
     double price;
 };
 

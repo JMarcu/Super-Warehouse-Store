@@ -10,6 +10,9 @@ RegularConversionReport::RegularConversionReport(list<Member>* allRegularMembers
         
         it++;
     }
+    
+    allRegularMembers->clear();
+    delete allRegularMembers;
 }
 
 RegularConversionReport::~RegularConversionReport(){

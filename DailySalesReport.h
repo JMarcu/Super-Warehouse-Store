@@ -13,22 +13,31 @@
 #include "Member.h"
 #include <list>
 
+/* A sales report for any given day. It should include a list of items
+ * and quantities sold on that day as well names of the members
+ * who shopped that day. Report the total revenue for the given
+ * day. It should also include number of Executive members and
+ * Regular members who shopped during the given day. Provide an
+ * option to generate the report by membership type.
+ */
 class DailySalesReport {
 public:
-	DailySalesReport (const list<Sale>&   salesListIn,
-                          const list<Member>& mems);
-        ~DailySalesReport();
+    //Constructor and Destructor
+    DailySalesReport (list<Sale>*   salesListIn,
+                      list<Member>* mems);
+    ~DailySalesReport();
 
-	const list<Sale>& GetDailySales() const;
-	const list<Member>& GetAllMembers() const;
-	int GetRegularCount() const;
-	int GetExecutiveCount() const;
+    //Getters
+    const list<Sale>& GetDailySales() const;
+    const list<Member>& GetAllMembers() const;
+    int GetRegularCount() const;
+    int GetExecutiveCount() const;
 
 private:
-	list<Sale> salesList;
-	list<Member> members;
-        int regCount;
-        int execCount;
+    list<Sale>* salesList;//List of all relevant sales on the given day.
+    list<Member>* members;//List of all relevant members who mad purchases.
+    int regCount; //Count of all relevant members with regular accounts.
+    int execCount;//Count of all relevant members with executive accounts.
 
 
 };

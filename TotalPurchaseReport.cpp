@@ -6,37 +6,56 @@
 
 #include "TotalPurchaseReport.h"
 
-TotalPurchaseReport::TotalPurchaseReport(const list<Member>* memList,
-                                         const list<Sale>*   saleList){
-    list<Member>::const_iterator memIt  = memList->begin();
-    list<Sale>::const_iterator   saleIt = saleList->begin();
+TotalPurchaseReport::TotalPurchaseReport(list<Member>* memList,
+                                         list<Sale>*   saleList){
+    list<Member>::iterator memIt  = memList->begin();
+    list<Sale>::iterator   saleIt = saleList->begin();
     int index;
+    list<Sale>* salePtr;
+    purchases.resize(memList->size());
     
     index = 0;
     while(memIt != memList->end()){
-        members[index] = *memIt;
-        totals[index] = 0;
+        members.push_back(*memIt);
+        totals.push_back(0);
+        salePtr = new list<Sale>;
         
         while(memIt->GetID() == saleIt->GetMemberID()){
-            purchases[index].push_back(*saleIt);
+            salePtr->push_back(*saleIt);
             totals[index] += saleIt->GetSubtotal();
             
             saleIt++;
         }
         
+        purchases.push_back(*salePtr);
         memIt++;
         index++;
     }
+    
+    memList->clear();
+    saleList->clear();
+    delete memList;
+    delete saleList;
 }
 
-const Member& TotalPurchaseReport::GetMember (int index){
+const Member& TotalPurchaseReport::GetMember (int index) const{
     return members[index];
 }
 
-const list<Sale>& TotalPurchaseReport::GetPurchases(int index){
-    return purchases[index];
+const list<Sale>& TotalPurchaseReport::GetPurchases(int index) const{
+    list<list<Sale> >::const_iterator it = purchases.begin();
+    
+    for(int i = 0; i < index; i++){
+        it++;
+    }
+    
+    return *it;
 }
 
-double TotalPurchaseReport::GetGrandTotal(int index){
+double TotalPurchaseReport::GetGrandTotal(int index) const{
     return totals[index];
+}
+
+int TotalPurchaseReport::GetMaxIndex() const{
+    return members.size();
 }

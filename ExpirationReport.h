@@ -11,17 +11,21 @@
 #include "Member.h"
 #include <list>
 
+/*A user of your program should be able to enter a month and get a list of all 
+ * members whose memberships expire that month as well as the cost to renew 
+ * their memberships.
+ */
 class ExpirationReport {
 
 public:
-    ExpirationReport(Date month, list<Member>* members);
+    ExpirationReport(const Date& month, list<Member>* members);
     ~ExpirationReport();
 
     const list<Member>& GetExpiredAccounts() const;
     const Date& GetExpirationMonth() const;
 
 private:
-    list<Member> expiredAccounts;
+    list<Member>* expiredAccounts;
     Date expirationMonth;
 };
 

@@ -96,6 +96,10 @@ public:
         Date GetExpiration() const;
         
         double GetRebate() const;
+        
+        bool operator==(const Member& compareTo) const;
+        
+        void setTotal(double tot){totalSpent = tot;}
 
 private:
 	QString name;		// Members Name
@@ -103,6 +107,9 @@ private:
 	Date 	expiration;	// Membership expiration date
 	double 	totalSpent;	// Total member spent
         bool    isExecutive;
+        
+        static const double EXECUTIVE_RENEWAL = 125.00;
+        static const double REGULAR_RENEWAL   =  45.00;
 
 };
 

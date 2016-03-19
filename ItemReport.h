@@ -13,10 +13,12 @@
 #include <sstream>
 #include <list>
 
+/* A user of your program should be able to enter an item name and get the 
+quantity of that item sold as well as the total revenue for the item.*/
 class ItemReport
 {
 public:
-    ItemReport(const list<Sale>& sales, const Item& i);
+    ItemReport(list<Sale>* sales, const Item& i);
 
     const Item& GetItem()     const;
     int     GetQuantitySold() const;
