@@ -7,7 +7,7 @@
 
 #include "ExpirationReport.h"
 
-ExpirationReport::ExpirationReport(const Date& month, list<Member>* members){
+ExpirationReport::ExpirationReport(const Date& month, std::list<Member>* members){
     expirationMonth = month;
     expiredAccounts = members;
 }
@@ -17,7 +17,7 @@ ExpirationReport::~ExpirationReport(){
     delete expiredAccounts;
 }
 
-const list<Member>& ExpirationReport::GetExpiredAccounts() const{
+const std::list<Member>& ExpirationReport::GetExpiredAccounts() const{
     return *expiredAccounts;
 }
 

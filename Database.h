@@ -39,14 +39,14 @@ public:
     //Accessors
     Member* GetMember(int id) const;
     Member* GetMember(QString name) const;
-    list<Member>* GetAllMembers() const;
-    list<Member>* GetRegularMembers() const;
-    list<Member>* GetExecutiveMembers() const;
-    list<Sale>* GetSales(Date day) const;
-    list<Sale>* GetSales(const Item& item) const;
-    list<Sale>* GetSales(const Member& member) const;
-    list<Sale>* GetAllSales() const;
-    list<Item>* GetAllItems() const;
+    std::list<Member>* GetAllMembers() const;
+    std::list<Member>* GetRegularMembers() const;
+    std::list<Member>* GetExecutiveMembers() const;
+    std::list<Sale>* GetSales(Date day) const;
+    std::list<Sale>* GetSales(const Item& item) const;
+    std::list<Sale>* GetSales(const Member& member) const;
+    std::list<Sale>* GetAllSales() const;
+    std::list<Item>* GetAllItems() const;
 
     //Modifiers
     void AddMember(const Member& member);

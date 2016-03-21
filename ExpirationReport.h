@@ -18,14 +18,14 @@
 class ExpirationReport {
 
 public:
-    ExpirationReport(const Date& month, list<Member>* members);
+    ExpirationReport(const Date& month, std::list<Member>* members);
     ~ExpirationReport();
 
-    const list<Member>& GetExpiredAccounts() const;
+    const std::list<Member>& GetExpiredAccounts() const;
     const Date& GetExpirationMonth() const;
 
 private:
-    list<Member>* expiredAccounts;
+    std::list<Member>* expiredAccounts;
     Date expirationMonth;
 };
 

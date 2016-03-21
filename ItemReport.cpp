@@ -7,13 +7,13 @@
 
 #include "ItemReport.h"
 
-ItemReport::ItemReport(list<Sale>* sales, const Item& i){
+ItemReport::ItemReport(std::list<Sale>* sales, const Item& i){
     item = i;
     
     quantity = 0;
     revenue  = 0;
         
-    list<Sale>::iterator it = sales->begin();
+    std::list<Sale>::iterator it = sales->begin();
     while(it != sales->end())
     {
         quantity += it->GetQuantityPurchased();

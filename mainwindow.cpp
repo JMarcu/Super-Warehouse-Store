@@ -1,24 +1,20 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-/******************************************************************************************************
-*    NOTICE:
-*           Most of the definitions here are not fully implemented yet, and most requires a database
-*           class object.  This file will be updated after tests with the GUI files.
-*
-******************************************************************************************************/
-
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(Database *db, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->tableWidgetItem->horizontalHeader()->setVisible(true);
 
-    ui->tableWidget_memberlist->resizeColumnsToContents();
+    ui->pushButtonEdit->hide();
+    ui->pushButtonRemove->hide();
 
-    ui->tableWidget_itemlist->resizeColumnsToContents();
+    rowI = 0;
+    rowM = 0;
 
-
+    this->db = db;
 }
 
 MainWindow::~MainWindow()
@@ -26,86 +22,95 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-
-void MainWindow::on_push_AddItem_clicked()
+void MainWindow::AddItemToItemsTable(QString name, int quantity, double price)
 {
+    ui->tableWidgetItem->insertRow(rowI);
+    ui->tableWidgetItem->setItem(rowI,0,new QTableWidgetItem(name));
+    ui->tableWidgetItem->setItem(rowI,1,new QTableWidgetItem(QString::number(quantity)));
+    ui->tableWidgetItem->setItem(rowI,2,new QTableWidgetItem(QString::number(price)));
+    rowI++;
+    ui->tableWidgetMembers->resizeColumnsToContents();
+}
+
+void MainWindow::SortColumn(int column)
+{
+
+   ui->tableWidgetItem->sortItems(column, Qt::AscendingOrder);
 
 }
 
-void MainWindow::on_push_EditItem_clicked()
+void MainWindow::AddMemberToTable(QString name, int id, Date expiration, bool isExecutive)
 {
-
-}
-
-void MainWindow::on_push_RemoveItem_clicked()
-{
-
-}
-
-void MainWindow::on_push_AddMember_clicked()
-{
-
-}
-
-void MainWindow::on_push_EditMember_clicked()
-{
-
-}
-
-void MainWindow::on_push_RemoveMember_clicked()
-{
-
-}
-
-void MainWindow::on_push_ExpireSearch_clicked()
-{
-
-}
-
-void MainWindow::on_tableWidget_itemlist_cellClicked(int row, int column)
-{
-    switch(column)
+    QString executive;
+    if(isExecutive == true)
     {
-        case 1: break;
-
-        case 2: break;
-
-        case 3: break;
+        executive = "Executive";
     }
-}
-
-void MainWindow::on_tableWidget_memberlist_cellClicked(int row, int column)
-{
-    switch(column)
+    else
     {
-        case 1: break;
-
-        case 2: break;
-
-        case 3: break;
-
-        case 4: break;
+        executive = "Regular";
     }
+
+    ui->tableWidgetMembers->insertRow(rowM);
+    ui->tableWidgetMembers->setItem(rowM, 0, new QTableWidgetItem(name));
+    ui->tableWidgetMembers->setItem(rowM, 1, new QTableWidgetItem(QString::number(id)));
+    ui->tableWidgetMembers->setItem(rowM, 2, new QTableWidgetItem(expiration.toString()));
+    ui->tableWidgetMembers->setItem(rowM, 3, new QTableWidgetItem(executive));
+    ui->tableWidgetMembers->setItem(rowM, 4, new QTableWidgetItem(QString::number(0.0)));
+    rowM++;
+    ui->tableWidgetMembers->resizeColumnsToContents();
 }
 
-void MainWindow::on_report_SetAuto_clicked()
+
+void MainWindow::on_pushButtonAdd_clicked()
 {
-    ui->report_SetManual->setCheckState(Qt::Unchecked);
+    AddItemWindow *add = new AddItemWindow();
+
+    connect(add, SIGNAL(ItemAdded(QString,int,double)),
+            this, SLOT(AddItemToItemsTable(QString,int,double)));
+    add->show();
+
 }
 
-void MainWindow::on_report_SetManual_clicked()
+void MainWindow::on_tableWidgetItem_cellClicked(int row, int column)
 {
-    ui->report_SetAuto->setCheckState(Qt::Unchecked);
+
+    ui->pushButtonEdit->show();
+    ui->pushButtonRemove->show();
 }
 
 
-
-void MainWindow::on_push_Report_clicked()
+void MainWindow::on_pushButton_MemberAdd_clicked()
 {
-    reportWindow *i = new reportWindow(this);
-    if(ui->report_SetAuto->checkState() == Qt::Checked)
+    AddMemberWindow *member = new AddMemberWindow();
+    connect(member,SIGNAL(AddMember(QString, int, Date, bool)),
+            this, SLOT(AddMemberToTable(QString, int, Date, bool)));
+
+    member->show();
+}
+
+void MainWindow::on_pushButtonEdit_clicked()
+{
+    editItemWindow *item = new editItemWindow();
+
+
+
+
+
+}
+
+void MainWindow::on_ViewReports_tabBarClicked(int index)
+{
+    std::list<Member> *memList = db->GetAllMembers();
+
+    std::list<Member>::const_iterator members = memList->begin();
+
+
+    while(members != memList->end())
     {
-      i->show();
+        AddMemberToTable(members->GetName(), members->GetID(), members->GetExpiration(), members->IsExecutive());
+        members++;
     }
+
+    delete memList;
 }

@@ -6,12 +6,12 @@
 
 #include "TotalPurchaseReport.h"
 
-TotalPurchaseReport::TotalPurchaseReport(list<Member>* memList,
-                                         list<Sale>*   saleList){
-    list<Member>::iterator memIt  = memList->begin();
-    list<Sale>::iterator   saleIt = saleList->begin();
+TotalPurchaseReport::TotalPurchaseReport(std::list<Member>* memList,
+                                         std::list<Sale>*   saleList){
+    std::list<Member>::iterator memIt  = memList->begin();
+    std::list<Sale>::iterator   saleIt = saleList->begin();
     int index;
-    list<Sale>* salePtr;
+    std::list<Sale>* salePtr;
     purchases.resize(memList->size());
     
     index = 0;
@@ -42,8 +42,8 @@ const Member& TotalPurchaseReport::GetMember (int index) const{
     return members[index];
 }
 
-const list<Sale>& TotalPurchaseReport::GetPurchases(int index) const{
-    list<list<Sale> >::const_iterator it = purchases.begin();
+const std::list<Sale>& TotalPurchaseReport::GetPurchases(int index) const{
+    std::list<std::list<Sale> >::const_iterator it = purchases.begin();
     
     for(int i = 0; i < index; i++){
         it++;
