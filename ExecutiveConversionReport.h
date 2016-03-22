@@ -22,13 +22,13 @@
  */
 class ExecutiveConversionReport{
 private:
-    list<Member>* membersToConvert;
+    std::list<Member>* membersToConvert;
     
 public:
-    ExecutiveConversionReport(list<Member>* allExecMembers);
+    ExecutiveConversionReport(std::list<Member>* allExecMembers);
     ~ExecutiveConversionReport();
     
-    const list<Member>& GetMembersToConvert() const;
+    const std::list<Member>& GetMembersToConvert() const;
 };
 
 #endif /* EXECUTIVECONVERSIONREPORT_H */

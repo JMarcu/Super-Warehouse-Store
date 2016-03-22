@@ -8,6 +8,7 @@
 #include "ItemReport.h"
 #include <stdlib.h>
 #include <iostream>
+#include <QDebug>
 
 Database::Database(string name){    
     sqlite3_open(name.c_str(), &db);
@@ -52,8 +53,8 @@ Member* Database::GetMember(QString name) const{
     return new Member(name, id, tot, exp, isEx);
 }
 
-list<Member>* Database::GetAllMembers() const{
-    list<Member>* members = new list<Member>;
+std::list<Member>* Database::GetAllMembers() const{
+    std::list<Member>* members = new std::list<Member>;
     
     ostringstream sqlCmmd;
     sqlCmmd << "SELECT * FROM Members ORDER BY id;";
@@ -71,13 +72,14 @@ list<Member>* Database::GetAllMembers() const{
                 ));
         
         rc = sqlite3_step(stmt);
+        qDebug() << members->back().GetName();
     }
-    
+    qDebug() << "test over";
     return members;
 }
 
-list<Member>* Database::GetRegularMembers() const{
-    list<Member>* members = new list<Member>;
+std::list<Member>* Database::GetRegularMembers() const{
+   std::list<Member>* members = new std::list<Member>;
     
     ostringstream sqlCmmd;
     sqlCmmd << "SELECT * FROM Members WHERE is_executive=0 ORDER BY id;";
@@ -100,8 +102,8 @@ list<Member>* Database::GetRegularMembers() const{
     return members;
 }
 
-list<Member>* Database::GetExecutiveMembers() const{
-    list<Member>* members = new list<Member>;
+std::list<Member>* Database::GetExecutiveMembers() const{
+    std::list<Member>* members = new std::list<Member>;
     Member* memPtr;
     
     ostringstream sqlCmmd;
@@ -128,8 +130,8 @@ list<Member>* Database::GetExecutiveMembers() const{
     return members;
 }
 
-list<Sale>* Database::GetSales(Date day) const{
-    list<Sale>* sales = new list<Sale>;
+std::list<Sale>* Database::GetSales(Date day) const{
+    std::list<Sale>* sales = new std::list<Sale>;
     Sale* salePtr;
 
     ostringstream sqlCmmd;
@@ -159,8 +161,8 @@ list<Sale>* Database::GetSales(Date day) const{
     return sales;
 }
 
-list<Sale>* Database::GetSales(const Item& item) const{
-    list<Sale>* sales = new list<Sale>;
+std::list<Sale>* Database::GetSales(const Item& item) const{
+    std::list<Sale>* sales = new std::list<Sale>;
     Sale* salePtr;
     
     ostringstream sqlCmmd;
@@ -190,8 +192,8 @@ list<Sale>* Database::GetSales(const Item& item) const{
     return sales;
 }
 
-list<Sale>* Database::GetSales(const Member& member) const{
-        list<Sale>* sales = new list<Sale>;
+std::list<Sale>* Database::GetSales(const Member& member) const{
+        std::list<Sale>* sales = new std::list<Sale>;
     Sale* salePtr;
     
     ostringstream sqlCmmd;
@@ -221,8 +223,8 @@ list<Sale>* Database::GetSales(const Member& member) const{
     return sales;
 }
 
-list<Sale>* Database::GetAllSales() const{
-    list<Sale>* sales = new list<Sale>;
+std::list<Sale>* Database::GetAllSales() const{
+    std::list<Sale>* sales = new std::list<Sale>;
     Sale* salePtr;
     
     ostringstream sqlCmmd;
@@ -250,8 +252,8 @@ list<Sale>* Database::GetAllSales() const{
     return sales;
 }
 
-list<Item>* Database::GetAllItems() const{
-    list<Item>* items = new list<Item>;
+std::list<Item>* Database::GetAllItems() const{
+    std::list<Item>* items = new std::list<Item>;
     Item* itemPtr;
     
     ostringstream sqlCmmd;
@@ -367,13 +369,13 @@ void Database::AddSale(const Sale& sale){
 }
 
 const DailySalesReport* Database::GetDailySalesReport(Date day, int memType) const{
-    list<Sale>*   sales;
+    std::list<Sale>*   sales;
     sales = GetSales(day);
 
-    list<Member>* members = new list<Member>;
+    std::list<Member>* members = new std::list<Member>;
     Member* mem;
     
-    list<Sale>::iterator it = sales->begin();
+    std::list<Sale>::iterator it = sales->begin();
     while(it != sales->end()){
         mem = GetMember(it->GetMemberID());
 
@@ -397,10 +399,10 @@ const TotalPurchaseReport* Database::GetTotalPurchaseReport() const{
 }
 
 const TotalItemReport* Database::GetTotalItemReport() const{
-    list<Sale>* sales;
+    std::list<Sale>* sales;
     sales = GetAllSales();
     
-    list<Item>* items;
+    std::list<Item>* items;
     items = GetAllItems();
     
     return new TotalItemReport(items, sales);
@@ -411,7 +413,7 @@ const RebatesReport* Database::GetRebatesReport() const{
 }
 
 const ExpirationReport* Database::GetExpirationReport(const Date& month) const{
-    list<Member>* members = new list<Member>;
+    std::list<Member>* members = new std::list<Member>;
     
     ostringstream sqlCmmd;
     sqlCmmd << "SELECT * FROM Members WHERE substr(expiration, 1, 7)=? ORDER BY id;";
@@ -446,7 +448,7 @@ const MemberPurchaseReport* Database::GetMemberPurchaseReport(int id) const{
     Member* member;
     member = GetMember(id);
     
-    list<Sale>* sales;
+    std::list<Sale>* sales;
     sales = GetSales(*member);
     
     return new MemberPurchaseReport(member, sales);
@@ -456,7 +458,7 @@ const MemberPurchaseReport* Database::GetMemberPurchaseReport(QString name) cons
     Member* member;
     member = GetMember(name);
     
-    list<Sale>* sales;
+    std::list<Sale>* sales;
     sales = GetSales(*member);
     
     return new MemberPurchaseReport(member, sales);

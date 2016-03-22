@@ -19,8 +19,8 @@ by item name and the total revenue for each item.*/
 class TotalItemReport
 {
 public:
-	TotalItemReport(list<Item>* i,
-                        list<Sale>* sales);
+    TotalItemReport(std::list<Item>* i,
+                        std::list<Sale>* sales);
 
 	~TotalItemReport();
 

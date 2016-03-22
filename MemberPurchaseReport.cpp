@@ -1,7 +1,7 @@
 #include "MemberPurchaseReport.h"
 
 MemberPurchaseReport::MemberPurchaseReport(Member*     mem,
-                                           list<Sale>* saleList)
+                                           std::list<Sale>* saleList)
 {
     member = mem;
     sales  = saleList;
@@ -15,7 +15,7 @@ MemberPurchaseReport::~MemberPurchaseReport()
     delete member;
 }
 
-const list<Sale>& MemberPurchaseReport::GetSales() const{
+const std::list<Sale>& MemberPurchaseReport::GetSales() const{
     return *sales;
 }
 

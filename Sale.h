@@ -11,7 +11,7 @@
 #define SALE_H_
 
 #include <QString>
-#include "Date.h"
+#include "date.h"
 using namespace std;
 
 class Sale

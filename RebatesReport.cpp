@@ -7,7 +7,7 @@
 
 #include "RebatesReport.h"
 
-RebatesReport::RebatesReport(list<Member>* membersIn){
+RebatesReport::RebatesReport(std::list<Member>* membersIn){
     rebates = membersIn;
 }
 
@@ -16,6 +16,6 @@ RebatesReport::~RebatesReport(){
     delete rebates;
 }
 
-const list<Member>& RebatesReport::GetExecutiveMembers() const{
+const std::list<Member>& RebatesReport::GetExecutiveMembers() const{
     return *rebates;
 }

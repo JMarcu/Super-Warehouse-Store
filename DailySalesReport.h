@@ -23,19 +23,19 @@
 class DailySalesReport {
 public:
     //Constructor and Destructor
-    DailySalesReport (list<Sale>*   salesListIn,
-                      list<Member>* mems);
+    DailySalesReport (std::list<Sale>*   salesListIn,
+                      std::list<Member>* mems);
     ~DailySalesReport();
 
     //Getters
-    const list<Sale>& GetDailySales() const;
-    const list<Member>& GetAllMembers() const;
+    const std::list<Sale>& GetDailySales() const;
+    const std::list<Member>& GetAllMembers() const;
     int GetRegularCount() const;
     int GetExecutiveCount() const;
 
 private:
-    list<Sale>* salesList;//List of all relevant sales on the given day.
-    list<Member>* members;//List of all relevant members who mad purchases.
+    std::list<Sale>* salesList;//List of all relevant sales on the given day.
+    std::list<Member>* members;//List of all relevant members who mad purchases.
     int regCount; //Count of all relevant members with regular accounts.
     int execCount;//Count of all relevant members with executive accounts.
 

@@ -17,14 +17,14 @@
 class RebatesReport
 {
 public:
-    RebatesReport(list<Member>* membersIn);
+    RebatesReport(std::list<Member>* membersIn);
 
     ~RebatesReport();
 
-    const list<Member>& GetExecutiveMembers() const;
+    const std::list<Member>& GetExecutiveMembers() const;
 
 private:
-    list<Member>* rebates;
+    std::list<Member>* rebates;
 };
 
 #endif /* REBATESREPORT_H_ */

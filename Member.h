@@ -14,7 +14,7 @@
 #ifndef MEMBER_H
 #define MEMBER_H
 
-#include "Date.h"
+#include "date.h"
 
 
 class Member
@@ -106,7 +106,7 @@ private:
 	int 	number;		// Membership id member
 	Date 	expiration;	// Membership expiration date
 	double 	totalSpent;	// Total member spent
-        bool    isExecutive;
+    bool    isExecutive;
         
         static const double EXECUTIVE_RENEWAL = 125.00;
         static const double REGULAR_RENEWAL   =  45.00;
