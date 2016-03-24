@@ -1,11 +1,12 @@
 #include "additemwindow.h"
 #include "ui_additemwindow.h"
 
-AddItemWindow::AddItemWindow(QWidget *parent) :
+AddItemWindow::AddItemWindow(Database *db, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::AddItemWindow)
 {
     ui->setupUi(this);
+    this->db = db;
 }
 
 AddItemWindow::~AddItemWindow()
@@ -17,11 +18,11 @@ void AddItemWindow::on_pushButton_AddItem_clicked()
 {
     itemName = ui->NameEdit->text();
 
-    itemAmount = ui->AmountEdit->value();
-
     itemPrice = ui->PriceEdit->value();
 
-    emit ItemAdded(itemName, itemAmount, itemPrice);
+    db->AddItem(Item(itemName, itemPrice));
+
+    emit ItemAdded(itemName, itemPrice);
 
 
 

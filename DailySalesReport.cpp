@@ -45,7 +45,7 @@ DailySalesReport::~DailySalesReport()
 
 const std::list<Sale>& DailySalesReport::GetDailySales() const
 {
-	return *salesList;
+    return *salesList;
 }
 
 const std::list<Member>& DailySalesReport::GetAllMembers() const

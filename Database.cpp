@@ -72,9 +72,9 @@ std::list<Member>* Database::GetAllMembers() const{
                 ));
         
         rc = sqlite3_step(stmt);
-        qDebug() << members->back().GetName();
+
     }
-    qDebug() << "test over";
+
     return members;
 }
 
@@ -134,6 +134,8 @@ std::list<Sale>* Database::GetSales(Date day) const{
     std::list<Sale>* sales = new std::list<Sale>;
     Sale* salePtr;
 
+    qDebug() << "Entered GetSales";
+
     ostringstream sqlCmmd;
     sqlCmmd << "SELECT * FROM Sales WHERE order_date='"
             << day.toString().toStdString() 
@@ -143,7 +145,12 @@ std::list<Sale>* Database::GetSales(Date day) const{
     int rc = sqlite3_prepare_v2(db, sqlCmmd.str().c_str(), -1, &stmt, NULL);
     
     rc = sqlite3_step(stmt);
+
+    qDebug() << rc;
+
     while(rc != SQLITE_DONE){
+
+        qDebug() << "ENTERED WHILE LOOP";
         
         salePtr = new Sale(
             sqlite3_column_int(stmt, 0),
@@ -154,7 +161,8 @@ std::list<Sale>* Database::GetSales(Date day) const{
         );
         
         sales->push_back(*salePtr);
-        
+
+
         rc = sqlite3_step(stmt);
     }
     
@@ -376,7 +384,9 @@ const DailySalesReport* Database::GetDailySalesReport(Date day, int memType) con
     Member* mem;
     
     std::list<Sale>::iterator it = sales->begin();
+
     while(it != sales->end()){
+        qDebug() << "Entered while in getDailySalesReport";
         mem = GetMember(it->GetMemberID());
 
         if( memType == 0                         ||
@@ -384,6 +394,8 @@ const DailySalesReport* Database::GetDailySalesReport(Date day, int memType) con
            (memType <  0 && !mem->IsExecutive()) 
           ){
             members->push_back(*mem);
+
+            qDebug() << mem->GetName();
         }
         
         members->unique();

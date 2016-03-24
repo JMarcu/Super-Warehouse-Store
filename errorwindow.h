@@ -2,6 +2,7 @@
 #define ERRORWINDOW_H
 
 #include <QWidget>
+#include "mainwindow.h"
 
 namespace Ui {
 class ErrorWindow;
@@ -12,7 +13,7 @@ class ErrorWindow : public QWidget
     Q_OBJECT
 
 public:
-    explicit ErrorWindow(QWidget *parent = 0);
+    explicit ErrorWindow(int index, QWidget *parent = 0);
     ~ErrorWindow();
 
 private slots:
@@ -20,6 +21,7 @@ private slots:
 
 private:
     Ui::ErrorWindow *ui;
+    QString message;
 };
 
 #endif // ERRORWINDOW_H

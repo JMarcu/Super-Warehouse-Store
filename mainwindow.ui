@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="Menu">
      <attribute name="title">
@@ -53,8 +53,17 @@
       <property name="alternatingRowColors">
        <bool>true</bool>
       </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>100</number>
+      </attribute>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>50</number>
+      </attribute>
       <attribute name="horizontalHeaderStretchLastSection">
        <bool>true</bool>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>30</number>
       </attribute>
       <column>
        <property name="text">
@@ -62,11 +71,6 @@
        </property>
        <property name="textAlignment">
         <set>AlignCenter</set>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Price</string>
        </property>
       </column>
       <column>
@@ -227,14 +231,17 @@
      <attribute name="title">
       <string>Reports</string>
      </attribute>
-     <widget class="QTableWidget" name="tableWidget">
+     <widget class="QTableWidget" name="tableWidget_ViewReports">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>220</y>
+        <y>180</y>
         <width>791</width>
         <height>281</height>
        </rect>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
       </property>
      </widget>
      <widget class="QLabel" name="label">
@@ -260,7 +267,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>70</y>
+        <y>50</y>
         <width>781</width>
         <height>121</height>
        </rect>
@@ -304,7 +311,7 @@
        <item row="1" column="1">
         <widget class="QPushButton" name="ItemsSoldName_Button">
          <property name="text">
-          <string>Items Sold - Name</string>
+          <string>Search Item </string>
          </property>
         </widget>
        </item>
@@ -323,6 +330,31 @@
         </widget>
        </item>
       </layout>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget_SIDE">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>470</y>
+        <width>791</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>New Column</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Number of Executive Members</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Total Revenue</string>
+       </property>
+      </column>
      </widget>
     </widget>
    </widget>

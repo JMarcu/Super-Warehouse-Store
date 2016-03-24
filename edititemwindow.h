@@ -2,6 +2,7 @@
 #define EDITITEMWINDOW_H
 
 #include <QMainWindow>
+#include "Database.h"
 
 namespace Ui {
 class editItemWindow;
@@ -12,11 +13,11 @@ class editItemWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit editItemWindow(QWidget *parent = 0);
+    explicit editItemWindow(Database *db, QWidget *parent = 0);
     ~editItemWindow();
 
 signals:
-        void ItemEdited(QString, int, double);
+        void ItemEdited(QString, double);
 
 private slots:
     void on_buttonBox_edit_accepted();
@@ -28,11 +29,9 @@ private:
 
     QString itemEditName;
 
-    int itemEditAmount;
-
     double itemEditPrice;
 
-    //Items prevItem;
+    Database *db;
 };
 
 #endif // EDITITEMWINDOW_H

@@ -5,6 +5,7 @@
 #include <QIntValidator>
 #include <QString>
 #include "date.h"
+#include "Database.h"
 
 namespace Ui {
 class editMemberWindow;
@@ -15,7 +16,7 @@ class editMemberWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit editMemberWindow(QWidget *parent = 0);
+    explicit editMemberWindow(Database *db, QWidget *parent = 0);
     ~editMemberWindow();
 
 signals:
@@ -39,6 +40,8 @@ private:
     Date expirationDate;
 
     bool isExecutive;
+
+    Database *db;
 };
 
 #endif // EDITMEMBERWINDOW_H

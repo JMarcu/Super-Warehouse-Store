@@ -10,11 +10,20 @@
 #include <QTableWidgetItem>
 #include <QDebug>
 #include "date.h"
-#include "Database.h"
+
+#include "Member.h"
+#include "adddate.h"
 
 namespace Ui {
 class MainWindow;
 }
+
+enum errorMessage
+{
+    NAME_MEM,
+    ID,
+    NAME_ITEM
+};
 
 class MainWindow : public QMainWindow
 {
@@ -29,10 +38,13 @@ signals:
         void AddMember(QString, int, Date, bool);
 
 public slots:
-    void AddItemToItemsTable(QString name, int quantity, double price);
-    void SortColumn(int column);
+    void AddItemToItemsTable(QString name, double price);
     void AddMemberToTable(QString name, int id, Date expiration, bool isExecutive );
     void RemoveMember(int rowRemove);
+    void AddDailySalesReport(Date dateIn);
+    void ExpiredMembershipsReport(Date dateIn);
+    void PopulateMembers();
+    void PopulateItems();
 
 private slots:
 
@@ -50,14 +62,20 @@ private slots:
 
     void on_pushButton_MemberRemove_clicked();
 
-    void PopulateMembers();
-
     void on_ViewMembers_tabBarClicked(int index);
+
+    void on_SalesReport_Button_clicked();
+
+    void on_Expire_Button_clicked();
+
+    void on_Convert_Button_clicked();
 
 private:
     Ui::MainWindow *ui;
     int rowI;
     int rowM;
+    int rowR;
+    int rowS;
     Database *db;
 };
 

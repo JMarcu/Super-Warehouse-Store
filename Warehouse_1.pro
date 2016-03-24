@@ -35,7 +35,8 @@ SOURCES += main.cpp\
     Sale.cpp \
     TotalItemReport.cpp \
     TotalPurchaseReport.cpp \
-    sqlite3.c
+    sqlite3.c \
+    adddate.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -58,7 +59,8 @@ HEADERS  += mainwindow.h \
     Sale.h \
     sqlite3.h \
     TotalItemReport.h \
-    TotalPurchaseReport.h
+    TotalPurchaseReport.h \
+    adddate.h
 
 
 FORMS    += mainwindow.ui \
@@ -66,7 +68,8 @@ FORMS    += mainwindow.ui \
     addmemberwindow.ui \
     edititemwindow.ui \
     editmemberwindow.ui \
-    errorwindow.ui
+    errorwindow.ui \
+    adddate.ui
 
 DISTFILES += \
     ../../../../../Users/ashlyhernandez/Desktop/Super-Warehouse-Store-master 2/ItemClassImplements.txt \

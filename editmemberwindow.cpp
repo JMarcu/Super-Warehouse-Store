@@ -2,11 +2,12 @@
 #include "ui_editmemberwindow.h"
 #include <QWidget>
 
-editMemberWindow::editMemberWindow(QWidget *parent) :
+editMemberWindow::editMemberWindow(Database *db, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::editMemberWindow)
 {
     ui->setupUi(this);
+    this->db = db;
 }
 
 editMemberWindow::~editMemberWindow()
@@ -18,8 +19,8 @@ void editMemberWindow::on_editMemberConform_accepted()
 {
     memberName = ui->memberEditName->text();
 
-    expirationDate.UpdateDate(ui->month->text().toInt(0,10), ui->day->text().toInt(0,10),
-                          ui->year->text().toInt(0,10));
+    expirationDate.UpdateDate(ui->CB_Month->currentIndex(), ui->CB_Day->currentIndex(),
+                          ui->CB_year->currentIndex());
 
     if(ui->comboBoxExecutive->currentIndex() == 0)
     {
@@ -30,6 +31,10 @@ void editMemberWindow::on_editMemberConform_accepted()
         isExecutive = true;
     }
     emit MemberEdit(memberName, this->memberID, expirationDate, isExecutive);
+
+    /**********************
+     * ADD TO DATABSE
+     ************************/
 
     hide();
 }

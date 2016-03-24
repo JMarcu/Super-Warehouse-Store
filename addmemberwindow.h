@@ -7,6 +7,7 @@
 #include <QDebug>
 #include "mainwindow.h"
 #include "date.h"
+#include "Database.h"
 
 namespace Ui {
 class AddMemberWindow;
@@ -17,7 +18,7 @@ class AddMemberWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit AddMemberWindow(QWidget *parent = 0);
+    explicit AddMemberWindow(Database *db, QWidget *parent = 0);
     ~AddMemberWindow();
 
 
@@ -36,6 +37,7 @@ private:
     Date                expiration;
     double              totalSpent;
     bool                isExecutive;
+    Database *db;
 };
 
 #endif // ADDMEMBERWINDOW_H
