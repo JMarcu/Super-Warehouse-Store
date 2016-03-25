@@ -12,7 +12,6 @@ TotalPurchaseReport::TotalPurchaseReport(std::list<Member>* memList,
     std::list<Sale>::iterator   saleIt = saleList->begin();
     int index;
     std::list<Sale>* salePtr;
-    purchases.resize(memList->size());
     
     index = 0;
     while(memIt != memList->end()){
@@ -27,7 +26,7 @@ TotalPurchaseReport::TotalPurchaseReport(std::list<Member>* memList,
             saleIt++;
         }
         
-        purchases.push_back(*salePtr);
+        purchases.push_back(salePtr);
         memIt++;
         index++;
     }
@@ -43,13 +42,7 @@ const Member& TotalPurchaseReport::GetMember (int index) const{
 }
 
 const std::list<Sale>& TotalPurchaseReport::GetPurchases(int index) const{
-    std::list<std::list<Sale> >::const_iterator it = purchases.begin();
-    
-    for(int i = 0; i < index; i++){
-        it++;
-    }
-    
-    return *it;
+    return *purchases[index];
 }
 
 double TotalPurchaseReport::GetGrandTotal(int index) const{

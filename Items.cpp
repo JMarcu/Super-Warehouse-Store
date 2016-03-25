@@ -1,10 +1,16 @@
 #include "Items.h"
+#include <QDebug>
 
 Item::Item()
 {
 	itemName = " ";
 
-	price = 0.00;
+    price = 0.00;
+}
+
+Item::Item(QString name)
+{
+    itemName = name;
 }
 
 

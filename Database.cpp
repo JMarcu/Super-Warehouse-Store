@@ -378,6 +378,8 @@ void Database::AddSale(const Sale& sale){
 
 const DailySalesReport* Database::GetDailySalesReport(Date day, int memType) const{
     std::list<Sale>*   sales;
+
+
     sales = GetSales(day);
 
     std::list<Member>* members = new std::list<Member>;

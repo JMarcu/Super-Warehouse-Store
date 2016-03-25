@@ -9,12 +9,16 @@ ErrorWindow::ErrorWindow(int index, QWidget *parent) :
 
     switch(index)
     {
-    case NAME_MEM : message = "INVALID MEMBER NAME";
-        break;
-    case ID : message = "INVALID ID - ID already exists";
-        break;
-    case NAME_ITEM : message = "INVALID ITEM NAME - item already exists";
-        break;
+        case NAME_MEM : message = "INVALID MEMBER NAME";
+            break;
+        case ID : message = "INVALID ID - ID already exists";
+            break;
+        case NAME_ITEM : message = "INVALID ITEM NAME - Item already exists";
+            break;
+        case ITEM_NF : message = "ITEM NOT FOUND - Try again or press cancel";
+            break;
+        case MEM_NF : message = "MEMBER NOT FOUND - Try again or press cancel";
+            break;
     }
 
     ui->label_Error->setText(message);

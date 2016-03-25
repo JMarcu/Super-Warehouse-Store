@@ -10,7 +10,8 @@
 #include <QTableWidgetItem>
 #include <QDebug>
 #include "date.h"
-
+#include "errorwindow.h"
+#include "searchstring.h"
 #include "Member.h"
 #include "adddate.h"
 
@@ -22,7 +23,9 @@ enum errorMessage
 {
     NAME_MEM,
     ID,
-    NAME_ITEM
+    NAME_ITEM,
+    ITEM_NF,
+    MEM_NF
 };
 
 class MainWindow : public QMainWindow
@@ -40,11 +43,14 @@ signals:
 public slots:
     void AddItemToItemsTable(QString name, double price);
     void AddMemberToTable(QString name, int id, Date expiration, bool isExecutive );
-    void RemoveMember(int rowRemove);
+    void RemoveMember(int rowRemove, int column);
+    void RemoveItem(int rowRemove, int column);
     void AddDailySalesReport(Date dateIn);
     void ExpiredMembershipsReport(Date dateIn);
     void PopulateMembers();
     void PopulateItems();
+    void AddSearchedItem(QString name);
+    void ClearTable(QTableWidget *table);
 
 private slots:
 
@@ -70,12 +76,23 @@ private slots:
 
     void on_Convert_Button_clicked();
 
+    void on_TotalPurchases_Button_clicked();
+
+    void on_ItemsSoldQuantity_Button_clicked();
+
+    void on_Rebates_Button_clicked();
+
+    void on_ItemsSoldName_Button_clicked();
+
+    void on_MemberPurchases_Button_clicked();
+
 private:
     Ui::MainWindow *ui;
     int rowI;
     int rowM;
     int rowR;
     int rowS;
+    int colR;
     Database *db;
 };
 
