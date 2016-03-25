@@ -20,13 +20,17 @@ public:
     ~editMemberWindow();
 
 signals:
-    void MemberEdit(QString, int, Date, bool);
+    void MemberEdit(QString, int, Date, bool, double);
 
 private slots:
 
     void on_editMemberConform_accepted();
 
     void on_editMemberConform_rejected();
+
+    void on_CB_Month_currentIndexChanged(int index);
+
+    void on_CB_year_currentIndexChanged(int index);
 
 private:
     Ui::editMemberWindow *ui;
@@ -40,6 +44,8 @@ private:
     Date expirationDate;
 
     bool isExecutive;
+
+    double totalspent;
 
     Database *db;
 };

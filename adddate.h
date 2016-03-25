@@ -25,6 +25,10 @@ private slots:
 
     Date ReturnDate() const;
 
+    void on_month_currentIndexChanged(int index);
+
+    void on_year_currentIndexChanged(int index);
+
 private:
     Ui::AddDate *ui;
 
