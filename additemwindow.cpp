@@ -16,17 +16,37 @@ AddItemWindow::~AddItemWindow()
 
 void AddItemWindow::on_pushButton_AddItem_clicked()
 {
+    bool valid;
+    valid = true;
+
     itemName = ui->NameEdit->text();
 
     itemPrice = ui->PriceEdit->value();
 
-    db->AddItem(Item(itemName, itemPrice));
+    std::list<Item> *list = db->GetAllItems();
+    std::list<Item>::const_iterator items = list->begin();
 
-    emit ItemAdded(itemName, itemPrice);
+    while(items != list->end())
+    {
+        if(itemName == items->GetItem())
+        {
+            ErrorWindow *error = new ErrorWindow(2);
+            error->show();
+            valid = false;
+        }
 
+        items++;
+    }
 
+    if(valid == true)
+    {
 
-    hide();
+        db->AddItem(Item(itemName, itemPrice));
+
+        emit ItemAdded(itemName, itemPrice);
+
+        hide();
+    }
 }
 
 void AddItemWindow::on_pushButton_ItemCancel_clicked()

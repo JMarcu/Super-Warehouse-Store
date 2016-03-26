@@ -13,7 +13,7 @@ class AddDate : public QWidget
     Q_OBJECT
 
 public:
-    explicit AddDate(QWidget *parent = 0);
+    explicit AddDate(int index, QWidget *parent = 0);
     ~AddDate();
 signals:
     void DateSelected(Date);
@@ -25,14 +25,11 @@ private slots:
 
     Date ReturnDate() const;
 
-    void on_month_currentIndexChanged(int index);
-
-    void on_year_currentIndexChanged(int index);
-
 private:
     Ui::AddDate *ui;
 
     Date date;
+    int index;
 };
 
 #endif // ADDDATE_H

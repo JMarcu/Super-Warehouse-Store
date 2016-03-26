@@ -28,7 +28,7 @@ the purchases.*/
 class TotalPurchaseReport{
 private: 
     vector<Member>      members;
-    std::list<std::list<Sale> > purchases;
+    vector<std::list<Sale>* > purchases;
     vector<double>      totals;
 
 public:

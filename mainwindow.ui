@@ -17,19 +17,32 @@
    <widget class="QTabWidget" name="ViewMembers">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>40</x>
       <y>20</y>
       <width>811</width>
       <height>571</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Menu">
      <attribute name="title">
       <string>Menu</string>
      </attribute>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>761</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;**Bulk Club**&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;____________________________________________________________________&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Press Items to see all items curently in Inventory&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Press Members to see all current members&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Press Reports to see the types of reports that can be generated&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="Items">
      <attribute name="title">
@@ -52,6 +65,12 @@
       </property>
       <property name="alternatingRowColors">
        <bool>true</bool>
+      </property>
+      <property name="sortingEnabled">
+       <bool>true</bool>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
       </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
        <number>100</number>
@@ -231,19 +250,6 @@
      <attribute name="title">
       <string>Reports</string>
      </attribute>
-     <widget class="QTableWidget" name="tableWidget_ViewReports">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>180</y>
-        <width>791</width>
-        <height>281</height>
-       </rect>
-      </property>
-      <property name="editTriggers">
-       <set>QAbstractItemView::NoEditTriggers</set>
-      </property>
-     </widget>
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
@@ -263,98 +269,106 @@
        <string>Click on the type of report you want to view:</string>
       </property>
      </widget>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>50</y>
-        <width>781</width>
-        <height>121</height>
-       </rect>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_3">
-       <item row="0" column="0">
-        <widget class="QPushButton" name="SalesReport_Button">
-         <property name="text">
-          <string>Sales Report</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QPushButton" name="TotalPurchases_Button">
-         <property name="text">
-          <string>Total Purchases</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QPushButton" name="ItemsSoldQuantity_Button">
-         <property name="text">
-          <string>Items Sold - Quantity</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="3">
-        <widget class="QPushButton" name="Rebates_Button">
-         <property name="text">
-          <string>Rebates Due</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QPushButton" name="Expire_Button">
-         <property name="text">
-          <string>Memberships to Expire</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QPushButton" name="ItemsSoldName_Button">
-         <property name="text">
-          <string>Search Item </string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QPushButton" name="MemberPurchases_Button">
-         <property name="text">
-          <string>Member Purchases</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="3">
-        <widget class="QPushButton" name="Convert_Button">
-         <property name="text">
-          <string>Members Who Should Convert</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
      <widget class="QTableWidget" name="tableWidget_SIDE">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>470</y>
+        <y>460</y>
         <width>791</width>
         <height>71</height>
        </rect>
       </property>
-      <column>
-       <property name="text">
-        <string>New Column</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Number of Executive Members</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Total Revenue</string>
-       </property>
-      </column>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>50</y>
+        <width>791</width>
+        <height>401</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0">
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="0">
+          <widget class="QPushButton" name="SalesReport_Button">
+           <property name="text">
+            <string>Sales Report</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QPushButton" name="TotalPurchases_Button">
+           <property name="text">
+            <string>Total Purchases</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QPushButton" name="ItemsSoldQuantity_Button">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string>Items Sold - Quantity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QPushButton" name="Rebates_Button">
+           <property name="text">
+            <string>Rebates Due</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="Expire_Button">
+           <property name="text">
+            <string>Memberships to Expire</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="ItemsSoldName_Button">
+           <property name="text">
+            <string>Search Item </string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="MemberPurchases_Button">
+           <property name="text">
+            <string>Member Purchases</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <widget class="QPushButton" name="Convert_Button">
+           <property name="text">
+            <string>Members Who Should Convert</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0">
+        <widget class="QTableWidget" name="tableWidget_ViewReports">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="sortingEnabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </widget>

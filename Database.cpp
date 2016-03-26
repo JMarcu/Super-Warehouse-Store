@@ -134,8 +134,6 @@ std::list<Sale>* Database::GetSales(Date day) const{
     std::list<Sale>* sales = new std::list<Sale>;
     Sale* salePtr;
 
-    qDebug() << "Entered GetSales";
-
     ostringstream sqlCmmd;
     sqlCmmd << "SELECT * FROM Sales WHERE order_date='"
             << day.toString().toStdString() 
@@ -146,11 +144,8 @@ std::list<Sale>* Database::GetSales(Date day) const{
     
     rc = sqlite3_step(stmt);
 
-    qDebug() << rc;
 
     while(rc != SQLITE_DONE){
-
-        qDebug() << "ENTERED WHILE LOOP";
         
         salePtr = new Sale(
             sqlite3_column_int(stmt, 0),
@@ -165,7 +160,8 @@ std::list<Sale>* Database::GetSales(Date day) const{
 
         rc = sqlite3_step(stmt);
     }
-    
+
+
     return sales;
 }
 
@@ -203,6 +199,7 @@ std::list<Sale>* Database::GetSales(const Item& item) const{
 std::list<Sale>* Database::GetSales(const Member& member) const{
         std::list<Sale>* sales = new std::list<Sale>;
     Sale* salePtr;
+
     
     ostringstream sqlCmmd;
     sqlCmmd << "SELECT * FROM Sales WHERE member_id=? ORDER BY item_name;";
@@ -213,9 +210,9 @@ std::list<Sale>* Database::GetSales(const Member& member) const{
     
     rc = sqlite3_step(stmt);
     
-    while(rc != SQLITE_DONE){
-        
-        salePtr = new Sale(
+    while(rc != SQLITE_DONE)
+    {
+           salePtr = new Sale(
             sqlite3_column_int(stmt, 0),
             QString::fromStdString(string(static_cast<const char*>(sqlite3_column_blob(stmt, 1)), sqlite3_column_bytes(stmt, 1))),
             sqlite3_column_int(stmt, 2),
@@ -349,10 +346,13 @@ void Database::AddItem(const Item& item){
 void Database::DeleteItem(const Item& item){
     char* errMsg;
     ostringstream sqlCmmd;
+
+    qDebug() << item.GetItem();
+
     sqlCmmd << "DELETE FROM Items WHERE (name = " << item.GetItem().toStdString() << ")";
     
     sqlite3_exec(db, sqlCmmd.str().c_str(), NULL, 0, &errMsg);
-    
+
     if(errMsg != NULL){
         cerr << errMsg;
     }
@@ -378,6 +378,8 @@ void Database::AddSale(const Sale& sale){
 
 const DailySalesReport* Database::GetDailySalesReport(Date day, int memType) const{
     std::list<Sale>*   sales;
+
+
     sales = GetSales(day);
 
     std::list<Member>* members = new std::list<Member>;
@@ -386,7 +388,7 @@ const DailySalesReport* Database::GetDailySalesReport(Date day, int memType) con
     std::list<Sale>::iterator it = sales->begin();
 
     while(it != sales->end()){
-        qDebug() << "Entered while in getDailySalesReport";
+
         mem = GetMember(it->GetMemberID());
 
         if( memType == 0                         ||
@@ -395,7 +397,6 @@ const DailySalesReport* Database::GetDailySalesReport(Date day, int memType) con
           ){
             members->push_back(*mem);
 
-            qDebug() << mem->GetName();
         }
         
         members->unique();
@@ -426,7 +427,7 @@ const RebatesReport* Database::GetRebatesReport() const{
 
 const ExpirationReport* Database::GetExpirationReport(const Date& month) const{
     std::list<Member>* members = new std::list<Member>;
-    
+
     ostringstream sqlCmmd;
     sqlCmmd << "SELECT * FROM Members WHERE substr(expiration, 1, 7)=? ORDER BY id;";
     sqlite3_stmt* stmt;
@@ -437,7 +438,9 @@ const ExpirationReport* Database::GetExpirationReport(const Date& month) const{
     rc = sqlite3_bind_text(stmt, 1, dateStr.c_str(), strlen(dateStr.c_str()), NULL);
     
     rc = sqlite3_step(stmt);
+
     while(rc != SQLITE_DONE){
+
         members->push_back(Member(
                 QString(static_cast<const char*>(sqlite3_column_blob(stmt, 1))),
                 sqlite3_column_int(stmt, 0),

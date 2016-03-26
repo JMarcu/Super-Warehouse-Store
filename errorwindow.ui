@@ -16,7 +16,7 @@
   <widget class="QLabel" name="label_Error">
    <property name="geometry">
     <rect>
-     <x>58</x>
+     <x>40</x>
      <y>40</y>
      <width>371</width>
      <height>20</height>

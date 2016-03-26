@@ -1,12 +1,21 @@
 #include "adddate.h"
 #include "ui_adddate.h"
 
-AddDate::AddDate(QWidget *parent) :
+AddDate::AddDate(int index, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AddDate)
 {
     ui->setupUi(this);
+
+    this->index =index;
+
+    if(index == 1)
+    {
+        ui->header->setText("Enter a Month");
+        ui->day->hide();
+    }
 }
+
 
 AddDate::~AddDate()
 {
@@ -50,11 +59,17 @@ void AddDate::on_buttonBox_accepted()
             break;
     }
 
-    date.UpdateDate(ui->month->currentIndex(),
-                    ui->day->currentIndex(), year);
+    if(index == 0)
+    {
 
-
-
+        date.UpdateDate(ui->month->currentIndex(),
+                        ui->day->currentIndex(), year);
+    }
+    else
+    {
+        date.UpdateDate(ui->month->currentIndex(),
+                        0, year);
+    }
 
    emit DateSelected(date);
 
@@ -66,99 +81,3 @@ Date AddDate::ReturnDate() const
 {
     return date;
 }
-
-/*******************************DATE COMBOBOX ALGORITHM HERE***************************/
-void AddDate::on_month_currentIndexChanged(int index)
-{
-    int leap = ui->year->currentText().toInt(0,10) % 4;
-
-    if(ui->month->currentIndex() == 1 || ui->month->currentIndex() == 3 ||
-       ui->month->currentIndex() == 5 || ui->month->currentIndex() == 7 ||
-       ui->month->currentIndex() == 8 || ui->month->currentIndex() == 10
-       || ui->month->currentIndex() == 12)
-    {
-        if(ui->day->maxCount() < 32)
-        {
-            if(ui->day->maxCount() < 31)
-            {
-                if(ui->day->maxCount() < 30)
-                {
-                    ui->day->setMaxCount(32);
-                    ui->day->addItem("29");
-                    ui->day->addItem("30");
-                    ui->day->addItem("31");
-                }
-                else
-                {
-                    ui->day->setMaxCount(32);
-                    ui->day->addItem("30");
-                    ui->day->addItem("31");
-                }
-            }
-            else
-            {
-                ui->day->setMaxCount(32);
-                ui->day->addItem("31");
-            }
-        }
-    }
-    else if(ui->month->currentIndex() == 2)
-    {
-        if(leap == 0 || ui->year->currentIndex() == 1)
-        {
-           ui->day->setMaxCount(30);
-
-        }
-        else
-        {
-           ui->day->setMaxCount(29);
-        }
-    }
-    else
-    {
-        ui->day->setMaxCount(31);
-    }
-}
-
-void AddDate::on_year_currentIndexChanged(int index)
-{
-    int leapyear = ui->year->currentText().toInt(0,10) % 4;
-
-    if(ui->day->maxCount() < 32)
-    {
-        if(ui->day->maxCount() < 31)
-        {
-            if(ui->day->maxCount() < 30)
-            {
-                ui->day->setMaxCount(32);
-                ui->day->addItem("29");
-                ui->day->addItem("30");
-                ui->day->addItem("31");
-            }
-            else
-            {
-                ui->day->setMaxCount(32);
-                ui->day->addItem("30");
-                ui->day->addItem("31");
-            }
-        }
-        else
-        {
-            ui->day->setMaxCount(32);
-            ui->day->addItem("31");
-        }
-    }
-
-    if(ui->month->currentIndex() == 2)
-    {
-        if(ui->year->currentIndex() == 1 && leapyear == 0)
-        {
-            ui->day->setMaxCount(30);
-        }
-        else
-        {
-            ui->day->setMaxCount(29);
-        }
-    }
-}
-/************************************************************************************/

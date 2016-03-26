@@ -1,5 +1,6 @@
 #include "edititemwindow.h"
 #include "ui_edititemwindow.h"
+#include "errorwindow.h"
 
 editItemWindow::editItemWindow(Database *db, QWidget *parent) :
     QMainWindow(parent),
@@ -16,17 +17,41 @@ editItemWindow::~editItemWindow()
 
 void editItemWindow::on_buttonBox_edit_accepted()
 {
+    bool valid;
+    valid = true;
+
     itemEditName = ui->itemNameLineEdit_edit->text();
 
     itemEditPrice = ui->itemPriceSpinBox_edit->value();
 
-    /**********************
-     * ADD TO DATABSE
-     ************************/
+    std::list<Item> *list = db->GetAllItems();
+    std::list<Item>::const_iterator items = list->begin();
 
-    emit ItemEdited(itemEditName, itemEditPrice);
+    while(items != list->end() && valid != false)
+    {
+        if(itemEditName == items->GetItem())
+        {
+            valid = false;
+        }
+        items++;
+    }
 
-    hide();
+    if(items == list->end() && valid == true)
+    {
+        ErrorWindow *error = new ErrorWindow(2);
+        error->show();
+    }
+    else
+    {
+        db->DeleteItem(Item(itemEditName));
+        db->AddItem(Item(itemEditName, itemEditPrice));
+
+        emit ItemEdited(itemEditName, itemEditPrice);
+
+        hide();
+    }
+
+
 }
 
 void editItemWindow::on_buttonBox_edit_rejected()

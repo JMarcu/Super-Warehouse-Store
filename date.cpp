@@ -75,6 +75,8 @@ QString Date::toString() const{
             }
         }
     }
+    date += QString::number(year);
+    date += ('/');
 
     if(month < 10)
     {
@@ -82,7 +84,7 @@ QString Date::toString() const{
     }
     date += QString::number(month);
 
-    date += "-";
+    date += "/";
 
     if(day < 10)
     {
@@ -90,10 +92,6 @@ QString Date::toString() const{
     }
 
     date += QString::number(day);
-
-    date += "-";
-
-    date += QString::number(year);
 
     return date;
 }
