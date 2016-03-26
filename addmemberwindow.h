@@ -30,6 +30,10 @@ private slots:
 
     void on_pushButton_MemberCancel_clicked();
 
+    void on_cb_month_currentIndexChanged(int index);
+
+    void on_cb_year_currentIndexChanged(int index);
+
 private:
     Ui::AddMemberWindow *ui;
     QString             name;
