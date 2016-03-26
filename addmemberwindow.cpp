@@ -1,6 +1,6 @@
 #include "addmemberwindow.h"
 #include "ui_addmemberwindow.h"
-
+#include "errorwindow.h"
 
 AddMemberWindow::AddMemberWindow(Database *db, QWidget *parent) :
     QMainWindow(parent),
@@ -9,6 +9,11 @@ AddMemberWindow::AddMemberWindow(Database *db, QWidget *parent) :
     ui->setupUi(this);
     this->db = db;
 
+    ui->cb_month->setMaxVisibleItems(7);
+
+    ui->cb_day->setMaxVisibleItems(7);
+
+    ui->cb_year->setMaxVisibleItems(7);
 }
 
 AddMemberWindow::~AddMemberWindow()
@@ -105,3 +110,108 @@ void AddMemberWindow::on_pushButton_MemberCancel_clicked()
 {
     hide();
 }
+
+/*******************************DATE COMBOBOX ALGORITHM HERE***************************/
+void AddMemberWindow::on_cb_month_currentIndexChanged(int index)
+{
+    int leap = ui->cb_year->currentText().toInt(0,10) % 4;
+
+    if(ui->cb_month->currentIndex() == 1 || ui->cb_month->currentIndex() == 3 ||
+       ui->cb_month->currentIndex() == 5 || ui->cb_month->currentIndex() == 7 ||
+       ui->cb_month->currentIndex() == 8 || ui->cb_month->currentIndex() == 10
+       || ui->cb_month->currentIndex() == 12)
+    {
+        if(ui->cb_day->maxCount() < 32)
+        {
+            if(ui->cb_day->maxCount() < 31)
+            {
+                if(ui->cb_day->maxCount() <= 30)
+                {
+                    ui->cb_day->setMaxCount(32);
+                    ui->cb_day->addItem("29");
+                    ui->cb_day->addItem("30");
+                    ui->cb_day->addItem("31");
+                }
+                else
+                {
+                    ui->cb_day->setMaxCount(32);
+                    ui->cb_day->addItem("30");
+                    ui->cb_day->addItem("31");
+                }
+            }
+            else
+            {
+                ui->cb_day->setMaxCount(32);
+                ui->cb_day->addItem("31");
+            }
+        }
+    }
+    else if(ui->cb_month->currentIndex() == 2)
+    {
+        if(leap == 0)
+        {
+           ui->cb_day->setMaxCount(30);
+        }
+        else
+        {
+           ui->cb_day->setMaxCount(29);
+        }
+    }
+    else
+    {
+        ui->cb_day->setMaxCount(31);
+    }
+}
+
+void AddMemberWindow::on_cb_year_currentIndexChanged(int index)
+{
+    int leapyear = ui->cb_year->currentText().toInt(0,10) % 4;
+
+    if(ui->cb_month->currentIndex() == 1 || ui->cb_month->currentIndex() == 3 ||
+       ui->cb_month->currentIndex() == 5 || ui->cb_month->currentIndex() == 7 ||
+       ui->cb_month->currentIndex() == 8 || ui->cb_month->currentIndex() == 10
+       || ui->cb_month->currentIndex() == 12)
+    {
+        if(ui->cb_day->maxCount() < 32)
+        {
+            if(ui->cb_day->maxCount() < 31)
+            {
+                if(ui->cb_day->maxCount() <= 30)
+                {
+                    ui->cb_day->setMaxCount(32);
+                    ui->cb_day->addItem("29");
+                    ui->cb_day->addItem("30");
+                    ui->cb_day->addItem("31");
+                }
+                else
+                {
+                    ui->cb_day->setMaxCount(32);
+                    ui->cb_day->addItem("30");
+                    ui->cb_day->addItem("31");
+                }
+            }
+            else
+            {
+                ui->cb_day->setMaxCount(32);
+                ui->cb_day->addItem("31");
+            }
+        }
+    }
+    else if(ui->cb_month->currentIndex() == 2)
+    {
+        if(leapyear == 0)
+        {
+           ui->cb_day->setMaxCount(30);
+           ui->cb_day->addItem("29");
+        }
+        else
+        {
+           ui->cb_day->setMaxCount(29);
+        }
+    }
+    else
+    {
+        ui->cb_day->setMaxCount(31);
+    }
+}
+/*************************************************************************************/
