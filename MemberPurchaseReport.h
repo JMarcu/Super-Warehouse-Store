@@ -19,15 +19,15 @@ class MemberPurchaseReport
 {
 public:
 	MemberPurchaseReport(Member*     member,
-                             list<Sale>* sales);
+                             std::list<Sale>* sales);
 
 	~MemberPurchaseReport();
 
-	const list<Sale>& GetSales()  const;
+    const std::list<Sale>& GetSales()  const;
         const Member&     GetMember() const;
         
 private:
-    list<Sale>* sales;
+    std::list<Sale>* sales;
     Member*     member;
 };
 

@@ -24,7 +24,7 @@ Member::Member(QString n, int id, double t, Date exp, bool isEx)
 	number     = id;
 	totalSpent = t;
 	expiration = exp;
-        isExecutive = isEx;
+    isExecutive = isEx;
 }
 
 /*********************************************************************

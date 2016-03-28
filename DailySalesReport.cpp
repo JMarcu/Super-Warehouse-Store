@@ -10,8 +10,8 @@
 /* Constructor - Reads in pointers to the lists of sales and members. Calculates
  * the regular and executive member counts from these lists.
  */
-DailySalesReport::DailySalesReport(list<Sale>*   salesListIn,
-                                   list<Member>* mems)
+DailySalesReport::DailySalesReport(std::list<Sale>*   salesListIn,
+                                   std::list<Member>* mems)
 {
     members   = mems;
     salesList = salesListIn;
@@ -19,7 +19,7 @@ DailySalesReport::DailySalesReport(list<Sale>*   salesListIn,
     execCount = 0;
     regCount = 0;
     
-    list<Member>::iterator it = mems->begin();
+    std::list<Member>::iterator it = mems->begin();
     while(it != mems->end())
     {
         if(it->IsExecutive()){
@@ -43,12 +43,12 @@ DailySalesReport::~DailySalesReport()
     delete members;
 }
 
-const list<Sale>& DailySalesReport::GetDailySales() const
+const std::list<Sale>& DailySalesReport::GetDailySales() const
 {
-	return *salesList;
+    return *salesList;
 }
 
-const list<Member>& DailySalesReport::GetAllMembers() const
+const std::list<Member>& DailySalesReport::GetAllMembers() const
 {
 	return *members;
 }

@@ -1,66 +1,101 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "reportwindow.h"
+#include <QMainWindow>
+#include "additemwindow.h"
+#include "addmemberwindow.h"
+#include "edititemwindow.h"
+#include "editmemberwindow.h"
 #include <QTableView>
-
+#include <QTableWidgetItem>
+#include <QDebug>
+#include "date.h"
+#include "errorwindow.h"
+#include "searchstring.h"
+#include "Member.h"
+#include "adddate.h"
+#include "removememberitem.h"
 
 namespace Ui {
 class MainWindow;
 }
 
-/***********************************************************************
- * MainWindow
- *    
- *    This class acts as the main GUI window of the program.
- ***********************************************************************/
+enum errorMessage
+{
+    NAME_MEM,
+    ID,
+    NAME_ITEM,
+    ITEM_NF,
+    MEM_NF,
+    DATE,
+    MEM_SALE,
+    EXP
+};
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(Database *db, QWidget *parent = 0 );
     ~MainWindow();
+signals:
+        void SortAndEditRow(int row, int column);
+        void CellEditOrRemove(int row);
+        void AddMember(QString, int, Date, bool);
 
-
+public slots:
+    void AddItemToItemsTable(QString name, double price);
+    void AddMemberToTable(QString name, int id, Date expiration, bool isExecutive );
+    void AddDailySalesReport(Date dateIn);
+    void ExpiredMembershipsReport(Date dateIn);
+    void PopulateMembers();
+    void PopulateItems();
+    void AddSearchedItem(QString name);
+    void ClearTable(QTableWidget *table);
+    void AddMemberPurchaseString(QString name);
+    void AddMemberPurchaseInt(int id);
 
 private slots:
 
-    void on_push_Report_clicked();          // Button that activates an item report (opens a sub window)
+    void on_pushButtonAdd_clicked();
 
-    void on_push_AddItem_clicked();         // Button that opens a menu to add an item
+    void on_pushButton_MemberAdd_clicked();
 
-    void on_push_EditItem_clicked();        // Button that opens a menu to edit an item clicked on by the user in a list.
+    void on_pushButtonEdit_clicked();
 
-    void on_push_RemoveItem_clicked();      // Button that removes an item from the list.
+    void on_pushButton_MemberEdit_clicked();
 
-    void on_tableWidget_itemlist_cellClicked(int row, int column);  // Column cells that sorts the items if clicked on.
+    void on_pushButton_MemberRemove_clicked();
 
-    void on_report_SetAuto_clicked();       // A check box button that gets set if the user wants
-                                            // to automatically report item purchases
+    void on_ViewMembers_tabBarClicked(int index);
 
-    void on_report_SetManual_clicked();     // A check box button that gets set if the user wants to perform item purchase report by
-                                            // hand
+    void on_SalesReport_Button_clicked();
 
-    void on_push_AddMember_clicked();       // Button that brings a sub menu to add a club member
+    void on_Expire_Button_clicked();
 
-    void on_push_EditMember_clicked();      // Button that brings a menu to edit a club member clicked on by the user
+    void on_Convert_Button_clicked();
 
-    void on_push_RemoveMember_clicked();    // Button that removes a club member cliecked on by the user
+    void on_TotalPurchases_Button_clicked();
 
-    void on_push_ExpireSearch_clicked();    // Button that brings a sub menu that promts the user which month
-                                            // club member's membership expires
+    void on_ItemsSoldQuantity_Button_clicked();
 
-    void on_tableWidget_memberlist_cellClicked(int row, int column);    // Clickable column labels that sort members if clicked by user.
+    void on_Rebates_Button_clicked();
 
+    void on_ItemsSoldName_Button_clicked();
 
+    void on_MemberPurchases_Button_clicked();
 
-
-
+    void on_pushButtonRemove_clicked();
 
 private:
     Ui::MainWindow *ui;
+    int rowI;
+    int rowM;
+    int rowR;
+    int rowS;
+    int colR;
+    Database *db;
 };
 
 #endif // MAINWINDOW_H

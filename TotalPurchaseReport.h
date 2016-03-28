@@ -28,15 +28,15 @@ the purchases.*/
 class TotalPurchaseReport{
 private: 
     vector<Member>      members;
-    list<list<Sale> > purchases;
+    vector<std::list<Sale>* > purchases;
     vector<double>      totals;
 
 public:
-    TotalPurchaseReport(list<Member>* memList,
-                        list<Sale>*   saleList);
+    TotalPurchaseReport(std::list<Member>* memList,
+                        std::list<Sale>*   saleList);
     
     const Member& GetMember (int index) const;
-    const list<Sale>& GetPurchases (int index) const;
+    const std::list<Sale>& GetPurchases (int index) const;
     double GetGrandTotal(int index) const;
     int GetMaxIndex() const;
 };

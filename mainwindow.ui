@@ -6,205 +6,161 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>855</width>
-    <height>665</height>
+    <width>885</width>
+    <height>677</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QTabWidget" name="tabWidget">
+   <widget class="QTabWidget" name="ViewMembers">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>831</width>
-      <height>601</height>
+      <x>40</x>
+      <y>20</y>
+      <width>811</width>
+      <height>571</height>
      </rect>
     </property>
-    <property name="accessibleName">
-     <string/>
-    </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="Menu">
      <attribute name="title">
-      <string>Welcome</string>
+      <string>Menu</string>
      </attribute>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>10</y>
-        <width>101</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;WELCOME&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>100</y>
-        <width>701</width>
-        <height>311</height>
+        <x>20</x>
+        <y>10</y>
+        <width>761</width>
+        <height>471</height>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Click on the following tabs to access member and item information:&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Items: Allows you to view, edit, add, and/or delete items from the store's inventory. Items will update&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;through sales reports.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Members: Allows you to view, edit, add, and/or delete&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;members of the bulk club store. You may sort them by&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;name, id number, total financial speding, and time of&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;membership experation.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;**Bulk Club**&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;____________________________________________________________________&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Press Items to see all items curently in Inventory&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Press Members to see all current members&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Press Reports to see the types of reports that can be generated&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="Items">
      <attribute name="title">
       <string>Items</string>
      </attribute>
-     <widget class="QPushButton" name="push_AddItem">
+     <widget class="QTableWidget" name="tableWidgetItem">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>380</y>
-        <width>75</width>
-        <height>23</height>
+        <x>10</x>
+        <y>10</y>
+        <width>781</width>
+        <height>461</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Add</string>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustToContents</enum>
       </property>
-     </widget>
-     <widget class="QPushButton" name="push_EditItem">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>380</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
       </property>
-      <property name="text">
-       <string>Edit</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="push_RemoveItem">
-      <property name="geometry">
-       <rect>
-        <x>550</x>
-        <y>380</y>
-        <width>71</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Remove</string>
-      </property>
-      <property name="default">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QGroupBox" name="groupBox">
-      <property name="geometry">
-       <rect>
-        <x>640</x>
-        <y>190</y>
-        <width>161</width>
-        <height>181</height>
-       </rect>
-      </property>
-      <property name="cursor">
-       <cursorShape>ArrowCursor</cursorShape>
-      </property>
-      <property name="autoFillBackground">
+      <property name="alternatingRowColors">
        <bool>true</bool>
       </property>
-      <property name="title">
-       <string>Item Report by:</string>
+      <property name="sortingEnabled">
+       <bool>true</bool>
       </property>
-      <property name="flat">
+      <property name="wordWrap">
        <bool>false</bool>
       </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-      <widget class="QPushButton" name="push_Report">
-       <property name="geometry">
-        <rect>
-         <x>70</x>
-         <y>140</y>
-         <width>81</width>
-         <height>23</height>
-        </rect>
-       </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>100</number>
+      </attribute>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>50</number>
+      </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>30</number>
+      </attribute>
+      <column>
        <property name="text">
-        <string>Initiate Report</string>
+        <string>Name</string>
        </property>
-      </widget>
-      <widget class="QCheckBox" name="report_SetAuto">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>30</y>
-         <width>82</width>
-         <height>17</height>
-        </rect>
+       <property name="textAlignment">
+        <set>AlignCenter</set>
        </property>
+      </column>
+      <column>
        <property name="text">
-        <string>Auto by file</string>
+        <string>Amount</string>
        </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="report_SetManual">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>80</y>
-         <width>101</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Manual by hand</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_3">
-       <property name="geometry">
-        <rect>
-         <x>40</x>
-         <y>50</y>
-         <width>16</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>or</string>
-       </property>
-      </widget>
+      </column>
      </widget>
-     <widget class="QTableWidget" name="tableWidget_itemlist">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>10</y>
-        <width>501</width>
-        <height>361</height>
+        <x>10</x>
+        <y>490</y>
+        <width>781</width>
+        <height>32</height>
        </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pushButtonAdd">
+         <property name="text">
+          <string>Add</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="pushButtonEdit">
+         <property name="text">
+          <string>Edit</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="pushButtonRemove">
+         <property name="text">
+          <string>Remove</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="members">
+     <attribute name="title">
+      <string>Members</string>
+     </attribute>
+     <widget class="QTableWidget" name="tableWidgetMembers">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>761</width>
+        <height>441</height>
+       </rect>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <property name="gridStyle">
+       <enum>Qt::NoPen</enum>
+      </property>
+      <property name="sortingEnabled">
+       <bool>true</bool>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
       </property>
       <attribute name="horizontalHeaderCascadingSectionResizes">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="horizontalHeaderHighlightSections">
-       <bool>true</bool>
-      </attribute>
-      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
        <bool>false</bool>
       </attribute>
       <attribute name="horizontalHeaderStretchLastSection">
@@ -212,152 +168,207 @@
       </attribute>
       <column>
        <property name="text">
-        <string>Name:</string>
+        <string>Name</string>
+       </property>
+       <property name="textAlignment">
+        <set>AlignLeading|AlignVCenter</set>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Amount:</string>
+        <string>ID</string>
+       </property>
+       <property name="textAlignment">
+        <set>AlignLeading|AlignVCenter</set>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>Price:</string>
+        <string>Expiration Date</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Membership Type</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Total Spent</string>
        </property>
       </column>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tab_3">
-     <attribute name="title">
-      <string>Members</string>
-     </attribute>
-     <widget class="QPushButton" name="push_AddMember">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>450</y>
-        <width>81</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="text">
-       <string>Add Member</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="push_ExpireSearch">
-      <property name="geometry">
-       <rect>
-        <x>730</x>
-        <y>450</y>
-        <width>81</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="mouseTracking">
-       <bool>true</bool>
-      </property>
-      <property name="text">
-       <string>Expire Search</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="push_EditMember">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>450</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Edit</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="push_RemoveMember">
-      <property name="geometry">
-       <rect>
-        <x>420</x>
-        <y>450</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Remove</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="TransferOutput">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>20</x>
         <y>500</y>
-        <width>791</width>
-        <height>61</height>
+        <width>771</width>
+        <height>32</height>
        </rect>
       </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pushButton_MemberAdd">
+         <property name="text">
+          <string>Add</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="pushButton_MemberEdit">
+         <property name="text">
+          <string>Edit</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="pushButton_MemberRemove">
+         <property name="text">
+          <string>Remove</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Reports</string>
+     </attribute>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>20</y>
+        <width>761</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
       <property name="text">
-       <string>....</string>
+       <string>Click on the type of report you want to view:</string>
       </property>
      </widget>
-     <widget class="QTableWidget" name="tableWidget_memberlist">
+     <widget class="QTableWidget" name="tableWidget_SIDE">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>10</y>
-        <width>801</width>
-        <height>441</height>
+        <y>460</y>
+        <width>791</width>
+        <height>71</height>
        </rect>
       </property>
-      <property name="cursor" stdset="0">
-       <cursorShape>ArrowCursor</cursorShape>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>11</x>
+        <y>51</y>
+        <width>791</width>
+        <height>54</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="SalesReport_Button">
+         <property name="text">
+          <string>Sales Report</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="TotalPurchases_Button">
+         <property name="text">
+          <string>Total Purchases</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="ItemsSoldQuantity_Button">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>Items Sold - Quantity</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QPushButton" name="Rebates_Button">
+         <property name="text">
+          <string>Rebates Due</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="Expire_Button">
+         <property name="text">
+          <string>Memberships to Expire</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="ItemsSoldName_Button">
+         <property name="text">
+          <string>Search Item </string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QPushButton" name="MemberPurchases_Button">
+         <property name="text">
+          <string>Member Purchases</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QPushButton" name="Convert_Button">
+         <property name="text">
+          <string>Members Who Should Convert</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget_ViewReports">
+      <property name="geometry">
+       <rect>
+        <x>11</x>
+        <y>111</y>
+        <width>791</width>
+        <height>341</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
       </property>
       <property name="alternatingRowColors">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
-      <property name="columnCount">
-       <number>5</number>
+      <property name="sortingEnabled">
+       <bool>true</bool>
       </property>
-      <attribute name="horizontalHeaderCascadingSectionResizes">
-       <bool>true</bool>
-      </attribute>
-      <attribute name="horizontalHeaderStretchLastSection">
-       <bool>true</bool>
-      </attribute>
-      <attribute name="verticalHeaderHighlightSections">
-       <bool>true</bool>
-      </attribute>
-      <column>
-       <property name="text">
-        <string>Name:</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>ID:</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Type:</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Money Spent:</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Experation:</string>
-       </property>
-      </column>
      </widget>
+     <zorder>label</zorder>
+     <zorder>tableWidget_SIDE</zorder>
+     <zorder>layoutWidget</zorder>
+     <zorder>tableWidget_ViewReports</zorder>
+     <zorder>tableWidget_ViewReports</zorder>
     </widget>
    </widget>
   </widget>
@@ -366,7 +377,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>855</width>
+     <width>885</width>
      <height>21</height>
     </rect>
    </property>

@@ -7,14 +7,14 @@
 
 #include "TotalItemReport.h"
 
-TotalItemReport::TotalItemReport(list<Item>* i,
-                                 list<Sale>* sales){
+TotalItemReport::TotalItemReport(std::list<Item>* i,
+                                 std::list<Sale>* sales){
     items.resize(i->size());
     quantitiesSold.resize(i->size());
     revenues.resize(i->size());
     
-    list<Item>::const_iterator itemIt = i->begin();
-    list<Sale>::const_iterator saleIt;
+    std::list<Item>::const_iterator itemIt = i->begin();
+    std::list<Sale>::const_iterator saleIt;
     int index = 0;
     
     while(itemIt != i->end()){
@@ -53,7 +53,7 @@ const Item& TotalItemReport::GetItem(int index) const{
         return items[index];
     }
     else{
-        throw new out_of_range("Index out of range when accessing TotalItemReport.");
+        //throw new out_of_range("Index out of range when accessing TotalItemReport.");
     }
 }
 
@@ -62,7 +62,7 @@ int TotalItemReport::GetQuantitySold(int index) const{
         return quantitiesSold[index];
     }
     else{
-        throw new out_of_range("Index out of range when accessing TotalItemReport.");
+        //throw new out_of_range("Index out of range when accessing TotalItemReport.");
     }
 }
 
@@ -71,7 +71,7 @@ double TotalItemReport::GetRevenue(int index) const{
         return revenues[index];
     }
     else{
-        throw new out_of_range("Index out of range when accessing TotalItemReport.");
+        //throw new out_of_range("Index out of range when accessing TotalItemReport.");
     }
 }
 

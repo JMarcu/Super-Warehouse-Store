@@ -1,7 +1,7 @@
 #include "RegularConversionReport.h"
 
-RegularConversionReport::RegularConversionReport(list<Member>* allRegularMembers){
-    list<Member>::iterator it = allRegularMembers->begin();
+RegularConversionReport::RegularConversionReport(std::list<Member>* allRegularMembers){
+    std::list<Member>::iterator it = allRegularMembers->begin();
     
     while(it != allRegularMembers->end()){
         if(it->ShouldConvertMembership()){
@@ -19,6 +19,6 @@ RegularConversionReport::~RegularConversionReport(){
     membersToConvert.clear();
 }
 
-const list<Member>& RegularConversionReport::GetMembersToConvert() const{
+const std::list<Member>& RegularConversionReport::GetMembersToConvert() const{
     return membersToConvert;
 }

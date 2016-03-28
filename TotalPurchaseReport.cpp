@@ -5,17 +5,22 @@
  */
 
 #include "TotalPurchaseReport.h"
+#include <qDebug>
 
-TotalPurchaseReport::TotalPurchaseReport(list<Member>* memList,
-                                         list<Sale>*   saleList){
-    list<Member>::iterator memIt  = memList->begin();
-    list<Sale>::iterator   saleIt = saleList->begin();
+TotalPurchaseReport::TotalPurchaseReport(std::list<Member>* memList,
+                                         std::list<Sale>*   saleList){
+    std::list<Member>::const_iterator memIt  = memList->begin();
+    std::list<Sale>::const_iterator   saleIt = saleList->begin();
     int index;
-    list<Sale>* salePtr;
-    purchases.resize(memList->size());
+    std::list<Sale>* salePtr;
+
+//    totals.resize(memList->size());
+//    purchases.resize(memList->size());
+//    members.resize(memList->size());
     
     index = 0;
-    while(memIt != memList->end()){
+    while(memIt != memList->end())
+    {
         members.push_back(*memIt);
         totals.push_back(0);
         salePtr = new list<Sale>;
@@ -27,29 +32,26 @@ TotalPurchaseReport::TotalPurchaseReport(list<Member>* memList,
             saleIt++;
         }
         
-        purchases.push_back(*salePtr);
+        purchases.push_back(salePtr);
         memIt++;
         index++;
     }
     
     memList->clear();
     saleList->clear();
+
+
     delete memList;
     delete saleList;
+
 }
 
 const Member& TotalPurchaseReport::GetMember (int index) const{
     return members[index];
 }
 
-const list<Sale>& TotalPurchaseReport::GetPurchases(int index) const{
-    list<list<Sale> >::const_iterator it = purchases.begin();
-    
-    for(int i = 0; i < index; i++){
-        it++;
-    }
-    
-    return *it;
+const std::list<Sale>& TotalPurchaseReport::GetPurchases(int index) const{
+    return *purchases[index];
 }
 
 double TotalPurchaseReport::GetGrandTotal(int index) const{
@@ -57,5 +59,5 @@ double TotalPurchaseReport::GetGrandTotal(int index) const{
 }
 
 int TotalPurchaseReport::GetMaxIndex() const{
-    return members.size();
+    return members.size() - 1;
 }

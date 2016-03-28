@@ -11,6 +11,7 @@ class Item
 	
 	// Constructors/Destructors
 	Item();
+    Item(QString name);
 	Item(QString name, double money);
 
 //   Methods(Mutators)

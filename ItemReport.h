@@ -18,7 +18,7 @@ quantity of that item sold as well as the total revenue for the item.*/
 class ItemReport
 {
 public:
-    ItemReport(list<Sale>* sales, const Item& i);
+    ItemReport(std::list<Sale>* sales, const Item& i);
 
     const Item& GetItem()     const;
     int     GetQuantitySold() const;

@@ -1,9 +1,9 @@
 #include "ExecutiveConversionReport.h"
 
-ExecutiveConversionReport::ExecutiveConversionReport(list<Member>* allExecMembers){
-    membersToConvert = new list<Member>;
+ExecutiveConversionReport::ExecutiveConversionReport(std::list<Member>* allExecMembers){
+    membersToConvert = new std::list<Member>;
     
-    list<Member>::iterator it = allExecMembers->begin();
+    std::list<Member>::iterator it = allExecMembers->begin();
     
     while(it != allExecMembers->end()){
         if(it->ShouldConvertMembership()){
@@ -22,6 +22,6 @@ ExecutiveConversionReport::~ExecutiveConversionReport(){
     delete membersToConvert;
 }
 
-const list<Member>& ExecutiveConversionReport::GetMembersToConvert() const{
+const std::list<Member>& ExecutiveConversionReport::GetMembersToConvert() const{
     return *membersToConvert;
 }

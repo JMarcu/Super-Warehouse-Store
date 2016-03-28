@@ -22,13 +22,13 @@
 
 class RegularConversionReport{
 private:
-    list<Member> membersToConvert;
+    std::list<Member> membersToConvert;
     
 public:
-    RegularConversionReport(list<Member>* allRegularMembers);
+    RegularConversionReport(std::list<Member>* allRegularMembers);
     ~RegularConversionReport();
     
-    const list<Member>& GetMembersToConvert() const;
+    const std::list<Member>& GetMembersToConvert() const;
 };
 
 
