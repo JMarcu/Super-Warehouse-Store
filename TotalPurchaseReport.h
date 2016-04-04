@@ -32,12 +32,39 @@ private:
     vector<double>      totals;
 
 public:
+    /**
+     * @brief TotalPurchaseReport
+     * @param memList
+     * @param saleList
+     */
     TotalPurchaseReport(std::list<Member>* memList,
                         std::list<Sale>*   saleList);
     
+    /**
+     * @brief GetMember
+     * @param index
+     * @return
+     */
     const Member& GetMember (int index) const;
+
+    /**
+     * @brief GetPurchases
+     * @param index
+     * @return
+     */
     const std::list<Sale>& GetPurchases (int index) const;
+
+    /**
+     * @brief GetGrandTotal
+     * @param index
+     * @return
+     */
     double GetGrandTotal(int index) const;
+
+    /**
+     * @brief GetMaxIndex
+     * @return
+     */
     int GetMaxIndex() const;
 };
     

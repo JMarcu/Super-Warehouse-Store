@@ -21,85 +21,95 @@ class Member
 {
 public:
 
+    /**
+     * @brief Member
+     * @param n
+     * @param id
+     * @param t
+     * @param exp
+     * @param isEx
+     */
 	Member(QString n, int id, double t, Date exp, bool isEx);
 
-	/*********************************************************************
-	 * UpdateExpirationDate(int newMonth,
-	 * 						int newDay,
-	 * 						int newYear)
-	 * -------------------------------------------------------------------
-	 * Updates the expiration date with the month, day, and year passed in
-	 **********************************************************************/
+    /**
+     * @brief SetExpiration
+     * @param newMonth
+     * @param newDay
+     * @param newYear
+     */
 	void SetExpiration(int newMonth, int newDay, int newYear);
 
-	/*********************************************************************
-	 * GetRenewalAmount() const
-	 * -------------------------------------------------------------------
-	 * Returns the renewal amount for the next year
-	 **********************************************************************/
+    /**
+     * @brief GetRenewalAmount
+     * @return
+     */
 	float GetRenewalAmount() const;
 
-	/*********************************************************************
-	 * GetMember() const
-	 * -------------------------------------------------------------------
-	 * Returns the member's name that calls this function
-	 **********************************************************************/
+    /**
+     * @brief GetName
+     * @return
+     */
 	QString GetName() const;
 
-	/*********************************************************************
-	 * GetNumber() const
-	 * -------------------------------------------------------------------
-	 * Returns members id Number that calls this function
-	 **********************************************************************/
+    /**
+     * @brief GetID
+     * @return
+     */
 	int GetID() const;
 
-	/*********************************************************************
-	 * ShouldConvertMembership()
-	 * -------------------------------------------------------------------
-	 * Decides whether the member should switch the membership based on
-	 * how much they spend during the year
-	 * 	returns a bool true or false
-	 **********************************************************************/
+    /**
+     * @brief ShouldConvertMembership
+     * @return
+     */
 	bool ShouldConvertMembership() const;
 
-	/*********************************************************************
-	 * ConvertMembership()
-	 * -------------------------------------------------------------------
-	 * Converts the membership to executive or regular
-	 **********************************************************************/
+    /**
+     * @brief ConvertMembership
+     */
 	void ConvertMembership();
 
-	/*********************************************************************
-	 * GettMembership()
-	 * -------------------------------------------------------------------
-	 * returns the type of membership user has
-	 * 	-returns regular
-	 **********************************************************************/
+    /**
+     * @brief IsExecutive
+     * @return
+     */
 	bool IsExecutive() const;
 
-	/*********************************************************************
-	 * GetDate()
-	 * -------------------------------------------------------------------
-	 * Returns the the date that the membership expires.
-	 * 	returns Date class
-	 **********************************************************************/
+    /**
+     * @brief GetDate
+     * @return
+     */
 	Date GetDate() const;
 
-
-	/*********************************************************************
-	 * GetTotalSpent()
-	 * -------------------------------------------------------------------
-	 * Returns the total amount the user spent
-	 **********************************************************************/
+    /**
+     * @brief GetTotalSpent
+     * @return
+     */
 	double GetTotalSpent() const;
 
-        Date GetExpiration() const;
-        
-        double GetRebate() const;
-        
-        bool operator==(const Member& compareTo) const;
-        
-        void setTotal(double tot){totalSpent = tot;}
+    /**
+     * @brief GetExpiration
+     * @return
+     */
+    Date GetExpiration() const;
+
+    /**
+     * @brief GetRebate
+     * @return
+     */
+    double GetRebate() const;
+
+    /**
+     * @brief operator ==
+     * @param compareTo
+     * @return
+     */
+    bool operator==(const Member& compareTo) const;
+
+    /**
+     * @brief setTotal
+     * @param tot
+     */
+    void setTotal(double tot){totalSpent = tot;}
 
 private:
 	QString name;		// Members Name

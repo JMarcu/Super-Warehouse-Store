@@ -19,10 +19,19 @@ public:
     ~RemoveMemberItem();
 
 signals:
+    /**
+     * @brief Remove
+     */
     void Remove(QString);
 private slots:
+    /**
+     * @brief on_buttonBox_accepted
+     */
     void on_buttonBox_accepted();
 
+    /**
+     * @brief on_buttonBox_rejected
+     */
     void on_buttonBox_rejected();
 
 private:

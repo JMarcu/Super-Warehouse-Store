@@ -10,6 +10,11 @@
 /* Constructor - Reads in pointers to the lists of sales and members. Calculates
  * the regular and executive member counts from these lists.
  */
+/**
+ * @brief DailySalesReport::DailySalesReport
+ * @param salesListIn
+ * @param mems
+ */
 DailySalesReport::DailySalesReport(std::list<Sale>*   salesListIn,
                                    std::list<Member>* mems)
 {
@@ -33,7 +38,11 @@ DailySalesReport::DailySalesReport(std::list<Sale>*   salesListIn,
     }
 }
 
+
 //Destructor - Clears and deletes the lists.
+/**
+ * @brief DailySalesReport::~DailySalesReport
+ */
 DailySalesReport::~DailySalesReport()
 {
     salesList->clear();
@@ -43,21 +52,37 @@ DailySalesReport::~DailySalesReport()
     delete members;
 }
 
+/**
+ * @brief DailySalesReport::GetDailySales
+ * @return
+ */
 const std::list<Sale>& DailySalesReport::GetDailySales() const
 {
     return *salesList;
 }
 
+/**
+ * @brief DailySalesReport::GetAllMembers
+ * @return
+ */
 const std::list<Member>& DailySalesReport::GetAllMembers() const
 {
 	return *members;
 }
 
+/**
+ * @brief DailySalesReport::GetRegularCount
+ * @return
+ */
 int DailySalesReport::GetRegularCount() const
 {
 	return regCount;
 }
 
+/**
+ * @brief DailySalesReport::GetExecutiveCount
+ * @return
+ */
 int DailySalesReport::GetExecutiveCount() const
 {
 	return execCount;

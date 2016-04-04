@@ -9,29 +9,55 @@ class Item
 {
 	public:
 	
-	// Constructors/Destructors
+    /**
+     * @brief Item
+     */
 	Item();
+    /**
+     * @brief Item
+     * @param name
+     */
     Item(QString name);
+    /**
+     * @brief Item
+     * @param name
+     * @param money
+     */
 	Item(QString name, double money);
 
-//   Methods(Mutators)
-//   -----------------
+    /**
+     * @brief SetItem
+     * @param name
+     */
 	void SetItem(QString name);
 
+    /**
+     * @brief SetPrice
+     * @param money
+     */
 	void SetPrice(double money);
 	
-
-//  Accessors
-// --------------
+    /**
+     * @brief GetItem
+     * @return
+     */
 	QString GetItem() const;
 
+    /**
+     * @brief GetPrice
+     * @return
+     */
 	double GetPrice() const; 
 
 	
 private:
-//  Data members(variables)
-// -------------------------
+    /**
+     * @brief itemName
+     */
     QString itemName;
+    /**
+     * @brief price
+     */
     double price;
 };
 

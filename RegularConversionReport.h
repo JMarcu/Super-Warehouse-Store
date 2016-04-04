@@ -22,12 +22,23 @@
 
 class RegularConversionReport{
 private:
+    /**
+     * @brief membersToConvert
+     */
     std::list<Member> membersToConvert;
     
 public:
+    /**
+     * @brief RegularConversionReport
+     * @param allRegularMembers
+     */
     RegularConversionReport(std::list<Member>* allRegularMembers);
     ~RegularConversionReport();
     
+    /**
+     * @brief GetMembersToConvert
+     * @return
+     */
     const std::list<Member>& GetMembersToConvert() const;
 };
 

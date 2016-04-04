@@ -7,6 +7,11 @@
 #include "TotalPurchaseReport.h"
 #include <qDebug>
 
+/**
+ * @brief TotalPurchaseReport::TotalPurchaseReport
+ * @param memList
+ * @param saleList
+ */
 TotalPurchaseReport::TotalPurchaseReport(std::list<Member>* memList,
                                          std::list<Sale>*   saleList){
     std::list<Member>::const_iterator memIt  = memList->begin();
@@ -49,18 +54,37 @@ TotalPurchaseReport::TotalPurchaseReport(std::list<Member>* memList,
 
 }
 
+/**
+ * @brief TotalPurchaseReport::GetMember
+ * @param index
+ * @return
+ */
 const Member& TotalPurchaseReport::GetMember (int index) const{
     return members[index];
 }
 
+/**
+ * @brief TotalPurchaseReport::GetPurchases
+ * @param index
+ * @return
+ */
 const std::list<Sale>& TotalPurchaseReport::GetPurchases(int index) const{
     return *purchases[index];
 }
 
+/**
+ * @brief TotalPurchaseReport::GetGrandTotal
+ * @param index
+ * @return
+ */
 double TotalPurchaseReport::GetGrandTotal(int index) const{
     return totals[index];
 }
 
+/**
+ * @brief TotalPurchaseReport::GetMaxIndex
+ * @return
+ */
 int TotalPurchaseReport::GetMaxIndex() const{
     return members.size() - 1;
 }

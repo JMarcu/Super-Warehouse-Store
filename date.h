@@ -8,26 +8,61 @@ class Date
 {
 public:
 
-        Date();
-        Date(int monthIn, int dayIn, int yearIn);
-                Date(QString dateString);
+    /**
+     * @brief Date
+     */
+    Date();
 
-        virtual ~Date();
+    /**
+     * @brief Date
+     * @param monthIn
+     * @param dayIn
+     * @param yearIn
+     */
+    Date(int monthIn, int dayIn, int yearIn);
+            Date(QString dateString);
 
-        void UpdateDate(int newMonth,
-                        int newDay,
-                        int newYear);
-        void PrintDate() const;
-        int GetMonth() const;
-        int GetDay() const;
-        int GetYear() const;
+    virtual ~Date();
 
-         QString toString() const;
+            /**
+     * @brief UpdateDate
+     * @param newMonth
+     * @param newDay
+     * @param newYear
+     */
+    void UpdateDate(int newMonth,
+                    int newDay,
+                    int newYear);
+    /**
+     * @brief PrintDate
+     */
+    void PrintDate() const;
+    /**
+     * @brief GetMonth
+     * @return
+     */
+    int GetMonth() const;
+    /**
+     * @brief GetDay
+     * @return
+     */
+    int GetDay() const;
+    /**
+     * @brief GetYear
+     * @return
+     */
+    int GetYear() const;
 
-    private:
-        int month;
-        int day;
-        int year;
+    /**
+     * @brief toString
+     * @return
+     */
+    QString toString() const;
+
+private:
+    int month;
+    int day;
+    int year;
 };
 
 #endif // DATE_H

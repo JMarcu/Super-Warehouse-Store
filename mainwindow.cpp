@@ -1,6 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+/**
+ * @brief MainWindow::MainWindow
+ * @param db
+ * @param parent
+ */
 MainWindow::MainWindow(Database *db, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -24,6 +29,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+/**
+ * @brief MainWindow::AddItemToItemsTable
+ * @param name
+ * @param price
+ */
 void MainWindow::AddItemToItemsTable(QString name, double price)
 {
     ui->tableWidgetItem->insertRow(rowI);
@@ -33,7 +43,14 @@ void MainWindow::AddItemToItemsTable(QString name, double price)
     ui->tableWidgetItem->resizeColumnsToContents();
 }
 
-
+/**
+ * @brief MainWindow::AddMemberToTable
+ * @param name
+ * @param id
+ * @param expiration
+ * @param isExecutive
+ * @param totalSpent
+ */
 void MainWindow::AddMemberToTable(QString name, int id, Date expiration, bool isExecutive, double totalSpent)
 {
     QString executive;
@@ -56,7 +73,10 @@ void MainWindow::AddMemberToTable(QString name, int id, Date expiration, bool is
     ui->tableWidgetMembers->resizeColumnsToContents();
 }
 
-
+/**
+ * @brief MainWindow::AddDailySalesReport
+ * @param dateIn
+ */
 void MainWindow::AddDailySalesReport(Date dateIn)
 {
     ui->tableWidget_SIDE->show();
@@ -114,15 +134,20 @@ void MainWindow::AddDailySalesReport(Date dateIn)
         ui->tableWidget_SIDE->setItem(rowS, 1, new QTableWidgetItem(QString::number(dsr->GetRegularCount())));
         ui->tableWidget_SIDE->setItem(rowS, 2, new QTableWidgetItem(QString::number(totalRevenue)));
         ui->tableWidget_SIDE->resizeColumnsToContents();
+        ui->tableWidget_SIDE->horizontalHeader()->setStretchLastSection(true);
     }
 
 
     ui->tableWidget_ViewReports->resizeColumnsToContents();
+    ui->tableWidget_ViewReports->horizontalHeader()->setStretchLastSection(true);
     delete dsr;
 
 }
 
-
+/**
+ * @brief MainWindow::ExpiredMembershipsReport
+ * @param dateIn
+ */
 void MainWindow::ExpiredMembershipsReport(Date dateIn)
 {
     ui->tableWidget_SIDE->hide();
@@ -159,7 +184,9 @@ void MainWindow::ExpiredMembershipsReport(Date dateIn)
     }
 }
 
-
+/**
+ * @brief MainWindow::on_pushButtonAdd_clicked
+ */
 void MainWindow::on_pushButtonAdd_clicked()
 {
     AddItemWindow *add = new AddItemWindow(db);
@@ -170,7 +197,9 @@ void MainWindow::on_pushButtonAdd_clicked()
 
 }
 
-
+/**
+ * @brief MainWindow::on_pushButton_MemberAdd_clicked
+ */
 void MainWindow::on_pushButton_MemberAdd_clicked()
 {
     AddMemberWindow *member = new AddMemberWindow(db);
@@ -181,6 +210,9 @@ void MainWindow::on_pushButton_MemberAdd_clicked()
     member->show();
 }
 
+/**
+ * @brief MainWindow::on_pushButtonEdit_clicked
+ */
 void MainWindow::on_pushButtonEdit_clicked()
 {   
     editItemWindow *item = new editItemWindow(db);
@@ -189,7 +221,9 @@ void MainWindow::on_pushButtonEdit_clicked()
 //    PopulateItems();
 }
 
-
+/**
+ * @brief MainWindow::on_pushButton_MemberEdit_clicked
+ */
 void MainWindow::on_pushButton_MemberEdit_clicked()
 {
     editMemberWindow *memberEdit = new editMemberWindow(db);
@@ -201,14 +235,18 @@ void MainWindow::on_pushButton_MemberEdit_clicked()
 //    PopulateMembers();
 }
 
-
+/**
+ * @brief MainWindow::on_pushButton_MemberRemove_clicked
+ */
 void MainWindow::on_pushButton_MemberRemove_clicked()
 {
     RemoveMemberItem *toRemove = new RemoveMemberItem(db, 1);
     toRemove->show();
 }
 
-
+/**
+ * @brief MainWindow::PopulateMembers
+ */
 void MainWindow::PopulateMembers()
 {
 
@@ -261,6 +299,10 @@ void MainWindow::PopulateItems()
     delete itemList;
 }
 
+/**
+ * @brief MainWindow::AddSearchedItem
+ * @param name
+ */
 void MainWindow::AddSearchedItem(QString name)
 {
     ui->tableWidget_SIDE->hide();
@@ -295,6 +337,11 @@ void MainWindow::AddSearchedItem(QString name)
     delete ir;
 }
 
+
+/**
+ * @brief MainWindow::ClearTable
+ * @param table
+ */
 void MainWindow::ClearTable(QTableWidget *table)
 {
     int currentRows = table->rowCount();
@@ -316,6 +363,11 @@ void MainWindow::ClearTable(QTableWidget *table)
     rowS = 0;
 }
 
+
+/**
+ * @brief MainWindow::AddMemberPurchaseString
+ * @param name
+ */
 void MainWindow::AddMemberPurchaseString(QString name)
 {
     ui->tableWidget_SIDE->hide();
@@ -354,6 +406,11 @@ void MainWindow::AddMemberPurchaseString(QString name)
     ui->tableWidget_ViewReports->resizeColumnsToContents();
 }
 
+
+/**
+ * @brief MainWindow::AddMemberPurchaseInt
+ * @param id
+ */
 void MainWindow::AddMemberPurchaseInt(int id)
 {
     ui->tableWidget_SIDE->hide();
@@ -391,6 +448,11 @@ void MainWindow::AddMemberPurchaseInt(int id)
     ui->tableWidget_ViewReports->resizeColumnsToContents();
 }
 
+
+/**
+ * @brief MainWindow::on_ViewMembers_tabBarClicked
+ * @param index
+ */
 void MainWindow::on_ViewMembers_tabBarClicked(int index)
 {
     if(index == 0)
@@ -412,9 +474,9 @@ void MainWindow::on_ViewMembers_tabBarClicked(int index)
 }
 
 
-/************
- * FIX
- *************/
+/**
+ * @brief MainWindow::on_SalesReport_Button_clicked
+ */
 void MainWindow::on_SalesReport_Button_clicked()
 {
     AddDate *date = new AddDate(0);
@@ -425,7 +487,9 @@ void MainWindow::on_SalesReport_Button_clicked()
 }
 
 
-
+/**
+ * @brief MainWindow::on_Expire_Button_clicked
+ */
 void MainWindow::on_Expire_Button_clicked()
 {
     AddDate *date = new AddDate(1);
@@ -437,6 +501,9 @@ void MainWindow::on_Expire_Button_clicked()
 
 }
 
+/**
+ * @brief MainWindow::on_Convert_Button_clicked
+ */
 void MainWindow::on_Convert_Button_clicked()
 {   ui->tableWidget_SIDE->hide();
     ClearTable(ui->tableWidget_ViewReports);
@@ -467,6 +534,9 @@ void MainWindow::on_Convert_Button_clicked()
     ui->tableWidget_ViewReports->resizeColumnsToContents();
 }
 
+/**
+ * @brief MainWindow::on_TotalPurchases_Button_clicked
+ */
 void MainWindow::on_TotalPurchases_Button_clicked()
 {
     ui->tableWidget_SIDE->hide();
@@ -529,7 +599,9 @@ void MainWindow::on_TotalPurchases_Button_clicked()
 }//END - void MainWindow::on_TotalPurchases_Button_clicked()
 
 
-
+/**
+ * @brief MainWindow::on_ItemsSoldQuantity_Button_clicked
+ */
 void MainWindow::on_ItemsSoldQuantity_Button_clicked()
 {
     ui->tableWidget_SIDE->hide();
@@ -571,7 +643,9 @@ void MainWindow::on_ItemsSoldQuantity_Button_clicked()
 }
 
 
-
+/**
+ * @brief MainWindow::on_Rebates_Button_clicked
+ */
 void MainWindow::on_Rebates_Button_clicked()
 {
     ui->tableWidget_SIDE->hide();
@@ -602,7 +676,9 @@ void MainWindow::on_Rebates_Button_clicked()
 
 
 
-
+/**
+ * @brief MainWindow::on_ItemsSoldName_Button_clicked
+ */
 void MainWindow::on_ItemsSoldName_Button_clicked()
 {
     SearchString *search = new SearchString(0, db);
@@ -614,6 +690,9 @@ void MainWindow::on_ItemsSoldName_Button_clicked()
     search->show();
 }
 
+/**
+ * @brief MainWindow::on_MemberPurchases_Button_clicked
+ */
 void MainWindow::on_MemberPurchases_Button_clicked()
 {
     SearchString *search = new SearchString(1, db);
@@ -624,6 +703,9 @@ void MainWindow::on_MemberPurchases_Button_clicked()
 
 }
 
+/**
+ * @brief MainWindow::on_pushButtonRemove_clicked
+ */
 void MainWindow::on_pushButtonRemove_clicked()
 {
     RemoveMemberItem *remove = new RemoveMemberItem(db, 0);

@@ -1,6 +1,12 @@
 #include "additemwindow.h"
 #include "ui_additemwindow.h"
 
+
+/**
+ * @brief AddItemWindow::AddItemWindow
+ * @param db
+ * @param parent
+ */
 AddItemWindow::AddItemWindow(Database *db, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::AddItemWindow)
@@ -9,11 +15,17 @@ AddItemWindow::AddItemWindow(Database *db, QWidget *parent) :
     this->db = db;
 }
 
+/**
+ * @brief AddItemWindow::~AddItemWindow
+ */
 AddItemWindow::~AddItemWindow()
 {
     delete ui;
 }
 
+/**
+ * @brief AddItemWindow::on_pushButton_AddItem_clicked
+ */
 void AddItemWindow::on_pushButton_AddItem_clicked()
 {
     bool valid;
@@ -49,6 +61,9 @@ void AddItemWindow::on_pushButton_AddItem_clicked()
     }
 }
 
+/**
+ * @brief AddItemWindow::on_pushButton_ItemCancel_clicked
+ */
 void AddItemWindow::on_pushButton_ItemCancel_clicked()
 {
     hide();

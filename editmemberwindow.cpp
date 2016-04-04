@@ -3,6 +3,12 @@
 #include <QWidget>
 #include "errorwindow.h"
 
+
+/**
+ * @brief editMemberWindow::editMemberWindow
+ * @param db
+ * @param parent
+ */
 editMemberWindow::editMemberWindow(Database *db, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::editMemberWindow)
@@ -11,11 +17,18 @@ editMemberWindow::editMemberWindow(Database *db, QWidget *parent) :
     this->db = db;
 }
 
+
+/**
+ * @brief editMemberWindow::~editMemberWindow
+ */
 editMemberWindow::~editMemberWindow()
 {
     delete ui;
 }
 
+/**
+ * @brief editMemberWindow::on_editMemberConform_accepted
+ */
 void editMemberWindow::on_editMemberConform_accepted()
 {
     memberID = ui->memberEditName->text().toInt(0,10);
@@ -96,6 +109,10 @@ void editMemberWindow::on_editMemberConform_accepted()
     delete memList;
 }
 
+
+/**
+ * @brief editMemberWindow::on_editMemberConform_rejected
+ */
 void editMemberWindow::on_editMemberConform_rejected()
 {
     hide();

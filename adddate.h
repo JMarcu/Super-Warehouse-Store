@@ -25,17 +25,20 @@ public:
 signals:
     /**
      * @brief DateSelected
+     *   - sends date selected by user
      */
     void DateSelected(Date);
 
 private slots:
     /**
      * @brief on_buttonBox_rejected
+     *  - Closes window
      */
     void on_buttonBox_rejected();
 
     /**
      * @brief on_buttonBox_accepted
+     * - closes window and sends signal to main window
      */
     void on_buttonBox_accepted();
 
@@ -53,6 +56,7 @@ private:
 
     /**
      * @brief date
+     *  - date entered
      */
     Date date;
     /**

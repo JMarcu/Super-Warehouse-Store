@@ -1,6 +1,12 @@
 #include "removememberitem.h"
 #include "ui_removememberitem.h"
 
+/**
+ * @brief RemoveMemberItem::RemoveMemberItem
+ * @param db
+ * @param index
+ * @param parent
+ */
 RemoveMemberItem::RemoveMemberItem(Database *db, int index, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::RemoveMemberItem)
@@ -21,11 +27,17 @@ RemoveMemberItem::RemoveMemberItem(Database *db, int index, QWidget *parent) :
     }
 }
 
+/**
+ * @brief RemoveMemberItem::~RemoveMemberItem
+ */
 RemoveMemberItem::~RemoveMemberItem()
 {
     delete ui;
 }
 
+/**
+ * @brief RemoveMemberItem::on_buttonBox_accepted
+ */
 void RemoveMemberItem::on_buttonBox_accepted()
 {
     int id;
@@ -107,6 +119,10 @@ void RemoveMemberItem::on_buttonBox_accepted()
     }
 }//END - Remove Member
 
+
+/**
+ * @brief RemoveMemberItem::on_buttonBox_rejected
+ */
 void RemoveMemberItem::on_buttonBox_rejected()
 {
     hide();

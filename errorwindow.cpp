@@ -1,6 +1,11 @@
 #include "errorwindow.h"
 #include "ui_errorwindow.h"
 
+/**
+ * @brief ErrorWindow::ErrorWindow
+ * @param index
+ * @param parent
+ */
 ErrorWindow::ErrorWindow(int index, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ErrorWindow)
@@ -31,11 +36,18 @@ ErrorWindow::ErrorWindow(int index, QWidget *parent) :
     ui->label_Error->setText(message);
 }
 
+
+/**
+ * @brief ErrorWindow::~ErrorWindow
+ */
 ErrorWindow::~ErrorWindow()
 {
     delete ui;
 }
 
+/**
+ * @brief ErrorWindow::on_pushButtonOK_clicked
+ */
 void ErrorWindow::on_pushButtonOK_clicked()
 {
     hide();

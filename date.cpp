@@ -1,6 +1,9 @@
 #include "date.h"
 #include <QDebug>
 
+/**
+ * @brief Date::Date
+ */
 Date::Date()
 {
     month = 0;
@@ -9,6 +12,12 @@ Date::Date()
 
 }
 
+/**
+ * @brief Date::Date
+ * @param monthIn
+ * @param dayIn
+ * @param yearIn
+ */
 Date::Date(int monthIn,
            int dayIn,
            int yearIn)
@@ -18,12 +27,19 @@ Date::Date(int monthIn,
     year  = yearIn;
 }
 
+/**
+ * @brief Date::Date
+ * @param dateString
+ */
 Date::Date(QString dateString){
     year  = dateString.left(4).toInt();
     month = dateString.mid(5, 2).toInt();
     day   = dateString.right(2).toInt();
 }
 
+/**
+ * @brief Date::~Date
+ */
 Date::~Date()
 {
     month = 0;
@@ -31,7 +47,12 @@ Date::~Date()
     year  = 0;
 }
 
-
+/**
+ * @brief Date::UpdateDate
+ * @param newMonth
+ * @param newDay
+ * @param newYear
+ */
 void Date::UpdateDate(int newMonth, int newDay, int newYear)
 {
     month = newMonth;
@@ -39,23 +60,39 @@ void Date::UpdateDate(int newMonth, int newDay, int newYear)
     year  = newYear;
 }
 
+
+/**
+ * @brief Date::GetMonth
+ * @return
+ */
 int Date::GetMonth() const
 {
     return month;
 }
 
-
+/**
+ * @brief Date::GetDay
+ * @return
+ */
 int Date::GetDay() const
 {
     return day;
 }
 
-
+/**
+ * @brief Date::GetYear
+ * @return
+ */
 int Date::GetYear() const
 {
     return year;
 }
 
+
+/**
+ * @brief Date::toString
+ * @return
+ */
 QString Date::toString() const{
     QString date;
 

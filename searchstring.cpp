@@ -2,6 +2,13 @@
 #include "ui_searchstring.h"
 #include "errorwindow.h"
 
+
+/**
+ * @brief SearchString::SearchString
+ * @param index
+ * @param db
+ * @param parent
+ */
 SearchString::SearchString(int index, Database *db, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::SearchString)
@@ -25,12 +32,17 @@ SearchString::SearchString(int index, Database *db, QWidget *parent) :
     }
 }
 
+/**
+ * @brief SearchString::~SearchString
+ */
 SearchString::~SearchString()
 {
     delete ui;
 }
 
-
+/**
+ * @brief SearchString::on_buttonBox_accepted
+ */
 void SearchString::on_buttonBox_accepted()
 {
     bool valid;
@@ -87,11 +99,17 @@ void SearchString::on_buttonBox_accepted()
 
 }
 
+/**
+ * @brief SearchString::on_buttonBox_rejected
+ */
 void SearchString::on_buttonBox_rejected()
 {
     hide();
 }
 
+/**
+ * @brief SearchString::on_pushButton_Name_clicked
+ */
 void SearchString::on_pushButton_Name_clicked()
 {
     ui->pushButton_ID->hide();
@@ -102,6 +120,9 @@ void SearchString::on_pushButton_Name_clicked()
     clicked = 2;
 }
 
+/**
+ * @brief SearchString::on_pushButton_ID_clicked
+ */
 void SearchString::on_pushButton_ID_clicked()
 {
     ui->pushButton_ID->hide();

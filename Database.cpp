@@ -10,14 +10,26 @@
 #include <iostream>
 #include <QDebug>
 
+/**
+ * @brief Database::Database
+ * @param name
+ */
 Database::Database(string name){    
     sqlite3_open(name.c_str(), &db);
 }
 
+/**
+ * @brief Database::~Database
+ */
 Database::~Database(){
     sqlite3_close(db);
 }
 
+/**
+ * @brief Database::GetMember
+ * @param id
+ * @return
+ */
 Member* Database::GetMember(int id) const{
     ostringstream sqlCmmd;
     sqlCmmd << "SELECT * FROM Members WHERE id=?;";
@@ -36,6 +48,11 @@ Member* Database::GetMember(int id) const{
     return new Member(name, id, tot, exp, isEx);
 }
 
+/**
+ * @brief Database::GetMember
+ * @param name
+ * @return
+ */
 Member* Database::GetMember(QString name) const{
     ostringstream sqlCmmd;
     sqlCmmd << "SELECT * FROM Members WHERE name='"
@@ -53,6 +70,10 @@ Member* Database::GetMember(QString name) const{
     return new Member(name, id, tot, exp, isEx);
 }
 
+/**
+ * @brief Database::GetAllMembers
+ * @return
+ */
 std::list<Member>* Database::GetAllMembers() const{
     std::list<Member>* members = new std::list<Member>;
     
@@ -81,6 +102,10 @@ std::list<Member>* Database::GetAllMembers() const{
     return members;
 }
 
+/**
+ * @brief Database::GetRegularMembers
+ * @return
+ */
 std::list<Member>* Database::GetRegularMembers() const{
    std::list<Member>* members = new std::list<Member>;
     
@@ -105,6 +130,10 @@ std::list<Member>* Database::GetRegularMembers() const{
     return members;
 }
 
+/**
+ * @brief Database::GetExecutiveMembers
+ * @return
+ */
 std::list<Member>* Database::GetExecutiveMembers() const{
     std::list<Member>* members = new std::list<Member>;
     Member* memPtr;
@@ -136,6 +165,11 @@ std::list<Member>* Database::GetExecutiveMembers() const{
     return members;
 }
 
+/**
+ * @brief Database::GetSales
+ * @param day
+ * @return
+ */
 std::list<Sale>* Database::GetSales(Date day) const{
     std::list<Sale>* sales = new std::list<Sale>;
     Sale* salePtr;
@@ -171,6 +205,12 @@ std::list<Sale>* Database::GetSales(Date day) const{
     return sales;
 }
 
+/**
+ * @brief Database::GetSales
+ * @param item
+ * @return
+ */
+
 std::list<Sale>* Database::GetSales(const Item& item) const{
     std::list<Sale>* sales = new std::list<Sale>;
     Sale* salePtr;
@@ -202,6 +242,12 @@ std::list<Sale>* Database::GetSales(const Item& item) const{
     return sales;
 }
 
+
+/**
+ * @brief Database::GetSales
+ * @param member
+ * @return
+ */
 std::list<Sale>* Database::GetSales(const Member& member) const{
         std::list<Sale>* sales = new std::list<Sale>;
     Sale* salePtr;
@@ -234,6 +280,10 @@ std::list<Sale>* Database::GetSales(const Member& member) const{
     return sales;
 }
 
+/**
+ * @brief Database::GetAllSales
+ * @return
+ */
 std::list<Sale>* Database::GetAllSales() const{
     std::list<Sale>* sales = new std::list<Sale>;
     Sale* salePtr;
@@ -263,6 +313,11 @@ std::list<Sale>* Database::GetAllSales() const{
     return sales;
 }
 
+
+/**
+ * @brief Database::GetAllItems
+ * @return
+ */
 std::list<Item>* Database::GetAllItems() const{
     std::list<Item>* items = new std::list<Item>;
     Item* itemPtr;
@@ -287,6 +342,11 @@ std::list<Item>* Database::GetAllItems() const{
     return items;
 }
 
+
+/**
+ * @brief Database::AddMember
+ * @param member
+ */
 void Database::AddMember(const Member& member){
     char* errMsg;
     ostringstream sqlCmmd;
@@ -305,6 +365,11 @@ void Database::AddMember(const Member& member){
     }
 }
 
+
+/**
+ * @brief Database::DeleteMember
+ * @param member
+ */
 void Database::DeleteMember(const Member& member){
     char* errMsg;
     ostringstream sqlCmmd;
@@ -317,6 +382,11 @@ void Database::DeleteMember(const Member& member){
     }
 }
 
+
+/**
+ * @brief Database::UpdateMember
+ * @param member
+ */
 void Database::UpdateMember(const Member& member){
     char* errMsg;
     ostringstream sqlCmmd;
@@ -334,6 +404,11 @@ void Database::UpdateMember(const Member& member){
     }
 }
 
+
+/**
+ * @brief Database::AddItem
+ * @param item
+ */
 void Database::AddItem(const Item& item){
     char* errMsg;
     ostringstream sqlCmmd;
@@ -349,6 +424,11 @@ void Database::AddItem(const Item& item){
     }
 }
 
+
+/**
+ * @brief Database::UpdateItem
+ * @param item
+ */
 void Database::UpdateItem(const Item& item){
     char* errMsg;
     ostringstream sqlCmmd;
@@ -363,6 +443,11 @@ void Database::UpdateItem(const Item& item){
     }
 }
 
+
+/**
+ * @brief Database::DeleteItem
+ * @param item
+ */
 void Database::DeleteItem(const Item& item){
     char* errMsg;
     ostringstream sqlCmmd;
@@ -379,6 +464,11 @@ void Database::DeleteItem(const Item& item){
         cerr << errMsg;
     }
 }
+
+/**
+ * @brief Database::AddSale
+ * @param sale
+ */
 
 void Database::AddSale(const Sale& sale){
     char* errMsg;
@@ -398,6 +488,13 @@ void Database::AddSale(const Sale& sale){
     }
 }
 
+
+/**
+ * @brief Database::GetDailySalesReport
+ * @param day
+ * @param memType
+ * @return
+ */
 const DailySalesReport* Database::GetDailySalesReport(Date day, int memType) const{
     std::list<Sale>*   sales;
 
@@ -429,10 +526,20 @@ const DailySalesReport* Database::GetDailySalesReport(Date day, int memType) con
     return new DailySalesReport(sales, members);
 }
 
+
+/**
+ * @brief Database::GetTotalPurchaseReport
+ * @return
+ */
 const TotalPurchaseReport* Database::GetTotalPurchaseReport() const{
     return new TotalPurchaseReport(GetAllMembers(), GetAllSales());
 }
 
+
+/**
+ * @brief Database::GetTotalItemReport
+ * @return
+ */
 const TotalItemReport* Database::GetTotalItemReport() const{
     std::list<Sale>* sales;
     sales = GetAllSales();
@@ -443,10 +550,20 @@ const TotalItemReport* Database::GetTotalItemReport() const{
     return new TotalItemReport(items, sales);
 }
 
+
+/**
+ * @brief Database::GetRebatesReport
+ * @return
+ */
 const RebatesReport* Database::GetRebatesReport() const{
     return new RebatesReport(GetExecutiveMembers());
 }
 
+/**
+ * @brief Database::GetExpirationReport
+ * @param month
+ * @return
+ */
 const ExpirationReport* Database::GetExpirationReport(const Date& month) const{
     std::list<Member>* members = new std::list<Member>;
 
@@ -477,10 +594,21 @@ const ExpirationReport* Database::GetExpirationReport(const Date& month) const{
     return new ExpirationReport(month, members);
 }
 
+
+/**
+ * @brief Database::GetItemReport
+ * @param item
+ * @return
+ */
 const ItemReport* Database::GetItemReport(const Item& item) const{
     return new ItemReport(GetSales(item), item);
 }
 
+/**
+ * @brief Database::GetMemberPurchaseReport
+ * @param id
+ * @return
+ */
 const MemberPurchaseReport* Database::GetMemberPurchaseReport(int id) const{
     Member* member;
     member = GetMember(id);
@@ -491,6 +619,11 @@ const MemberPurchaseReport* Database::GetMemberPurchaseReport(int id) const{
     return new MemberPurchaseReport(member, sales);
 }
 
+/**
+ * @brief Database::GetMemberPurchaseReport
+ * @param name
+ * @return
+ */
 const MemberPurchaseReport* Database::GetMemberPurchaseReport(QString name) const{
     Member* member;
     member = GetMember(name);
@@ -501,10 +634,19 @@ const MemberPurchaseReport* Database::GetMemberPurchaseReport(QString name) cons
     return new MemberPurchaseReport(member, sales);
 }
 
+
+/**
+ * @brief Database::GetRegularConversionReport
+ * @return
+ */
 const RegularConversionReport* Database::GetRegularConversionReport() const{
     return new RegularConversionReport(GetRegularMembers());
 }
 
+/**
+ * @brief Database::GetExecutiveConversionReport
+ * @return
+ */
 const ExecutiveConversionReport* Database::GetExecutiveConversionReport() const{
     return new ExecutiveConversionReport(GetExecutiveMembers());
 }
