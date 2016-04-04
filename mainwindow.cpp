@@ -14,6 +14,7 @@ MainWindow::MainWindow(Database *db, QWidget *parent) :
     rowM = 0;
     rowR = 0;
     colR = 0;
+    rowS = 0;
 
     this->db = db;
 }
@@ -33,7 +34,7 @@ void MainWindow::AddItemToItemsTable(QString name, double price)
 }
 
 
-void MainWindow::AddMemberToTable(QString name, int id, Date expiration, bool isExecutive)
+void MainWindow::AddMemberToTable(QString name, int id, Date expiration, bool isExecutive, double totalSpent)
 {
     QString executive;
     if(isExecutive == true)
@@ -50,7 +51,7 @@ void MainWindow::AddMemberToTable(QString name, int id, Date expiration, bool is
     ui->tableWidgetMembers->setItem(rowM, 1, new QTableWidgetItem(QString::number(id)));
     ui->tableWidgetMembers->setItem(rowM, 2, new QTableWidgetItem(expiration.toString()));
     ui->tableWidgetMembers->setItem(rowM, 3, new QTableWidgetItem(executive));
-    ui->tableWidgetMembers->setItem(rowM, 4, new QTableWidgetItem(QString::number(0.0)));
+    ui->tableWidgetMembers->setItem(rowM, 4, new QTableWidgetItem(QString::number(totalSpent)));
     rowM++;
     ui->tableWidgetMembers->resizeColumnsToContents();
 }
@@ -59,8 +60,8 @@ void MainWindow::AddMemberToTable(QString name, int id, Date expiration, bool is
 void MainWindow::AddDailySalesReport(Date dateIn)
 {
     ui->tableWidget_SIDE->show();
+    ClearTable(ui->tableWidget_SIDE);
     ClearTable(ui->tableWidget_ViewReports);
-    rowS = 0;
 
     const DailySalesReport *dsr = db->GetDailySalesReport(dateIn,(int) 0);
 
@@ -96,11 +97,25 @@ void MainWindow::AddDailySalesReport(Date dateIn)
             totalRevenue += sales->GetSubtotal();
             sales++;
         }
+
+        ui->tableWidget_SIDE->insertColumn(colS);
+        ui->tableWidget_SIDE->setHorizontalHeaderItem(colS, new QTableWidgetItem("Number of Executives Sales"));
+
+        colS++;
+        ui->tableWidget_SIDE->insertColumn(colS);
+        ui->tableWidget_SIDE->setHorizontalHeaderItem(colS, new QTableWidgetItem("Number of Regular Sales"));
+
+        colS++;
+        ui->tableWidget_SIDE->insertColumn(colS);
+        ui->tableWidget_SIDE->setHorizontalHeaderItem(colS, new QTableWidgetItem("Total Revenue for " + dateIn.toString()));
+
         ui->tableWidget_SIDE->insertRow(rowS);
         ui->tableWidget_SIDE->setItem(rowS, 0, new QTableWidgetItem(QString::number(dsr->GetExecutiveCount())));
         ui->tableWidget_SIDE->setItem(rowS, 1, new QTableWidgetItem(QString::number(dsr->GetRegularCount())));
-        ui->tableWidget_SIDE->setItem(rowS, 2, new QTableWidgetItem(totalRevenue));
+        ui->tableWidget_SIDE->setItem(rowS, 2, new QTableWidgetItem(QString::number(totalRevenue)));
+        ui->tableWidget_SIDE->resizeColumnsToContents();
     }
+
 
     ui->tableWidget_ViewReports->resizeColumnsToContents();
     delete dsr;
@@ -160,8 +175,8 @@ void MainWindow::on_pushButton_MemberAdd_clicked()
 {
     AddMemberWindow *member = new AddMemberWindow(db);
 
-    connect(member,SIGNAL(AddMember(QString, int, Date, bool)),
-            this, SLOT(AddMemberToTable(QString, int, Date, bool)));
+    connect(member,SIGNAL(AddMember(QString, int, Date, bool, double)),
+            this, SLOT(AddMemberToTable(QString, int, Date, bool, double)));
 
     member->show();
 }
@@ -171,7 +186,7 @@ void MainWindow::on_pushButtonEdit_clicked()
     editItemWindow *item = new editItemWindow(db);
     connect(item, SIGNAL(ItemEdited(QString,double)), this, SLOT(PopulateItems()));
     item->show();
-    PopulateItems();
+//    PopulateItems();
 }
 
 
@@ -179,11 +194,11 @@ void MainWindow::on_pushButton_MemberEdit_clicked()
 {
     editMemberWindow *memberEdit = new editMemberWindow(db);
 
-    connect(memberEdit, SIGNAL(MemberEdit(QString, int, Date, bool)),
-            this, SLOT(AddMemberToTable(QString, int, Date, bool)));
+    connect(memberEdit, SIGNAL(MemberEdit(QString, int, Date, bool, double)),
+            this, SLOT(AddMemberToTable(QString, int, Date, bool, double)));
 
     memberEdit->show();
-    PopulateMembers();
+//    PopulateMembers();
 }
 
 
@@ -212,7 +227,7 @@ void MainWindow::PopulateMembers()
 
     while(members != memberList->end())
     {
-        AddMemberToTable(members->GetName(), members->GetID(), members->GetExpiration(), members->IsExecutive());
+        AddMemberToTable(members->GetName(), members->GetID(), members->GetExpiration(), members->IsExecutive(), members->GetTotalSpent());
         members++;
     }
 
@@ -220,6 +235,9 @@ void MainWindow::PopulateMembers()
     delete memberList;
 }
 
+/**
+ * @brief MainWindow::PopulateItems
+ */
 void MainWindow::PopulateItems()
 {
     int currentRows = ui->tableWidgetItem->rowCount();
@@ -294,6 +312,8 @@ void MainWindow::ClearTable(QTableWidget *table)
 
     rowR = 0;
     colR = 0;
+    colS = 0;
+    rowS = 0;
 }
 
 void MainWindow::AddMemberPurchaseString(QString name)
@@ -449,6 +469,7 @@ void MainWindow::on_Convert_Button_clicked()
 
 void MainWindow::on_TotalPurchases_Button_clicked()
 {
+    ui->tableWidget_SIDE->hide();
     const TotalPurchaseReport* tpr = db->GetTotalPurchaseReport();
 
     ClearTable(ui->tableWidget_ViewReports);
@@ -470,14 +491,12 @@ void MainWindow::on_TotalPurchases_Button_clicked()
     ui->tableWidget_ViewReports->insertColumn(colR);
     ui->tableWidget_ViewReports->setHorizontalHeaderItem(colR, new QTableWidgetItem("Quantity"));
 
-
-
     rowR = 0;
 
 
     while(index < tpr->GetMaxIndex())
     {
-        std::list<Sale> saleList = db->GetTotalPurchaseReport()->GetPurchases(index);
+        std::list<Sale> saleList              = tpr->GetPurchases(index);
         std::list<Sale>::const_iterator sales = saleList.begin();
 
         ui->tableWidget_ViewReports->insertRow(rowR);
@@ -502,8 +521,12 @@ void MainWindow::on_TotalPurchases_Button_clicked()
     }
 
 
+
     ui->tableWidget_ViewReports->resizeColumnsToContents();
-}
+
+    delete tpr;
+
+}//END - void MainWindow::on_TotalPurchases_Button_clicked()
 
 
 

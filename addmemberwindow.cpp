@@ -93,7 +93,7 @@ void AddMemberWindow::on_pushButton_MemberAdd_clicked()
 
         if(valid == true)
         {
-            emit AddMember(name,id,expiration,isExecutive);
+            emit AddMember(name,id,expiration,isExecutive, 0.0);
 
             db->AddMember(Member(name, id, 0, expiration, isExecutive));
             hide();

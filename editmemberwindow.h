@@ -20,7 +20,7 @@ public:
     ~editMemberWindow();
 
 signals:
-    void MemberEdit(QString, int, Date, bool);
+    void MemberEdit(QString, int, Date, bool, double);
 
 private slots:
 

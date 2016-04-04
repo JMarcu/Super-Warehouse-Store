@@ -108,8 +108,8 @@ private:
 	double 	totalSpent;	// Total member spent
     bool    isExecutive;
         
-         const double EXECUTIVE_RENEWAL = 125.00;
-         const double REGULAR_RENEWAL   =  45.00;
+       const double EXECUTIVE_RENEWAL = 125.00;
+       const double REGULAR_RENEWAL   =  45.00;
 
 };
 

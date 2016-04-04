@@ -23,7 +23,7 @@ public:
 
 
 signals:
-    void AddMember(QString, int, Date, bool);
+    void AddMember(QString, int, Date, bool, double);
 
 private slots:
     void on_pushButton_MemberAdd_clicked();

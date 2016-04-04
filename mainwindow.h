@@ -46,7 +46,7 @@ signals:
 
 public slots:
     void AddItemToItemsTable(QString name, double price);
-    void AddMemberToTable(QString name, int id, Date expiration, bool isExecutive );
+    void AddMemberToTable(QString name, int id, Date expiration, bool isExecutive , double totalSpent);
     void AddDailySalesReport(Date dateIn);
     void ExpiredMembershipsReport(Date dateIn);
     void PopulateMembers();
@@ -95,6 +95,7 @@ private:
     int rowR;
     int rowS;
     int colR;
+    int colS;
     Database *db;
 };
 

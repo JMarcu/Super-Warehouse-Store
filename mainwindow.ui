@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="Menu">
      <attribute name="title">
@@ -268,13 +268,13 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>11</x>
         <y>51</y>
         <width>791</width>
-        <height>54</height>
+        <height>66</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_3">
@@ -364,11 +364,6 @@
        <bool>true</bool>
       </property>
      </widget>
-     <zorder>label</zorder>
-     <zorder>tableWidget_SIDE</zorder>
-     <zorder>layoutWidget</zorder>
-     <zorder>tableWidget_ViewReports</zorder>
-     <zorder>tableWidget_ViewReports</zorder>
     </widget>
    </widget>
   </widget>

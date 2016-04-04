@@ -23,9 +23,12 @@ TotalPurchaseReport::TotalPurchaseReport(std::list<Member>* memList,
     {
         members.push_back(*memIt);
         totals.push_back(0);
+
         salePtr = new list<Sale>;
-        
+
+
         while(memIt->GetID() == saleIt->GetMemberID()){
+
             salePtr->push_back(*saleIt);
             totals[index] += saleIt->GetSubtotal();
             

@@ -29,13 +29,14 @@ void editItemWindow::on_buttonBox_edit_accepted()
 
     while(items != list->end() && valid != false)
     {
-        qDebug() << items->GetItem();
         if(itemEditName == items->GetItem())
         {
             valid = false;
         }
-
-        items++;
+        else
+        {
+            items++;
+        }
     }
 
     if(items == list->end() && valid == true)

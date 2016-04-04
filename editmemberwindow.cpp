@@ -19,6 +19,7 @@ editMemberWindow::~editMemberWindow()
 void editMemberWindow::on_editMemberConform_accepted()
 {
     memberID = ui->memberEditName->text().toInt(0,10);
+
     bool valid = false;
 
     int year;
@@ -57,14 +58,19 @@ void editMemberWindow::on_editMemberConform_accepted()
     std::list<Member> *memList = db->GetAllMembers();
     std::list<Member>::const_iterator member = memList->begin();
 
-    while(member != memList->end() && !valid)
+    while(member != memList->end() && valid != true)
     {
-       valid = member->GetID() != memberID;
-       member++;
-
+        if(member->GetID() == memberID)
+        {
+            valid = true;
+        }
+        else
+        {
+            member++;
+        }
     }
 
-    if(!valid)
+    if(valid == false)
     {
         ErrorWindow *error = new ErrorWindow(1);
         error->show();
@@ -79,7 +85,7 @@ void editMemberWindow::on_editMemberConform_accepted()
         {
             isExecutive = true;
         }
-        emit MemberEdit(member->GetName(), memberID, expirationDate, isExecutive);
+        emit MemberEdit(member->GetName(), memberID, expirationDate, isExecutive, member->GetTotalSpent());
 
         db->UpdateMember(Member(member->GetName(), memberID, member->GetTotalSpent(), expirationDate, isExecutive));
 

@@ -11,7 +11,7 @@ ErrorWindow::ErrorWindow(int index, QWidget *parent) :
     {
         case NAME_MEM : message = "INVALID MEMBER NAME";
             break;
-        case ID : message = "INVALID ID";
+        case ID : message = "INVALID ID - ID not found or already in use";
             break;
         case NAME_ITEM : message = "INVALID ITEM NAME - Item already exists";
             break;

@@ -49,8 +49,12 @@ void RemoveMemberItem::on_buttonBox_accepted()
             {
                 valid = true;
             }
-            items++;
-        }
+            else
+            {
+                items++;
+            }
+
+        }//END - (items != listI->end() && valid == false)
 
         if(valid == false)
         {
@@ -64,7 +68,7 @@ void RemoveMemberItem::on_buttonBox_accepted()
         }
 
         delete listI;
-    }
+    }//END - Remove Item
     else
     {
         id = ui->lineEdit->text().toInt(0,10);
@@ -82,7 +86,10 @@ void RemoveMemberItem::on_buttonBox_accepted()
                 valid = true;
                 date.UpdateDate(0,0,0);
             }
-            member++;
+            else
+            {
+                member++;
+            }
         }
 
         if(valid == false)
@@ -98,7 +105,7 @@ void RemoveMemberItem::on_buttonBox_accepted()
 
         delete list;
     }
-}
+}//END - Remove Member
 
 void RemoveMemberItem::on_buttonBox_rejected()
 {
