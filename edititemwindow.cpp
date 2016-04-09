@@ -2,6 +2,11 @@
 #include "ui_edititemwindow.h"
 #include "errorwindow.h"
 
+/**
+ * @brief editItemWindow::editItemWindow
+ * @param db
+ * @param parent
+ */
 editItemWindow::editItemWindow(Database *db, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::editItemWindow)
@@ -10,11 +15,17 @@ editItemWindow::editItemWindow(Database *db, QWidget *parent) :
     this->db = db;
 }
 
+/**
+ * @brief editItemWindow::~editItemWindow
+ */
 editItemWindow::~editItemWindow()
 {
     delete ui;
 }
 
+/**
+ * @brief editItemWindow::on_buttonBox_edit_accepted
+ */
 void editItemWindow::on_buttonBox_edit_accepted()
 {
     bool valid;
@@ -33,7 +44,10 @@ void editItemWindow::on_buttonBox_edit_accepted()
         {
             valid = false;
         }
-        items++;
+        else
+        {
+            items++;
+        }
     }
 
     if(items == list->end() && valid == true)
@@ -43,8 +57,7 @@ void editItemWindow::on_buttonBox_edit_accepted()
     }
     else
     {
-        db->DeleteItem(Item(itemEditName));
-        db->AddItem(Item(itemEditName, itemEditPrice));
+        db->UpdateItem(Item(itemEditName, itemEditPrice));
 
         emit ItemEdited(itemEditName, itemEditPrice);
 
@@ -54,6 +67,10 @@ void editItemWindow::on_buttonBox_edit_accepted()
 
 }
 
+
+/**
+ * @brief editItemWindow::on_buttonBox_edit_rejected
+ */
 void editItemWindow::on_buttonBox_edit_rejected()
 {
     hide();

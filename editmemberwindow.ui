@@ -14,19 +14,6 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QDialogButtonBox" name="editMemberConform">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>230</y>
-      <width>156</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="standardButtons">
-     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-    </property>
-   </widget>
    <widget class="QLabel" name="IdErrorLabel">
     <property name="geometry">
      <rect>
@@ -43,10 +30,10 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>20</y>
-      <width>321</width>
-      <height>16</height>
+      <x>150</x>
+      <y>40</y>
+      <width>264</width>
+      <height>19</height>
      </rect>
     </property>
     <property name="font">
@@ -55,37 +42,37 @@
      </font>
     </property>
     <property name="text">
-     <string>Enter the Members new information:</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Enter the Members New Information:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>70</y>
-      <width>441</width>
-      <height>111</height>
+      <x>32</x>
+      <y>82</y>
+      <width>521</width>
+      <height>171</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>(MM/DD/YY)</string>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="0">
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Name:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Member's ID Want to Change:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="4" colspan="3">
+     <item row="0" column="1" colspan="2">
       <widget class="QLineEdit" name="memberEditName"/>
      </item>
-     <item row="1" column="4">
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Type:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
       <widget class="QComboBox" name="comboBoxExecutive">
        <item>
         <property name="text">
@@ -99,83 +86,14 @@
        </item>
       </widget>
      </item>
-     <item row="1" column="0" colspan="2">
-      <widget class="QLabel" name="label_3">
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_4">
        <property name="text">
-        <string>Type:</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Expiration Date:&lt;/p&gt;&lt;p&gt;(MM/DD/YY)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="6">
-      <widget class="QComboBox" name="CB_year">
-       <item>
-        <property name="text">
-         <string>Year</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>2015</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>2016</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>2017</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>2018</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>2019</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>2020</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>2021</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>2022</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>2023</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>2024</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>2025</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>2026</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="2" column="4">
+     <item row="2" column="1">
       <widget class="QComboBox" name="CB_Month">
        <item>
         <property name="text">
@@ -244,7 +162,7 @@
        </item>
       </widget>
      </item>
-     <item row="2" column="5">
+     <item row="2" column="2">
       <widget class="QComboBox" name="CB_Day">
        <item>
         <property name="text">
@@ -408,10 +326,79 @@
        </item>
       </widget>
      </item>
-     <item row="2" column="0" colspan="2">
-      <widget class="QLabel" name="label_4">
-       <property name="text">
-        <string>Expiration Date:</string>
+     <item row="2" column="3">
+      <widget class="QComboBox" name="CB_year">
+       <item>
+        <property name="text">
+         <string>Year</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2015</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2016</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2017</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2018</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2019</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2020</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2021</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2022</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2023</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2024</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2025</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2026</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="3" column="0" colspan="2">
+      <widget class="QDialogButtonBox" name="editMemberConform">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
        </property>
       </widget>
      </item>
@@ -424,7 +411,7 @@
      <x>0</x>
      <y>0</y>
      <width>570</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

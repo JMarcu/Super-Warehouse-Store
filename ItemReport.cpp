@@ -7,6 +7,11 @@
 
 #include "ItemReport.h"
 
+/**
+ * @brief ItemReport::ItemReport
+ * @param sales
+ * @param i
+ */
 ItemReport::ItemReport(std::list<Sale>* sales, const Item& i){
     item = i;
     
@@ -26,15 +31,27 @@ ItemReport::ItemReport(std::list<Sale>* sales, const Item& i){
     delete sales;
 }
 
+/**
+ * @brief ItemReport::GetItem
+ * @return
+ */
 const Item& ItemReport::GetItem() const
 {
     return item;
 }
 
+/**
+ * @brief ItemReport::GetQuantitySold
+ * @return
+ */
 int ItemReport::GetQuantitySold() const{
     return quantity;
 }
 
+/**
+ * @brief ItemReport::GetTotalRevenue
+ * @return
+ */
 double ItemReport::GetTotalRevenue() const{
     return revenue;
 }

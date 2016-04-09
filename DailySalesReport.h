@@ -22,15 +22,40 @@
  */
 class DailySalesReport {
 public:
-    //Constructor and Destructor
+    /**
+     * @brief DailySalesReport
+     * @param salesListIn - list of sales made onday
+     * @param mems - list of members bought on date
+     *  - initialzes an instance of DailySalesReport
+     */
     DailySalesReport (std::list<Sale>*   salesListIn,
                       std::list<Member>* mems);
+
+
     ~DailySalesReport();
 
-    //Getters
+    /**
+     * @brief GetDailySales
+     * @return - list of sales made that day
+     */
     const std::list<Sale>& GetDailySales() const;
+
+    /**
+     * @brief GetAllMembers
+     * @return - list of members that purchases on Date
+     */
     const std::list<Member>& GetAllMembers() const;
+
+    /**
+     * @brief GetRegularCount
+     * @return - Number of Regular members who bought on Date
+     */
     int GetRegularCount() const;
+
+    /**
+     * @brief GetExecutiveCount
+     * @return - number of Executive members bought on Date
+     */
     int GetExecutiveCount() const;
 
 private:

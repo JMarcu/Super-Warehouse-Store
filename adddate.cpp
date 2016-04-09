@@ -1,6 +1,11 @@
 #include "adddate.h"
 #include "ui_adddate.h"
 
+/**
+ * @brief AddDate::AddDate
+ * @param index
+ * @param parent
+ */
 AddDate::AddDate(int index, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AddDate)
@@ -16,17 +21,25 @@ AddDate::AddDate(int index, QWidget *parent) :
     }
 }
 
-
+/**
+ * @brief AddDate::~AddDate
+ */
 AddDate::~AddDate()
 {
     delete ui;
 }
 
+/**
+ * @brief AddDate::on_buttonBox_rejected
+ */
 void AddDate::on_buttonBox_rejected()
 {
     hide();
 }
 
+/**
+ * @brief AddDate::on_buttonBox_accepted
+ */
 void AddDate::on_buttonBox_accepted()
 {
     int year;
@@ -77,6 +90,10 @@ void AddDate::on_buttonBox_accepted()
 
 }
 
+/**
+ * @brief AddDate::ReturnDate
+ * @return
+ */
 Date AddDate::ReturnDate() const
 {
     return date;

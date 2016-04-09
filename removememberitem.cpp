@@ -1,6 +1,12 @@
 #include "removememberitem.h"
 #include "ui_removememberitem.h"
 
+/**
+ * @brief RemoveMemberItem::RemoveMemberItem
+ * @param db
+ * @param index
+ * @param parent
+ */
 RemoveMemberItem::RemoveMemberItem(Database *db, int index, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::RemoveMemberItem)
@@ -17,15 +23,21 @@ RemoveMemberItem::RemoveMemberItem(Database *db, int index, QWidget *parent) :
     }
     else
     {
-        ui->label->setText("Enter Member to Remove");
+        ui->label->setText("Enter Member's' ID to Remove");
     }
 }
 
+/**
+ * @brief RemoveMemberItem::~RemoveMemberItem
+ */
 RemoveMemberItem::~RemoveMemberItem()
 {
     delete ui;
 }
 
+/**
+ * @brief RemoveMemberItem::on_buttonBox_accepted
+ */
 void RemoveMemberItem::on_buttonBox_accepted()
 {
     int id;
@@ -34,10 +46,12 @@ void RemoveMemberItem::on_buttonBox_accepted()
 
     valid = false;
 
-    name = ui->lineEdit->text();
+
 
     if(index1 == 0)
     {
+        name = ui->lineEdit->text();
+
         std::list<Item> *listI = db->GetAllItems();
         std::list<Item>::const_iterator items = listI->begin();
 
@@ -45,10 +59,14 @@ void RemoveMemberItem::on_buttonBox_accepted()
         {
             if(name == items->GetItem())
             {
-                valid == true;
+                valid = true;
             }
-            items++;
-        }
+            else
+            {
+                items++;
+            }
+
+        }//END - (items != listI->end() && valid == false)
 
         if(valid == false)
         {
@@ -62,9 +80,11 @@ void RemoveMemberItem::on_buttonBox_accepted()
         }
 
         delete listI;
-    }
+    }//END - Remove Item
     else
     {
+        id = ui->lineEdit->text().toInt(0,10);
+
         valid = false;
 
         std::list<Member> *list = db->GetAllMembers();
@@ -72,13 +92,16 @@ void RemoveMemberItem::on_buttonBox_accepted()
 
         while(member != list->end() && valid == false)
         {
-            if(name == member->GetName())
+            if(id == member->GetID())
             {
-                id = member->GetID();
+                name = member->GetName();
                 valid = true;
                 date.UpdateDate(0,0,0);
             }
-            member++;
+            else
+            {
+                member++;
+            }
         }
 
         if(valid == false)
@@ -94,8 +117,12 @@ void RemoveMemberItem::on_buttonBox_accepted()
 
         delete list;
     }
-}
+}//END - Remove Member
 
+
+/**
+ * @brief RemoveMemberItem::on_buttonBox_rejected
+ */
 void RemoveMemberItem::on_buttonBox_rejected()
 {
     hide();

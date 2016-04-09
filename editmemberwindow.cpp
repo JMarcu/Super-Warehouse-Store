@@ -1,7 +1,14 @@
 #include "editmemberwindow.h"
 #include "ui_editmemberwindow.h"
 #include <QWidget>
+#include "errorwindow.h"
 
+
+/**
+ * @brief editMemberWindow::editMemberWindow
+ * @param db
+ * @param parent
+ */
 editMemberWindow::editMemberWindow(Database *db, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::editMemberWindow)
@@ -10,33 +17,102 @@ editMemberWindow::editMemberWindow(Database *db, QWidget *parent) :
     this->db = db;
 }
 
+
+/**
+ * @brief editMemberWindow::~editMemberWindow
+ */
 editMemberWindow::~editMemberWindow()
 {
     delete ui;
 }
 
+/**
+ * @brief editMemberWindow::on_editMemberConform_accepted
+ */
 void editMemberWindow::on_editMemberConform_accepted()
 {
-    memberName = ui->memberEditName->text();
+    memberID = ui->memberEditName->text().toInt(0,10);
+
+    bool valid = false;
+
+    int year;
+
+    switch(ui->CB_year->currentIndex())
+    {
+        case 1 : year = 2015;
+            break;
+        case 2 : year = 2016;
+            break;
+        case 3 : year = 2017;
+            break;
+        case 4 : year = 2018;
+            break;
+        case 5 : year = 2019;
+            break;
+        case 6 : year = 2020;
+            break;
+        case 7 : year = 2021;
+            break;
+        case 8 : year = 2022;
+            break;
+        case 9 : year = 2023;
+            break;
+        case 10: year = 2024;
+            break;
+        case 11 : year = 2025;
+            break;
+        case 12 : year = 2026;
+            break;
+    }
 
     expirationDate.UpdateDate(ui->CB_Month->currentIndex(), ui->CB_Day->currentIndex(),
-                          ui->CB_year->currentIndex());
+                          year);
 
-    if(ui->comboBoxExecutive->currentIndex() == 0)
+    std::list<Member> *memList = db->GetAllMembers();
+    std::list<Member>::const_iterator member = memList->begin();
+
+    while(member != memList->end() && valid != true)
     {
-        isExecutive = false;
+        if(member->GetID() == memberID)
+        {
+            valid = true;
+        }
+        else
+        {
+            member++;
+        }
+    }
+
+    if(valid == false)
+    {
+        ErrorWindow *error = new ErrorWindow(1);
+        error->show();
     }
     else
     {
-        isExecutive = true;
+        if(ui->comboBoxExecutive->currentIndex() == 0)
+        {
+            isExecutive = false;
+        }
+        else
+        {
+            isExecutive = true;
+        }
+        emit MemberEdit(member->GetName(), memberID, expirationDate, isExecutive, member->GetTotalSpent());
+
+        db->UpdateMember(Member(member->GetName(), memberID, member->GetTotalSpent(), expirationDate, isExecutive));
+
+        hide();
     }
-    emit MemberEdit(memberName, this->memberID, expirationDate, isExecutive);
 
-    db->UpdateMember(Member(memberName, memberID, totalSpent, expirationDate, isExecutive));
 
-    hide();
+    delete memList;
 }
 
+
+/**
+ * @brief editMemberWindow::on_editMemberConform_rejected
+ */
 void editMemberWindow::on_editMemberConform_rejected()
 {
     hide();

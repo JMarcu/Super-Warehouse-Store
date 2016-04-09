@@ -17,10 +17,18 @@
 class RebatesReport
 {
 public:
+    /**
+     * @brief RebatesReport
+     * @param membersIn
+     */
     RebatesReport(std::list<Member>* membersIn);
 
     ~RebatesReport();
 
+    /**
+     * @brief GetExecutiveMembers
+     * @return
+     */
     const std::list<Member>& GetExecutiveMembers() const;
 
 private:

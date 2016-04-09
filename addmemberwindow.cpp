@@ -1,7 +1,11 @@
 #include "addmemberwindow.h"
 #include "ui_addmemberwindow.h"
 
-
+/**
+ * @brief AddMemberWindow::AddMemberWindow
+ * @param db
+ * @param parent
+ */
 AddMemberWindow::AddMemberWindow(Database *db, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::AddMemberWindow)
@@ -11,11 +15,17 @@ AddMemberWindow::AddMemberWindow(Database *db, QWidget *parent) :
 
 }
 
+/**
+ * @brief AddMemberWindow::~AddMemberWindow
+ */
 AddMemberWindow::~AddMemberWindow()
 {
     delete ui;
 }
 
+/**
+ * @brief AddMemberWindow::on_pushButton_MemberAdd_clicked
+ */
 void AddMemberWindow::on_pushButton_MemberAdd_clicked()
 {
     bool valid;
@@ -93,7 +103,7 @@ void AddMemberWindow::on_pushButton_MemberAdd_clicked()
 
         if(valid == true)
         {
-            emit AddMember(name,id,expiration,isExecutive);
+            emit AddMember(name,id,expiration,isExecutive, 0.0);
 
             db->AddMember(Member(name, id, 0, expiration, isExecutive));
             hide();
@@ -101,6 +111,9 @@ void AddMemberWindow::on_pushButton_MemberAdd_clicked()
 
 }
 
+/**
+ * @brief AddMemberWindow::on_pushButton_MemberCancel_clicked
+ */
 void AddMemberWindow::on_pushButton_MemberCancel_clicked()
 {
     hide();

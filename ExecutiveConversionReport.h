@@ -17,17 +17,28 @@
 #include "Member.h"
 #include <list>
 
-/* Determine if any Executive customer should convert their membership to 
- * Regular status.
+/**
+ * @brief The ExecutiveConversionReport class
  */
 class ExecutiveConversionReport{
 private:
+    /**
+     * @brief membersToConvert
+     */
     std::list<Member>* membersToConvert;
     
 public:
+    /**
+     * @brief ExecutiveConversionReport
+     * @param allExecMembers
+     */
     ExecutiveConversionReport(std::list<Member>* allExecMembers);
     ~ExecutiveConversionReport();
     
+    /**
+     * @brief GetMembersToConvert
+     * @return
+     */
     const std::list<Member>& GetMembersToConvert() const;
 };
 

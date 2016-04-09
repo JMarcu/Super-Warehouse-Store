@@ -10,7 +10,9 @@
 #include "Sale.h"
 using namespace std;
 
-//constructors
+/**
+ * @brief Sale::Sale
+ */
 Sale::Sale() //default constructor
 {
     memberID = 0;
@@ -20,6 +22,14 @@ Sale::Sale() //default constructor
     orderDate = *(new Date());
 }
 
+/**
+ * @brief Sale::Sale
+ * @param id
+ * @param n
+ * @param q
+ * @param c
+ * @param d
+ */
 Sale::Sale (int id, QString n, int q, float c, Date d)
 {
     memberID = id;
@@ -29,26 +39,45 @@ Sale::Sale (int id, QString n, int q, float c, Date d)
     orderDate = d;
 }
 
-//Methods
+/**
+ * @brief Sale::GetMemberID
+ * @return
+ */
 int Sale::GetMemberID() const{
     return memberID;
 }
 
+/**
+ * @brief Sale::GetItemName
+ * @return
+ */
 QString Sale::GetItemName() const
 {
     return itemName;
 }
 
+/**
+ * @brief Sale::GetQuantityPurchased
+ * @return
+ */
 int Sale::GetQuantityPurchased() const
 {
     return quantityPurchased;
 }
 
+/**
+ * @brief Sale::GetSubtotal
+ * @return
+ */
 float Sale::GetSubtotal () const
 {
     return subtotal;
 }
 
+/**
+ * @brief Sale::GetOrderDate
+ * @return
+ */
 Date Sale::GetOrderDate() const{
     return orderDate;
 }

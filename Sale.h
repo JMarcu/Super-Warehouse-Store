@@ -24,21 +24,50 @@ class Sale
 
 public:
 
-	//constructors
-	Sale(); //default constructor
+    /**
+     * @brief Sale
+     */
+    Sale();
 
+    /**
+     * @brief Sale
+     * @param id
+     * @param n
+     * @param q
+     * @param c
+     * @param d
+     */
 	Sale(int id, QString n, int q, float c, Date d);
 
-	//Methods
-        int    GetMemberID() const;
-        
-	QString GetItemName() const;
-        
-        int    GetQuantityPurchased() const;
+    /**
+     * @brief GetMemberID
+     * @return
+     */
+    int    GetMemberID() const;
 
+    /**
+     * @brief GetItemName
+     * @return
+     */
+	QString GetItemName() const;
+
+    /**
+     * @brief GetQuantityPurchased
+     * @return
+     */
+    int    GetQuantityPurchased() const;
+
+    /**
+     * @brief GetSubtotal
+     * @return
+     */
 	float  GetSubtotal() const;
-        
-        Date   GetOrderDate() const;
+
+    /**
+     * @brief GetOrderDate
+     * @return
+     */
+    Date   GetOrderDate() const;
         
 
 };//end Sales class

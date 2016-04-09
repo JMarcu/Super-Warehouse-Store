@@ -1,0 +1,171 @@
+TOTAL PURCHASE REPORTS -
+-------------------------------------------------------------------
+Member ID:  12121 	Total Spent:  222.35
+Purchases Made:
+Item Name:  "Toilet Paper"                      # Purchased:  1
+Item Name:  "Levi 501's"                        # Purchased:  10
+
+Member ID:  12345 	Total Spent:  10213.5
+Purchases Made:
+Item Name:  "Farberware Cookware Set"           # Purchased:  20
+Item Name:  "Legal Pads"                        # Purchased:  10
+Item Name:  "One Gallon Milk"                   # Purchased:  88
+Item Name:  "Seinfeld Collection"               # Purchased:  50
+Item Name:  "EPSON Printer"                     # Purchased:  20
+Item Name:  "One Gallon Milk"                   # Purchased:  15
+Item Name:  "Assorted Muffins"                  # Purchased:  1
+Item Name:  "Diet Coke"                         # Purchased:  26
+Item Name:  "One Gallon Milk"                   # Purchased:  3
+Item Name:  "Assorted Muffins"                  # Purchased:  4
+Item Name:  "All Laundry Detergent"             # Purchased:  1
+Item Name:  "Disney DVD Collection 2"           # Purchased:  1
+Item Name:  "Assorted Muffins"                  # Purchased:  10
+Item Name:  "Runaway Jury"                      # Purchased:  2
+Item Name:  "Fresh Mozzarella"                  # Purchased:  2
+Item Name:  "Vine Ripe Tomatoes"                # Purchased:  2
+Item Name:  "Sprite"                            # Purchased:  20
+Item Name:  "Propel Fitness Water"              # Purchased:  3
+
+Member ID:  12899 	Total Spent:  303.64
+Purchases Made:
+Item Name:  "Pork Tenderloin"                   # Purchased:  2
+Item Name:  "Shrek 2"                           # Purchased:  1
+Item Name:  "Paper Shredder"                    # Purchased:  1
+Item Name:  "Pepsi"                             # Purchased:  8
+
+Member ID:  16161 	Total Spent:  0
+Purchases Made:
+
+Member ID:  31311 	Total Spent:  19.55
+Purchases Made:
+Item Name:  "The Bourne Supremacy"              # Purchased:  1
+
+Member ID:  35647 	Total Spent:  59.57
+Purchases Made:
+Item Name:  "Hamburger"                         # Purchased:  1
+Item Name:  "Pringles"                          # Purchased:  8
+
+Member ID:  56723 	Total Spent:  12.95
+Purchases Made:
+Item Name:  "Envelops"                          # Purchased:  5
+
+Member ID:  61616 	Total Spent:  1727.89
+Purchases Made:
+Item Name:  "One Gallon Milk"                   # Purchased:  5
+Item Name:  "VCR/DVD Player"                    # Purchased:  1
+Item Name:  "Levi 501's"                        # Purchased:  4
+Item Name:  "Coffee Creamer"                    # Purchased:  5
+Item Name:  "All Laundry Detergent"             # Purchased:  22
+Item Name:  "Spiderman 2"                       # Purchased:  1
+Item Name:  "While You Were Sleeping"           # Purchased:  1
+Item Name:  "Coke"                              # Purchased:  7
+Item Name:  "Pork Tenderloin"                   # Purchased:  88
+Item Name:  "Brie (Made in U.S.)"               # Purchased:  2
+Item Name:  "Disney DVD Collection 2"           # Purchased:  1
+
+Member ID:  67899 	Total Spent:  726.69
+Purchases Made:
+Item Name:  "Ponds Lotion"                      # Purchased:  1
+Item Name:  "Rye Bread"                         # Purchased:  90
+Item Name:  "The Alamo"                         # Purchased:  6
+Item Name:  "Most Basic DVD Player"             # Purchased:  1
+Item Name:  "Instant coffee"                    # Purchased:  5
+Item Name:  "Bkfst Cereal Variety Pack" 	# Purchased:  4
+
+Member ID:  77777 	Total Spent:  545.37
+Purchases Made:
+Item Name:  "Wonder Bread"                      # Purchased:  6
+Item Name:  "1.5 Dozen Eggs"                    # Purchased:  3
+Item Name:  "Disney DVD Collection"             # Purchased:  1
+Item Name:  "The Princess Bride"                # Purchased:  16
+Item Name:  "Rack of Lamb"                      # Purchased:  4
+Item Name:  "Crest Toothpaste"                  # Purchased:  6
+Item Name:  "Grosse Pointe Blank DVD"           # Purchased:  5
+Item Name:  "Roasted Garlic Bread"              # Purchased:  2
+Item Name:  "Coke"                              # Purchased:  2
+
+Member ID:  88888 	Total Spent:  266.18
+Purchases Made:
+Item Name:  "EPSON Printer Cart."               # Purchased:  5
+Item Name:  "Home On The Range"                 # Purchased:  1
+Item Name:  "A Bug's Life"                      # Purchased:  1
+Item Name:  "Fosters Farms Whole Chicken" 	# Purchased:  1
+Item Name:  "Serendipity"                       # Purchased:  4
+
+
+
+
+DAILY SALES REPORT-
+------------------------------------------------------------
+Item Name:  "Fresh Mozzarella"          Quantity Sold:  2
+Item Name:  "Propel Fitness Water" 	Quantity Sold:  3
+Item Name:  "Runaway Jury"              Quantity Sold:  2
+Item Name:  "Sprite"                    Quantity Sold:  20
+Item Name:  "Vine Ripe Tomatoes" 	Quantity Sold:  2
+Item Name:  "Brie (Made in U.S.)" 	Quantity Sold:  2
+Item Name:  "Disney DVD Collection 2" 	Quantity Sold:  1
+Item Name:  "Pork Tenderloin"           Quantity Sold:  88
+Item Name:  "Coke"                      Quantity Sold:  2
+Item Name:  "Crest Toothpaste"          Quantity Sold:  6
+Item Name:  "Grosse Pointe Blank DVD" 	Quantity Sold:  5
+Item Name:  "Roasted Garlic Bread" 	Quantity Sold:  2
+Item Name:  "Serendipity"               Quantity Sold:  4
+Number of Executives Sales:  1
+Number of Regular Sales:     3
+Total Revenue:               1697.02
+
+
+
+
+ITEMS SOLD -
+------------------------------------------------
+Item Name:  "1.5 Dozen Eggs"                    # Sold:  3      Revenue:  2.67
+Item Name:  "A Bug's Life"                      # Sold:  1      Revenue:  9.55
+Item Name:  "All Laundry Detergent"             # Sold:  23 	Revenue:  174.57
+Item Name:  "Assorted Muffins"                  # Sold:  15 	Revenue:  82.35
+Item Name:  "Bkfst Cereal Variety Pack" 	# Sold:  4 	Revenue:  27.56
+Item Name:  "Brie (Made in U.S.)"               # Sold:  2 	Revenue:  13.7
+Item Name:  "Coffee Creamer"                    # Sold:  5 	Revenue:  26.75
+Item Name:  "Coke"                              # Sold:  9 	Revenue:  57.51
+Item Name:  "Crest Toothpaste"                  # Sold:  6 	Revenue:  43.14
+Item Name:  "Diet Coke"                         # Sold:  26 	Revenue:  168.74
+Item Name:  "Disney DVD Collection"             # Sold:  1 	Revenue:  49.55
+Item Name:  "Disney DVD Collection 2"           # Sold:  2 	Revenue:  119.18
+Item Name:  "EPSON Printer"                     # Sold:  20 	Revenue:  1191.8
+Item Name:  "EPSON Printer Cart."               # Sold:  5 	Revenue:  160.5
+Item Name:  "Envelops"                          # Sold:  5 	Revenue:  12.95
+Item Name:  "Farberware Cookware Set"           # Sold:  20 	Revenue:  5791.8
+Item Name:  "Foster Farms Whole Chicken" 	# Sold:  0 	Revenue:  0
+Item Name:  "Fresh Mozzarella"                  # Sold:  2 	Revenue:  16.5
+Item Name:  "Grosse Pointe Blank"               # Sold:  0 	Revenue:  0
+Item Name:  "Ground Beef"                       # Sold:  0 	Revenue:  0
+Item Name:  "Hamburger"                         # Sold:  1 	Revenue:  6.85
+Item Name:  "Home On The Range"                 # Sold:  1 	Revenue:  19.58
+Item Name:  "Instant Coffee"                    # Sold:  0 	Revenue:  0
+Item Name:  "Legal Pads"                        # Sold:  10 	Revenue:  58.5
+Item Name:  "Levi 501's"                        # Sold:  14 	Revenue:  295.4
+Item Name:  "Most Basic DVD Player"             # Sold:  1 	Revenue:  59.59
+Item Name:  "One Gallon Milk"                   # Sold:  111 	Revenue:  675.99
+Item Name:  "Paper Shredder"                    # Sold:  1 	Revenue:  199.59
+Item Name:  "Pepsi"                             # Sold:  8 	Revenue:  50.8
+Item Name:  "Ponds Lotion"                      # Sold:  1 	Revenue:  5.39
+Item Name:  "Pork Tenderloin"                   # Sold:  90 	Revenue:  1208.5
+Item Name:  "Pringles"                          # Sold:  8 	Revenue:  52.72
+Item Name:  "Propel Fitness Water"              # Sold:  3 	Revenue:  36.3
+Item Name:  "Rack of Lamb"                      # Sold:  4 	Revenue:  57.56
+Item Name:  "Roasted Garlic Bread"              # Sold:  2 	Revenue:  13.78
+Item Name:  "Runaway Jury"                      # Sold:  2 	Revenue:  37.1
+Item Name:  "Rye Bread"                         # Sold:  90 	Revenue:  485.1
+Item Name:  "Seinfeld Collection"               # Sold:  50 	Revenue:  1977.5
+Item Name:  "Serendipity"                       # Sold:  4 	Revenue:  66.2
+Item Name:  "Shrek 2"                           # Sold:  1 	Revenue:  19.55
+Item Name:  "Spiderman 2"                       # Sold:  1 	Revenue:  19.55
+Item Name:  "Sprite"                            # Sold:  20 	Revenue:  127
+Item Name:  "The Alamo"                         # Sold:  6 	Revenue:  117.3
+Item Name:  "The Princess Bride"                # Sold:  16 	Revenue:  277.6
+Item Name:  "Toilet Paper"                      # Sold:  1 	Revenue:  11.35
+Item Name:  "VCR/DVD Player"                    # Sold:  1 	Revenue:  89.59
+Item Name:  "Vine Ripe Tomatoes"                # Sold:  2 	Revenue:  13.18
+Item Name:  "While You Were Sleeping"           # Sold:  1 	Revenue:  17.35
+Item Name:  "Wonder Bread"                      # Sold:  6 	Revenue:  5.34
+

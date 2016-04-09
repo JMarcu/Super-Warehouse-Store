@@ -19,15 +19,42 @@ by item name and the total revenue for each item.*/
 class TotalItemReport
 {
 public:
+    /**
+     * @brief TotalItemReport
+     * @param i
+     * @param sales
+     */
     TotalItemReport(std::list<Item>* i,
                         std::list<Sale>* sales);
 
 	~TotalItemReport();
 
-        const Item& GetItem(int index) const;
-        int         GetQuantitySold(int index) const;
-        double      GetRevenue(int index) const;
-        int         ItemCount() const;
+    /**
+     * @brief GetItem
+     * @param index
+     * @return
+     */
+    const Item& GetItem(int index) const;
+
+    /**
+     * @brief GetQuantitySold
+     * @param index
+     * @return
+     */
+    int GetQuantitySold(int index) const;
+
+    /**
+     * @brief GetRevenue
+     * @param index
+     * @return
+     */
+    double GetRevenue(int index) const;
+
+    /**
+     * @brief ItemCount
+     * @return
+     */
+    int ItemCount() const;
         
 private:
     vector<Item>   items;

@@ -7,6 +7,11 @@
 
 #include "TotalItemReport.h"
 
+/**
+ * @brief TotalItemReport::TotalItemReport
+ * @param i
+ * @param sales
+ */
 TotalItemReport::TotalItemReport(std::list<Item>* i,
                                  std::list<Sale>* sales){
     items.resize(i->size());
@@ -42,12 +47,20 @@ TotalItemReport::TotalItemReport(std::list<Item>* i,
     delete sales;
 }
 
+/**
+ * @brief TotalItemReport::~TotalItemReport
+ */
 TotalItemReport::~TotalItemReport(){
     items.clear();
     quantitiesSold.clear();
     revenues.clear();
 }
 
+/**
+ * @brief TotalItemReport::GetItem
+ * @param index
+ * @return
+ */
 const Item& TotalItemReport::GetItem(int index) const{
     if(index < ItemCount()){
         return items[index];
@@ -57,6 +70,11 @@ const Item& TotalItemReport::GetItem(int index) const{
     }
 }
 
+/**
+ * @brief TotalItemReport::GetQuantitySold
+ * @param index
+ * @return
+ */
 int TotalItemReport::GetQuantitySold(int index) const{
     if(index < ItemCount()){
         return quantitiesSold[index];
@@ -66,6 +84,11 @@ int TotalItemReport::GetQuantitySold(int index) const{
     }
 }
 
+/**
+ * @brief TotalItemReport::GetRevenue
+ * @param index
+ * @return
+ */
 double TotalItemReport::GetRevenue(int index) const{
     if(index < ItemCount()){
         return revenues[index];
@@ -75,6 +98,10 @@ double TotalItemReport::GetRevenue(int index) const{
     }
 }
 
+/**
+ * @brief TotalItemReport::ItemCount
+ * @return
+ */
 int TotalItemReport::ItemCount() const{
     return items.size();
 }

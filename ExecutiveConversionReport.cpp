@@ -1,5 +1,9 @@
 #include "ExecutiveConversionReport.h"
 
+/**
+ * @brief ExecutiveConversionReport::ExecutiveConversionReport
+ * @param allExecMembers
+ */
 ExecutiveConversionReport::ExecutiveConversionReport(std::list<Member>* allExecMembers){
     membersToConvert = new std::list<Member>;
     
@@ -17,11 +21,18 @@ ExecutiveConversionReport::ExecutiveConversionReport(std::list<Member>* allExecM
     delete allExecMembers;
 }
 
+/**
+ * @brief ExecutiveConversionReport::~ExecutiveConversionReport
+ */
 ExecutiveConversionReport::~ExecutiveConversionReport(){
     membersToConvert->clear();
     delete membersToConvert;
 }
 
+/**
+ * @brief ExecutiveConversionReport::GetMembersToConvert
+ * @return
+ */
 const std::list<Member>& ExecutiveConversionReport::GetMembersToConvert() const{
     return *membersToConvert;
 }

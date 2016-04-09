@@ -18,11 +18,20 @@
 class MemberPurchaseReport
 {
 public:
+    /**
+     * @brief MemberPurchaseReport
+     * @param member
+     * @param sales
+     */
 	MemberPurchaseReport(Member*     member,
                              std::list<Sale>* sales);
 
 	~MemberPurchaseReport();
 
+    /**
+     * @brief GetSales
+     * @return
+     */
     const std::list<Sale>& GetSales()  const;
         const Member&     GetMember() const;
         
